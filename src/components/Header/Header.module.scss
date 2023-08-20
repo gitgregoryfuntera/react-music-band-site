@@ -1,0 +1,24 @@
+.root {
+  .wrapper {
+    border: 1px solid white;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .logoContainer {
+      background-color: pink;
+      border: 1px solid white;
+      h1 {
+        padding: 0.5rem;
+      }
+    }
+    .menuContainer {
+      background-color: pink;
+      border: 1px solid white;
+      .barIcon {
+        padding: 1rem;
+        font-size: x-large;
+      }
+    }
+  }
+}
