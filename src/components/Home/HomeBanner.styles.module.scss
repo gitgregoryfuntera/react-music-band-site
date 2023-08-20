@@ -1,0 +1,29 @@
+.root {
+  .swiperSlide {
+    height: 650px;
+    .sliderContainer {
+        position: relative;
+        height: 650px;
+        img {
+          object-fit: cover;
+          width: 100%;
+          height: 650px;
+        }
+        .bannerTextContainer {
+            position: absolute;
+            top: 15%;
+            padding: 1rem;
+            width: 50%;
+            h1 {
+                font-size: xx-large;
+            }
+            p {
+              margin-top: 1rem;
+                line-height: 3ch;
+                font-size: x-large;
+            }
+        }
+      }
+  }
+
+}

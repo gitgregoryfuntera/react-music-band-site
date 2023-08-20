@@ -1,7 +1,10 @@
-import CLASSES from './Home.module.styles.css'
+import CLASSES from './Home.styles.module.scss'
+import HomeBanner from './HomeBanner'
 
 const Home = () => {
-    return <>Home</>
+    return <main>
+        <HomeBanner />
+    </main>
 }
 
 export default Home
