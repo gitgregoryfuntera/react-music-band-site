@@ -1,4 +1,4 @@
-import CLASSES from "./Header.styles.module.scss";
+import CLASSES from "./Header.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import HeaderNav from "./HeaderNav";

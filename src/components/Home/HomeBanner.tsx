@@ -14,6 +14,7 @@ const HomeBanner = () => {
     <section>
       <div className={CLASSES.root}>
         <Swiper
+          className={CLASSES.swiper}
           modules={[Pagination, A11y, Navigation]}
           spaceBetween={50}
           slidesPerView={1}
