@@ -1,0 +1,32 @@
+@use "../../styles/colors.scss" as colors;
+
+.root {
+  .swiperSlide {
+    .sliderContainer {
+      position: relative;
+      height: 650px;
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 650px;
+      }
+      .bannerTextContainer {
+        position: absolute;
+        top: 15%;
+        padding: 1rem;
+        width: 50%;
+        color: colors.$white;
+        h1 {
+          font-size: xx-large;
+          font-family: "Unbounded", cursive;
+        }
+        p {
+          font-family: "Michroma", sans-serif;
+          margin-top: 1rem;
+          line-height: 2ch;
+          font-size: x-large;
+        }
+      }
+    }
+  }
+}
