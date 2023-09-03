@@ -8,6 +8,9 @@ import "swiper/scss/navigation";
 import banner1 from "../../assets/banner1.jpg";
 import banner2 from "../../assets/banner2.jpg";
 import CLASSES from "./HomeBanner.module.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpotify, faApple } from "@fortawesome/free-brands-svg-icons";
+import CustomButton from "@components/shared/commons/CustomButton/CustomButton";
 
 const HomeBanner = () => {
   return (
@@ -26,10 +29,23 @@ const HomeBanner = () => {
               <img src={banner1} />
               <div className={CLASSES.bannerTextContainer}>
                 <h1>New Album Out Now</h1>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Asperiores odio assumenda ab in laboriosam.
-                </p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <div className={CLASSES.buttonContainer}>
+                  <CustomButton
+                    customRootClass={CLASSES.buttonWrapper}
+                    customButtonClassType="gradientRound"
+                  >
+                    <FontAwesomeIcon icon={faApple} className={CLASSES.btnIcon} />
+                    Buy on Itunes
+                  </CustomButton>
+                  <CustomButton
+                    customRootClass={CLASSES.buttonWrapper}
+                    customButtonClassType="round"
+                  >
+                    <FontAwesomeIcon icon={faSpotify} className={CLASSES.btnIcon} />
+                    Listen on Spotify
+                  </CustomButton>
+                </div>
               </div>
             </div>
           </SwiperSlide>
@@ -38,12 +54,7 @@ const HomeBanner = () => {
               <img src={banner2} />
               <div className={CLASSES.bannerTextContainer}>
                 <h1>Best artist of the year</h1>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Asperiores odio assumenda ab in laboriosam. Mollitia
-                  repudiandae, temporibus voluptatem assumenda sequi sapiente
-                  nam quas veritatis sed earum. A dolores voluptatem dolore?
-                </p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
               </div>
             </div>
           </SwiperSlide>

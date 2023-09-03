@@ -2,13 +2,15 @@ import { ButtonHTMLAttributes, ReactNode } from "react";
 import CLASSES from "./CustomButton.module.scss";
 
 interface CustomButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  customRootClass?: string
+  customButtonClassType?: string
   children: ReactNode;
 }
 
-const CustomButton = ({ children, ...props }: CustomButtonProps) => {
+const CustomButton = ({ children, customRootClass, customButtonClassType, ...props }: CustomButtonProps) => {
   return (
-    <div className={CLASSES.root}>
-      <button {...props}>{children}</button>
+    <div className={`${CLASSES.root} ${customRootClass}`}>
+      <button className={`${CLASSES[customButtonClassType as string]}`} {...props}>{children}</button>
     </div>
   );
 };

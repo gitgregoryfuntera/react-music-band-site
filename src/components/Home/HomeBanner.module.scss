@@ -27,6 +27,19 @@
             line-height: 2ch;
             font-size: x-large;
           }
+          .buttonContainer {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            column-gap: 1rem;
+            row-gap: 1rem;
+            margin-top: 0.5rem;
+            .buttonWrapper {
+              .btnIcon {
+                margin-right: 1rem;
+              }
+            }
+          }
         }
       }
     }
