@@ -10,7 +10,9 @@ import banner2 from "../../assets/banner2.jpg";
 import CLASSES from "./HomeBanner.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpotify, faApple } from "@fortawesome/free-brands-svg-icons";
+
 import CustomButton from "@components/shared/commons/CustomButton/CustomButton";
+import { faCirclePlay } from "@fortawesome/free-regular-svg-icons";
 
 const HomeBanner = () => {
   return (
@@ -29,20 +31,29 @@ const HomeBanner = () => {
               <img src={banner1} />
               <div className={CLASSES.bannerTextContainer}>
                 <h1>New Album Out Now</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                  Tempore reprehenderit expedita repudiandae possimus?
+                </p>
                 <div className={CLASSES.buttonContainer}>
                   <CustomButton
                     customRootClass={CLASSES.buttonWrapper}
                     customButtonClassType="gradientRound"
                   >
-                    <FontAwesomeIcon icon={faApple} className={CLASSES.btnIcon} />
+                    <FontAwesomeIcon
+                      icon={faApple}
+                      className={CLASSES.btnIcon}
+                    />
                     Buy on Itunes
                   </CustomButton>
                   <CustomButton
                     customRootClass={CLASSES.buttonWrapper}
                     customButtonClassType="round"
                   >
-                    <FontAwesomeIcon icon={faSpotify} className={CLASSES.btnIcon} />
+                    <FontAwesomeIcon
+                      icon={faSpotify}
+                      className={CLASSES.btnIcon}
+                    />
                     Listen on Spotify
                   </CustomButton>
                 </div>
@@ -55,6 +66,15 @@ const HomeBanner = () => {
               <div className={CLASSES.bannerTextContainer}>
                 <h1>Best artist of the year</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <div className={CLASSES.buttonContainer}>
+                  <CustomButton customRootClass={CLASSES.buttonWrapper}>
+                    <FontAwesomeIcon
+                      icon={faCirclePlay}
+                      className={CLASSES.btnIcon}
+                    />
+                    New Album
+                  </CustomButton>
+                </div>
               </div>
             </div>
           </SwiperSlide>

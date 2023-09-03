@@ -3,19 +3,24 @@
 .root {
   button {
     font-size: medium;
-    min-width: 150px;
     background: none;
     border: 0;
     color: colors.$white;
   }
 
   button.gradientRound {
+    min-width: 150px;
     padding: 1rem;
     border-radius: 32px;
-    background: linear-gradient(to left, #f8386b, #bd04db);
+    background: linear-gradient(
+      to left,
+      colors.$radicalRed,
+      colors.$cornFlowerBlue
+    );
   }
 
   button.round {
+    min-width: 150px;
     border: 2px solid colors.$white;
     padding: 1rem;
     border-radius: 32px;

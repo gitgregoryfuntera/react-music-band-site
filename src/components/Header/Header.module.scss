@@ -1,3 +1,4 @@
+@use '../../styles/font-sizes.scss' as fontSizes;
 .root {
   .wrapper {
     border: 1px solid white;
@@ -17,7 +18,7 @@
       border: 1px solid white;
       .barIcon {
         padding: 1rem;
-        font-size: x-large;
+        font-size: fontSizes.$large;
       }
     }
   }
