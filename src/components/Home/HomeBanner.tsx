@@ -13,6 +13,7 @@ import { faSpotify, faApple } from "@fortawesome/free-brands-svg-icons";
 
 import CustomButton from "@components/shared/commons/CustomButton/CustomButton";
 import { faCirclePlay } from "@fortawesome/free-regular-svg-icons";
+import SpotifyPlayer from "./SpotifyPlayer";
 
 const HomeBanner = () => {
   return (
@@ -56,6 +57,9 @@ const HomeBanner = () => {
                     />
                     Listen on Spotify
                   </CustomButton>
+                </div>
+                <div>
+                  <SpotifyPlayer />
                 </div>
               </div>
             </div>

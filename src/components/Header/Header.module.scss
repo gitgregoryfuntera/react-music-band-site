@@ -1,5 +1,9 @@
-@use '../../styles/font-sizes.scss' as fontSizes;
+@use "../../styles/font-sizes.scss" as fontSizes;
 .root {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: white;
   .wrapper {
     border: 1px solid white;
     display: flex;

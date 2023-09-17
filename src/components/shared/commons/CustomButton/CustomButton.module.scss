@@ -2,7 +2,6 @@
 
 .root {
   button {
-    font-size: medium;
     background: none;
     border: 0;
     color: colors.$white;
@@ -24,5 +23,9 @@
     border: 2px solid colors.$white;
     padding: 1rem;
     border-radius: 32px;
+  }
+
+  button:hover {
+    cursor: pointer;
   }
 }
