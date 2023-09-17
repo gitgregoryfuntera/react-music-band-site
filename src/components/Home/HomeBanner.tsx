@@ -39,7 +39,6 @@ const HomeBanner = () => {
                 <h1>New Album Out Now</h1>
                 <p>
                   Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Tempore reprehenderit expedita repudiandae possimus?
                 </p>
                 <div className={CLASSES.buttonContainer}>
                   <CustomButton
