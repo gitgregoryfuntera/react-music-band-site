@@ -14,8 +14,13 @@ import { faSpotify, faApple } from "@fortawesome/free-brands-svg-icons";
 import CustomButton from "@components/shared/commons/CustomButton/CustomButton";
 import { faCirclePlay } from "@fortawesome/free-regular-svg-icons";
 import SpotifyPlayer from "./SpotifyPlayer";
+import { useMediaQuery } from "react-responsive";
 
 const HomeBanner = () => {
+  const isDesktopOrLaptop = useMediaQuery({
+    query: "(min-width: 1224px)",
+  });
+
   return (
     <section>
       <div className={CLASSES.root}>
@@ -24,8 +29,8 @@ const HomeBanner = () => {
           modules={[Pagination, A11y, Navigation]}
           spaceBetween={50}
           slidesPerView={1}
-          navigation
-          pagination
+          navigation={isDesktopOrLaptop}
+          pagination={!isDesktopOrLaptop}
         >
           <SwiperSlide className={CLASSES.swiperSlide}>
             <div className={CLASSES.sliderContainer}>
@@ -58,9 +63,6 @@ const HomeBanner = () => {
                     Listen on Spotify
                   </CustomButton>
                 </div>
-                <div>
-                  <SpotifyPlayer />
-                </div>
               </div>
             </div>
           </SwiperSlide>
@@ -84,6 +86,11 @@ const HomeBanner = () => {
           </SwiperSlide>
         </Swiper>
       </div>
+      {isDesktopOrLaptop && (
+        <div className={CLASSES.spotifyPlayer}>
+          <SpotifyPlayer />
+        </div>
+      )}
     </section>
   );
 };

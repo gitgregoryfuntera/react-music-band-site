@@ -20,6 +20,7 @@ body {
   margin: 0;
 }
 
+// Swiper
 .swiper-pagination-bullet {
   width: 20px;
   height: 20px;
@@ -33,11 +34,17 @@ body {
 .swiper-button-prev {
   background: colors.$black;
   color: colors.$white;
-  padding: 1rem;
+}
+
+.swiper-button-prev:after {
+  font-size: 1rem;
 }
 
 .swiper-button-next {
   background: colors.$black;
   color: colors.$white;
-  padding: 1rem;
+}
+
+.swiper-button-next:after {
+  font-size: 1rem;
 }

@@ -46,3 +46,11 @@
     }
   }
 }
+
+.spotifyPlayer {
+  position: absolute;
+  bottom: 60px;
+  z-index: 1;
+  width: 100%;
+  opacity: 0.9;
+}
