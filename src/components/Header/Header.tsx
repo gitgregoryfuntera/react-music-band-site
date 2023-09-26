@@ -5,7 +5,14 @@ import HeaderNav from "./HeaderNav";
 import CustomButton from "@components/shared/commons/CustomButton/CustomButton";
 import { useEffect, useState } from "react";
 
-const Header = () => {
+interface HeaderProps {
+  setIsSideNavOpen: (prop: boolean) => void;
+  isSideNavOpen: boolean;
+}
+
+const Header = (props: HeaderProps) => {
+  const { setIsSideNavOpen, isSideNavOpen } = props;
+
   const [scrollPosition, setScrollPosition] = useState(0);
 
   const handleScroll = () => {
@@ -23,14 +30,16 @@ const Header = () => {
   const isFadeIn = scrollPosition > 50;
 
   return (
-    <header className={`${CLASSES.root} ${isFadeIn ? `${CLASSES.fadeIn}` : ''}`}>
+    <header
+      className={`${CLASSES.root} ${isFadeIn ? `${CLASSES.fadeIn}` : ""}`}
+    >
       <div className={CLASSES.wrapper}>
         <div className={CLASSES.logoContainer}>
           <h1>Logo.</h1>
         </div>
-        <HeaderNav isFadeIn={isFadeIn}/>
+        <HeaderNav isFadeIn={isFadeIn} />
         <div className={CLASSES.menuContainer}>
-          <CustomButton>
+          <CustomButton onClick={() => setIsSideNavOpen(!isSideNavOpen)}>
             <FontAwesomeIcon className={CLASSES.barIcon} icon={faBars} />
           </CustomButton>
         </div>

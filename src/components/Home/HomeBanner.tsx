@@ -37,9 +37,7 @@ const HomeBanner = () => {
               <img src={banner1} />
               <div className={CLASSES.bannerTextContainer}>
                 <h1>New Album Out Now</h1>
-                <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                </p>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
                 <div className={CLASSES.buttonContainer}>
                   <CustomButton
                     customRootClass={CLASSES.buttonWrapper}
