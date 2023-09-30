@@ -14,6 +14,12 @@ const Album = () => {
           loading="lazy"
         ></iframe>
       </div>
+      <div className={CLASSES.albumMessage}>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque maxime,
+          illo.
+        </p>
+      </div>
     </section>
   );
 };

@@ -11,7 +11,7 @@ function App() {
         isSideNavOpen={isSideNavOpen}
         setIsSideNavOpen={setIsSideNavOpen}
       />
-      {isSideNavOpen && <SideNav />}
+      <SideNav isOpen={isSideNavOpen} />
       <Home />
     </>
   );

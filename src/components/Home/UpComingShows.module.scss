@@ -1,0 +1,65 @@
+@use "../../styles/colors.scss" as colors;
+@use "../../styles/font-sizes.scss" as fontSizes;
+.root {
+  padding: 1rem;
+  background: colors.$black;
+  color: colors.$white;
+  text-align: center;
+  .title {
+    h2 {
+      margin-top: 1rem;
+      font-size: fontSizes.$xlarge;
+    }
+    p {
+      margin-top: 1rem;
+    }
+  }
+  .row {
+    padding-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    row-gap: 1rem;
+    column-gap: 1rem;
+    .card {
+      position: relative;
+      height: 440px;
+      width: 320px;
+      background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url(/src/assets/img1.jpg);
+      .cardTitle {
+        text-align: center;
+        text-transform: capitalize;
+        font-weight: 500;
+        p {
+          color: colors.$yellow;
+        }
+      }
+
+      .cardAction {
+        position: absolute;
+        bottom: 0;
+        bottom: 1rem;
+        left: 0;
+        right: 0;
+        text-align: center;
+        .cardButton {
+          padding: 1rem;
+          button {
+            width: 100%;
+          }
+          span {
+            text-transform: uppercase;
+            font-weight: 800;
+          }
+        }
+      }
+    }
+  }
+  .buttonContainer {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}

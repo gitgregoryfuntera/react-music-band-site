@@ -1,12 +1,23 @@
 import CLASSES from "./SideNav.module.scss";
 
-const SideNav = () => {
+interface SideNavProps {
+  isOpen: boolean;
+}
+
+const SideNav = (props: SideNavProps) => {
+  const { isOpen } = props;
   return (
     <div className={CLASSES.root}>
-      <a href="#">About</a>
-      <a href="#">Services</a>
-      <a href="#">Clients</a>
-      <a href="#">Contact</a>
+      <div
+        className={`${CLASSES.nav} ${
+          isOpen ? `${CLASSES.open}` : `${CLASSES.close}`
+        }`}
+      >
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+      </div>
     </div>
   );
 };

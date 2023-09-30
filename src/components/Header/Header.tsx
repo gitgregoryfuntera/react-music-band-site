@@ -1,6 +1,7 @@
 import CLASSES from "./Header.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
+
 import HeaderNav from "./HeaderNav";
 import CustomButton from "@components/shared/commons/CustomButton/CustomButton";
 import { useEffect, useState } from "react";
@@ -40,7 +41,10 @@ const Header = (props: HeaderProps) => {
         <HeaderNav isFadeIn={isFadeIn} />
         <div className={CLASSES.menuContainer}>
           <CustomButton onClick={() => setIsSideNavOpen(!isSideNavOpen)}>
-            <FontAwesomeIcon className={CLASSES.barIcon} icon={faBars} />
+            <FontAwesomeIcon
+              className={CLASSES.barIcon}
+              icon={isSideNavOpen ? faXmark : faBars}
+            />
           </CustomButton>
         </div>
       </div>
