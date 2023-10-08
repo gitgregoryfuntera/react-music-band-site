@@ -2,6 +2,7 @@
 
 .root {
   .nav {
+    width: 250px;
     height: 100%;
     position: fixed;
     z-index: 1000;
@@ -10,33 +11,5 @@
     background-color: colors.$radicalRed;
     overflow-x: hidden;
     padding-top: 60px;
-  }
-
-  .nav.open {
-    width: 250px;
-    animation: 0.3s open;
-  }
-
-  .nav.close {
-    width: 0;
-    animation: 0.3s close;
-  }
-}
-
-@keyframes open {
-  from {
-    width: 0;
-  }
-  to {
-    width: 250px;
-  }
-}
-
-@keyframes close {
-  from {
-    width: 250px;
-  }
-  to {
-    width: 0;
   }
 }

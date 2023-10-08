@@ -2,14 +2,14 @@ import { HTMLAttributes, ReactNode } from "react";
 import CLASSES from "../CustomCard/CustomCard.module.scss";
 
 interface CustomCardProps extends HTMLAttributes<HTMLDivElement> {
-  customRootClass?: string;
+  customrootclass?: string;
   children: ReactNode;
 }
 
 const CustomCard = ({ children, ...props }: CustomCardProps) => {
-  const { customRootClass } = props;
+  const { customrootclass } = props;
   return (
-    <div className={`${CLASSES.root} ${customRootClass}`} {...props}>
+    <div className={`${CLASSES.root} ${customrootclass}`} {...props}>
       {children}
     </div>
   );

@@ -28,7 +28,7 @@ const UpComingShows = () => {
       <div className={CLASSES.row}>
         {UPCOMING_SHOWS_IMG?.map((show) => (
           <CustomCard
-            customRootClass={CLASSES.card}
+            customrootclass={CLASSES.card}
             key={show.id}
             style={{
               backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.64), rgba(0, 0, 0, 0.64)), url(${show.image})`,
@@ -43,7 +43,7 @@ const UpComingShows = () => {
               <h3>New York</h3>
               <CustomButton
                 customButtonClassType="gradientRound"
-                customRootClass={CLASSES.cardButton}
+                customrootclass={CLASSES.cardButton}
               >
                 <span>Book My Ticket</span>
               </CustomButton>
