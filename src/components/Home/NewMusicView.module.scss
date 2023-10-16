@@ -1,33 +1,33 @@
 .root {
-    .newMusicVideoContainer {
-        background-image: linear-gradient(rgba(0, 0, 0, 0.64), rgba(0, 0, 0, 0.64)), url('../../assets/bg1.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
-        height: 500px;
-        .newMusicVideo {
-            color: white;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            align-items: center;
-            justify-content: center;
-            column-gap: 2;
-            .playIconContainer {
-                text-align: center;
-                padding: 5rem;
-                border: 1px solid white;
-                border-radius: 50%;
-            }
-            h3 {
-                font-size: 1.5rem;
-                margin-top: 1rem;
-            }
+  .newMusicVideoContainer {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.64), rgba(0, 0, 0, 0.64)),
+      url("../../assets/bg1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+    .newMusicVideo {
+      color: white;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      column-gap: 2;
+      .playIconContainer {
+        text-align: center;
+        padding: 5rem;
+        border: 1px solid white;
+        border-radius: 50%;
+      }
+      h3 {
+        font-size: 1.5rem;
+        margin-top: 1rem;
+      }
 
-            .playIconContainer, h3:hover {
-                cursor: pointer;
-            }
-        }
-
-
+      .playIconContainer,
+      h3:hover {
+        cursor: pointer;
+      }
     }
+  }
 }

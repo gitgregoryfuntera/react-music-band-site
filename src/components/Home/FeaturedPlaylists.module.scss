@@ -1,0 +1,51 @@
+@use "../../styles/font-sizes.scss" as fontSizes;
+@use "../../styles/colors.scss" as colors;
+
+.root {
+  background-color: colors.$black;
+  color: colors.$white;
+  h2 {
+    padding-top: 1rem;
+    font-size: fontSizes.$xlarge;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 2rem;
+    text-transform: capitalize;
+    text-align: center;
+  }
+  h2:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 87px;
+    height: 14px;
+    background: linear-gradient(
+      to left,
+      colors.$radicalRed,
+      colors.$cornFlowerBlue
+    );
+    transform: translateX(-50%);
+  }
+
+  .cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    row-gap: 1rem;
+    column-gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+    .playlistWrapper {
+      display: flex;
+      flex-direction: column;
+      row-gap: 1rem;
+      text-align: center;
+      .imgContainer {
+        img {
+          border-radius: 8px;
+        }
+      }
+    }
+  }
+}
