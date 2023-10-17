@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 import HeaderNav from "./HeaderNav";
-import CustomButton from "@components/shared/commons/CustomButton/CustomButton";
+import CustomButton from "@components/shared/customs/CustomButton/CustomButton";
 import { useEffect, useState } from "react";
 
 interface HeaderProps {

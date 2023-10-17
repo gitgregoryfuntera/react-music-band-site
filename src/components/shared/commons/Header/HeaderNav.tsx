@@ -1,4 +1,4 @@
-import CustomAnchorButton from "../shared/commons/CustomAnchorButton/CustomAnchorButton";
+import CustomAnchorButton from "../../customs/CustomAnchorButton/CustomAnchorButton";
 import CLASSES from "./HeaderNav.module.scss";
 import { useMediaQuery } from "react-responsive";
 

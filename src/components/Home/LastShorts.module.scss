@@ -1,0 +1,57 @@
+@use "../../styles/font-sizes.scss" as fontSizes;
+@use "../../styles/colors.scss" as colors;
+
+.root {
+  .title {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    h2 {
+      padding-top: 1rem;
+      font-size: fontSizes.$xlarge;
+      font-weight: 600;
+      position: relative;
+      padding-bottom: 2rem;
+      text-transform: capitalize;
+      text-align: center;
+    }
+    h2:before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 87px;
+      height: 14px;
+      background: linear-gradient(
+        to left,
+        colors.$radicalRed,
+        colors.$cornFlowerBlue
+      );
+      transform: translateX(-50%);
+    }
+  }
+
+  .shortContainer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    .cardContent {
+      display: flex;
+      flex-direction: column;
+      row-gap: 1rem;
+      text-align: center;
+      .descriptionContainer {
+        display: flex;
+        flex-direction: column;
+        row-gap: 1rem;
+      }
+      .socialsContainer {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        column-gap: 1rem;
+        justify-content: center;
+      }
+    }
+  }
+}

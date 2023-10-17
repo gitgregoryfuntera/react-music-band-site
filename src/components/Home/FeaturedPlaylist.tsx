@@ -1,4 +1,4 @@
-import CustomCard from "@components/shared/commons/CustomCard/CustomCard";
+import CustomCard from "@components/shared/customs/CustomCard/CustomCard";
 import CLASSES from "./FeaturedPlaylists.module.scss";
 
 const FEATURED_PLAYLIST = [

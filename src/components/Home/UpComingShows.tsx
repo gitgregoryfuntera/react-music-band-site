@@ -1,6 +1,6 @@
-import CustomCard from "@components/shared/commons/CustomCard/CustomCard";
+import CustomCard from "@components/shared/customs/CustomCard/CustomCard";
 import CLASSES from "../Home/UpcomingShows.module.scss";
-import CustomButton from "@components/shared/commons/CustomButton/CustomButton";
+import CustomButton from "@components/shared/customs/CustomButton/CustomButton";
 
 const UPCOMING_SHOWS_IMG = [
   {

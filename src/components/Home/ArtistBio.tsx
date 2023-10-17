@@ -1,4 +1,4 @@
-import CustomAnchorButton from "@components/shared/commons/CustomAnchorButton/CustomAnchorButton";
+import CustomAnchorButton from "@components/shared/customs/CustomAnchorButton/CustomAnchorButton";
 import CLASSES from "./ArtistBio.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {

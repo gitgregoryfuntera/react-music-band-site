@@ -11,7 +11,7 @@ import CLASSES from "./HomeBanner.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpotify, faApple } from "@fortawesome/free-brands-svg-icons";
 
-import CustomButton from "@components/shared/commons/CustomButton/CustomButton";
+import CustomButton from "@components/shared/customs/CustomButton/CustomButton";
 import { faCirclePlay } from "@fortawesome/free-regular-svg-icons";
 import SpotifyPlayer from "./SpotifyPlayer";
 import { useMediaQuery } from "react-responsive";

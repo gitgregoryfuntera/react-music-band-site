@@ -1,4 +1,4 @@
-import Header from "@components/Header/Header";
+import Header from "@components/shared/commons/Header/Header";
 import Home from "@components/Home/Home";
 import SideNav from "@components/SideNav/SideNav";
 import { useState } from "react";
