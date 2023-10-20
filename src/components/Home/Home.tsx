@@ -8,15 +8,15 @@ import UpComingShows from "./UpComingShows";
 
 const Home = () => {
   return (
-    <main>
+    <>
       <HomeBanner />
       <Album />
       <UpComingShows />
       <ArtistBio />
       <NewMusicVideo />
       <FeaturedPlaylist />
-      <LastShorts/>
-    </main>
+      <LastShorts />
+    </>
   );
 };
 

@@ -7,7 +7,7 @@ import CustomAnchorButton from "@components/shared/customs/CustomAnchorButton/Cu
 const LAST_SHORTS = [
   {
     link: `https://www.youtube.com/embed/Lssi0T6rHEo`,
-    title: `Aggressive Dark Electro Mix \ Dark Techno \ Cyberpunk \ Industrial Mix Music [ Copyright Free ]`,
+    title: `Aggressive Dark Electro Mix | Dark Techno | Cyberpunk | Industrial Mix Music [ Copyright Free ]`,
     description: {
       title: `Rainy Night`,
       message: `History of Synth music, there is probably no one.`,
