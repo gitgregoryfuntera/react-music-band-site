@@ -1,5 +1,5 @@
 import Header from "@components/shared/commons/Header/Header";
-import Home from "@components/Home/Home";
+import Home from "pages/Home/Home";
 import SideNav from "@components/shared/commons/SideNav/SideNav";
 import { useState } from "react";
 import Networks from "@components/shared/commons/Networks/Networks";

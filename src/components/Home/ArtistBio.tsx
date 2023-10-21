@@ -7,32 +7,43 @@ import {
   faThreads,
   faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, useInView, motion } from "framer-motion";
+import { AnimatePresence, Variants, motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
+import { Key, ReactNode } from "react";
 
 const SlideInMotionRight = ({
   motionKey,
   children,
-  isDesktopOrLaptop,
   className,
+  isDesktopOrLaptop,
 }: {
   motionKey: Key;
   children: ReactNode;
-  isDesktopOrLaptop: boolean;
   className: string;
+  isDesktopOrLaptop: boolean;
 }) => {
-  const animatedObj = {
-    initial: { opacity: 0, x: "100%" },
-    animate: { opacity: 1, x: 0 },
-    transition: {
-      ease: "linear",
-      duration: 1,
+  const variants: Variants = {
+    offscreen: {
+      opacity: 0,
+      x: 100,
+    },
+    onscreen: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        ease: "linear",
+      },
     },
   };
-  const motionObj = isDesktopOrLaptop ? animatedObj : undefined;
   return (
-    <motion.div key={motionKey} {...motionObj} className={className}>
+    <motion.div
+      key={motionKey}
+      className={className}
+      initial={isDesktopOrLaptop ? "offscreen" : "onscreen"}
+      whileInView="onscreen"
+      viewport={{ once: true, amount: 0.8 }}
+      variants={variants}
+    >
       {children}
     </motion.div>
   );
@@ -41,25 +52,36 @@ const SlideInMotionRight = ({
 const SlideInMotionLeft = ({
   motionKey,
   children,
-  isDesktopOrLaptop,
   className,
+  isDesktopOrLaptop,
 }: {
   motionKey: Key;
   children: ReactNode;
   isDesktopOrLaptop: boolean;
   className: string;
 }) => {
-  const animatedObj = {
-    initial: { opacity: 0, x: "-100%" },
-    animate: { opacity: 1, x: 0 },
-    transition: {
-      ease: "linear",
-      duration: 1,
+  const variants: Variants = {
+    offscreen: {
+      opacity: 0,
+      x: -100,
+    },
+    onscreen: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        ease: "linear",
+      },
     },
   };
-  const motionObj = isDesktopOrLaptop ? animatedObj : undefined;
   return (
-    <motion.div key={motionKey} {...motionObj} className={className}>
+    <motion.div
+      key={motionKey}
+      className={className}
+      initial={isDesktopOrLaptop ? "offscreen" : "onscreen"}
+      whileInView="onscreen"
+      viewport={{ once: true, amount: 0.8 }}
+      variants={variants}
+    >
       {children}
     </motion.div>
   );
@@ -69,70 +91,56 @@ const ArtistBio = () => {
   const isDesktopOrLaptop = useMediaQuery({
     query: "(min-width: 1224px)",
   });
-  const [triggerAnimation, setTriggerAnimation] = useState(false);
-  const rootScope = useRef(null);
-  const isInView = useInView(rootScope);
-
-  useEffect(() => {
-    if (isInView) {
-      setTriggerAnimation(true);
-    }
-  }, [isInView, triggerAnimation]);
-
   return (
-    <section className={CLASSES.root} ref={rootScope}>
+    <section className={CLASSES.root}>
       <div className={CLASSES.row}>
         <AnimatePresence>
-          {triggerAnimation && (
-            <SlideInMotionLeft
-              motionKey={"slideLeft"}
-              isDesktopOrLaptop={isDesktopOrLaptop}
-              className={CLASSES.artistBioContainer}
-            >
-              <div className={CLASSES.title}>
-                <h2>Artist Bio</h2>
-              </div>
-              <div className={CLASSES.bioContent}>
-                <q>
-                  If I can play one note and make you cry, then that's better
-                  than those fancy dancers playing twenty notes.
-                </q>
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Optio, maxime ab facilis id explicabo accusantium doloremque
-                  ad quod consectetur inventore sequi. Ad temporibus fugit
-                  voluptates tempora perferendis sunt pariatur eveniet?
-                </p>
-              </div>
+          <SlideInMotionLeft
+            motionKey={"slideLeft"}
+            isDesktopOrLaptop={isDesktopOrLaptop}
+            className={CLASSES.artistBioContainer}
+          >
+            <div className={CLASSES.title}>
+              <h2>Artist Bio</h2>
+            </div>
+            <div className={CLASSES.bioContent}>
+              <q>
+                If I can play one note and make you cry, then that's better than
+                those fancy dancers playing twenty notes.
+              </q>
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio,
+                maxime ab facilis id explicabo accusantium doloremque ad quod
+                consectetur inventore sequi. Ad temporibus fugit voluptates
+                tempora perferendis sunt pariatur eveniet?
+              </p>
+            </div>
 
-              <div className={CLASSES.bioSocials}>
-                <CustomAnchorButton>
-                  <FontAwesomeIcon icon={faXTwitter} />
-                </CustomAnchorButton>
-                <CustomAnchorButton>
-                  <FontAwesomeIcon icon={faThreads} />
-                </CustomAnchorButton>
-                <CustomAnchorButton>
-                  <FontAwesomeIcon icon={faFacebookF} />
-                </CustomAnchorButton>
-                <CustomAnchorButton>
-                  <FontAwesomeIcon icon={faInstagram} />
-                </CustomAnchorButton>
-              </div>
-            </SlideInMotionLeft>
-          )}
+            <div className={CLASSES.bioSocials}>
+              <CustomAnchorButton>
+                <FontAwesomeIcon icon={faXTwitter} />
+              </CustomAnchorButton>
+              <CustomAnchorButton>
+                <FontAwesomeIcon icon={faThreads} />
+              </CustomAnchorButton>
+              <CustomAnchorButton>
+                <FontAwesomeIcon icon={faFacebookF} />
+              </CustomAnchorButton>
+              <CustomAnchorButton>
+                <FontAwesomeIcon icon={faInstagram} />
+              </CustomAnchorButton>
+            </div>
+          </SlideInMotionLeft>
         </AnimatePresence>
 
         <AnimatePresence>
-          {triggerAnimation && (
-            <SlideInMotionRight
-              motionKey={"rightScope"}
-              isDesktopOrLaptop={isDesktopOrLaptop}
-              className={CLASSES.artistImage}
-            >
-              <img src={`/src/assets/artist_bio_image.png`} />
-            </SlideInMotionRight>
-          )}
+          <SlideInMotionRight
+            isDesktopOrLaptop={isDesktopOrLaptop}
+            motionKey={"rightScope"}
+            className={CLASSES.artistImage}
+          >
+            <img src={`/src/assets/artist_bio_image.png`} />
+          </SlideInMotionRight>
         </AnimatePresence>
       </div>
     </section>

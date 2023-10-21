@@ -12,7 +12,7 @@ interface SideNavProps {
 
 const variants = {
   open: { opacity: 1, x: 0 },
-  closed: { opacity: 0, x: "-100%" },
+  closed: { opacity: 0, x: -100 },
 };
 
 const SideNav = (props: SideNavProps) => {
