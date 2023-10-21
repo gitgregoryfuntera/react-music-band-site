@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CLASSES from "./NewMusicView.module.scss";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { useMediaQuery } from "react-responsive";
-import { ReactNode, useState } from "react";
+import { Key, ReactNode, useState } from "react";
 import { motion, Variants } from "framer-motion";
 import PlayDialog from "@components/dialogs/PlayDialog/PlayDialog";
 

@@ -3,22 +3,22 @@ import CLASSES from "./FeaturedPlaylists.module.scss";
 
 const FEATURED_PLAYLIST = [
   {
-    image: `../src/assets/img4.jpg`,
+    image: `/assets/img4.jpg`,
     title: `Out Run Concept`,
     description: `History of Synth music, there is probably no one.`,
   },
   {
-    image: `../src/assets/img5.jpg`,
+    image: `/assets/img5.jpg`,
     title: `Out Run Concept`,
     description: `History of Synth music, there is probably no one.`,
   },
   {
-    image: `../src/assets/img6.jpg`,
+    image: `/assets/img6.jpg`,
     title: `Out Run Concept`,
     description: `History of Synth music, there is probably no one.`,
   },
   {
-    image: `../src/assets/img7.jpg`,
+    image: `/assets/img7.jpg`,
     title: `Out Run Concept`,
     description: `History of Synth music, there is probably no one.`,
   },

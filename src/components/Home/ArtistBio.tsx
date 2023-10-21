@@ -139,7 +139,7 @@ const ArtistBio = () => {
             motionKey={"rightScope"}
             className={CLASSES.artistImage}
           >
-            <img src={`/src/assets/artist_bio_image.png`} />
+            <img src={`/assets/artist_bio_image.png`} />
           </SlideInMotionRight>
         </AnimatePresence>
       </div>

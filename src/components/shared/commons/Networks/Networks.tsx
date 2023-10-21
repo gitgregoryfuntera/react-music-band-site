@@ -2,10 +2,10 @@ import CustomCard from "@components/shared/customs/CustomCard/CustomCard";
 import CLASSES from "./Networks.module.scss";
 
 const SOCIAL_IMAGES = [
-  `/src/assets/logo1.png`,
-  `/src/assets/logo2.png`,
-  `/src/assets/logo3.png`,
-  `/src/assets/logo4.png`,
+  `/assets/logo1.png`,
+  `/assets/logo2.png`,
+  `/assets/logo3.png`,
+  `/assets/logo4.png`,
 ];
 
 const Networks = () => {

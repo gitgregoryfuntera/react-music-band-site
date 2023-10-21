@@ -5,15 +5,15 @@ import CustomButton from "@components/shared/customs/CustomButton/CustomButton";
 const UPCOMING_SHOWS_IMG = [
   {
     id: 1,
-    image: `/src/assets/upcoming-shows/img1.jpg`,
+    image: `/assets/upcoming-shows/img1.jpg`,
   },
   {
     id: 2,
-    image: `/src/assets/upcoming-shows/img2.jpg`,
+    image: `/assets/upcoming-shows/img2.jpg`,
   },
   {
     id: 3,
-    image: `/src/assets/upcoming-shows/img3.jpg`,
+    image: `/assets/upcoming-shows/img3.jpg`,
   },
 ];
 
