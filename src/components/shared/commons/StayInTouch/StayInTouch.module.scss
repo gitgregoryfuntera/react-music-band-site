@@ -27,6 +27,10 @@
     .inputContainer {
       form {
         position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        row-gap: 1rem;
         input {
           border: none;
           padding: 1.5rem;
@@ -40,7 +44,6 @@
         .inputIcon {
           position: absolute;
           left: 8%;
-          top: 36%;
           color: colors.$vividRaspberry;
         }
         button {

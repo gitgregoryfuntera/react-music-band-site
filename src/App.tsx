@@ -4,6 +4,7 @@ import SideNav from "@components/shared/commons/SideNav/SideNav";
 import { useState } from "react";
 import Networks from "@components/shared/commons/Networks/Networks";
 import StayInTouch from "@components/shared/commons/StayInTouch/StayInTouch";
+import Footer from "@components/shared/commons/Footer/Footer";
 
 function App() {
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
@@ -19,6 +20,7 @@ function App() {
         <Networks />
         <StayInTouch />
       </main>
+      <Footer/>
     </>
   );
 }
