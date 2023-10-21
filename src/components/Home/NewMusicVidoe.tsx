@@ -4,6 +4,7 @@ import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { useMediaQuery } from "react-responsive";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import { useInView, motion } from "framer-motion";
+import PlayDialog from "@components/dialogs/PlayDialog/PlayDialog";
 
 const SlideInMotionLeft = ({
   motionKey,
@@ -39,6 +40,7 @@ const NewMusicVideo = () => {
   const [triggerAnimation, setTriggerAnimation] = useState(false);
   const rootScope = useRef(null);
   const isInView = useInView(rootScope);
+  const [openPlayDialog, setOpenPlayDialog] = useState(false);
 
   useEffect(() => {
     if (isInView) {
@@ -55,7 +57,7 @@ const NewMusicVideo = () => {
               motionKey={"slideLeftMusic"}
               isDesktopOrLaptop={isDesktopOrLaptop}
             >
-              <div className={CLASSES.playIconContainer}>
+              <div className={CLASSES.playIconContainer} onClick={() => setOpenPlayDialog(prevState => !prevState)}>
                 <FontAwesomeIcon icon={faPlay} size={"2x"} />
               </div>
               <h3>New Music Video</h3>
@@ -63,6 +65,7 @@ const NewMusicVideo = () => {
           )}
         </div>
       </div>
+      <PlayDialog open={openPlayDialog} handleOpen={setOpenPlayDialog}/>
     </section>
   );
 };
