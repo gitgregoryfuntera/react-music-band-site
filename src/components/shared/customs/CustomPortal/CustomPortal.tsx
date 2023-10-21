@@ -6,10 +6,7 @@ interface CustomPortalProps {
 }
 
 const CustomPortal = (props: CustomPortalProps) => {
-  return createPortal(
-    <>{props.children}</>,
-    document.body
-  );
+  return createPortal(<>{props.children}</>, document.body);
 };
 
 export default CustomPortal;

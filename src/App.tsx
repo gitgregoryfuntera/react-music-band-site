@@ -20,7 +20,7 @@ function App() {
         <Networks />
         <StayInTouch />
       </main>
-      <Footer/>
+      <Footer />
     </>
   );
 }

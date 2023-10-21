@@ -57,7 +57,10 @@ const NewMusicVideo = () => {
               motionKey={"slideLeftMusic"}
               isDesktopOrLaptop={isDesktopOrLaptop}
             >
-              <div className={CLASSES.playIconContainer} onClick={() => setOpenPlayDialog(prevState => !prevState)}>
+              <div
+                className={CLASSES.playIconContainer}
+                onClick={() => setOpenPlayDialog((prevState) => !prevState)}
+              >
                 <FontAwesomeIcon icon={faPlay} size={"2x"} />
               </div>
               <h3>New Music Video</h3>
@@ -65,7 +68,7 @@ const NewMusicVideo = () => {
           )}
         </div>
       </div>
-      <PlayDialog open={openPlayDialog} handleOpen={setOpenPlayDialog}/>
+      <PlayDialog open={openPlayDialog} handleOpen={setOpenPlayDialog} />
     </section>
   );
 };
