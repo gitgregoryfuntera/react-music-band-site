@@ -10,18 +10,27 @@ interface SideNavProps {
   isOpen: boolean;
 }
 
-const variants = {
-  open: { opacity: 1, x: 0 },
-  closed: { opacity: 0, x: -100, width: 0 },
-  transition: {
-    ease: "linear",
-    duration: 1,
-  },
-};
-
 const SideNav = (props: SideNavProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const { isOpen } = props;
+
+  const variants = {
+    open: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        ease: "linear",
+      },
+    },
+    closed: {
+      opacity: 0,
+      x: -100,
+      width: 0,
+      transition: {
+        ease: "linear",
+      },
+    },
+  };
 
   return (
     <motion.nav
