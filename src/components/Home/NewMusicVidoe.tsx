@@ -27,6 +27,7 @@ const SlideInMotionLeft = ({
       scale: 1,
       transition: {
         ease: "linear",
+        duration: 0.5,
       },
     },
   };
@@ -36,7 +37,7 @@ const SlideInMotionLeft = ({
       className={className}
       initial={isDesktopOrLaptop ? "offscreen" : "onscreen"}
       whileInView="onscreen"
-      viewport={{ once: true, amount: 0.8 }}
+      viewport={{ once: true, amount: 0.1 }}
       variants={variants}
     >
       {children}

@@ -16,33 +16,34 @@ import { faCirclePlay } from "@fortawesome/free-regular-svg-icons";
 import SpotifyPlayer from "./SpotifyPlayer";
 import { useMediaQuery } from "react-responsive";
 import { motion } from "framer-motion";
-import { Key, ReactNode, useState } from "react";
-
-const SlideInMotion = ({
-  motionKey,
-  children,
-}: {
-  motionKey: Key;
-  children: ReactNode;
-}) => (
-  <motion.div
-    key={motionKey}
-    initial={{ opacity: 0, x: "100%" }}
-    animate={{ opacity: 1, x: 0 }}
-    transition={{
-      duration: 0.5,
-      ease: "easeInOut",
-    }}
-  >
-    {children}
-  </motion.div>
-);
+import { useState } from "react";
 
 const HomeBanner = () => {
   const [currentActiveSlide, setCurrentActiveSlide] = useState(0);
   const isDesktopOrLaptop = useMediaQuery({
     query: "(min-width: 1224px)",
   });
+
+  const variants = {
+    in: {
+      opacity: [0, 1],
+      x: [100, 0],
+      transition: {
+        x: {
+          ease: "easeIn",
+        },
+      },
+    },
+    out: {
+      x: [0, 100],
+      opacity: [1, 0],
+      transition: {
+        x: {
+          ease: "easeIn",
+        },
+      },
+    },
+  };
 
   return (
     <section>
@@ -62,12 +63,24 @@ const HomeBanner = () => {
             <div className={CLASSES.sliderContainer}>
               <img src={banner1} />
               <div className={CLASSES.bannerTextContainer}>
-                <SlideInMotion motionKey={currentActiveSlide}>
-                  <h1>New Album Out Now</h1>
-                  <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  </p>
-                  <div className={CLASSES.buttonContainer}>
+                <motion.div
+                  key={currentActiveSlide}
+                  animate={currentActiveSlide === 0 ? "in" : "out"}
+                  transition={{
+                    staggerChildren: 0.3,
+                    delayChildren: 0.2,
+                  }}
+                >
+                  <motion.h1 variants={variants}>New Album Out Now</motion.h1>
+                  <motion.p variants={variants}>
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry. has been the industry's standard dummy
+                    text ever since.
+                  </motion.p>
+                  <motion.div
+                    variants={variants}
+                    className={CLASSES.buttonContainer}
+                  >
                     <CustomButton
                       customrootclass={CLASSES.buttonWrapper}
                       customButtonClassType="gradientRound"
@@ -88,8 +101,8 @@ const HomeBanner = () => {
                       />
                       Listen on Spotify
                     </CustomButton>
-                  </div>
-                </SlideInMotion>
+                  </motion.div>
+                </motion.div>
               </div>
             </div>
           </SwiperSlide>
@@ -97,12 +110,26 @@ const HomeBanner = () => {
             <div className={CLASSES.sliderContainer}>
               <img src={banner2} />
               <div className={CLASSES.bannerTextContainer}>
-                <SlideInMotion motionKey={currentActiveSlide}>
-                  <h1>Best artist of the year</h1>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  </p>
-                  <div className={CLASSES.buttonContainer}>
+                <motion.div
+                  key={currentActiveSlide}
+                  animate={currentActiveSlide === 1 ? "in" : "out"}
+                  transition={{
+                    staggerChildren: 0.3,
+                    delayChildren: 0.2,
+                  }}
+                >
+                  <motion.h1 variants={variants}>
+                    Best artist of the year
+                  </motion.h1>
+                  <motion.p variants={variants}>
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry. has been the industry's standard dummy
+                    text ever since.
+                  </motion.p>
+                  <motion.div
+                    className={CLASSES.buttonContainer}
+                    variants={variants}
+                  >
                     <CustomButton customrootclass={CLASSES.buttonWrapper}>
                       <FontAwesomeIcon
                         icon={faCirclePlay}
@@ -110,8 +137,8 @@ const HomeBanner = () => {
                       />
                       New Album
                     </CustomButton>
-                  </div>
-                </SlideInMotion>
+                  </motion.div>
+                </motion.div>
               </div>
             </div>
           </SwiperSlide>
