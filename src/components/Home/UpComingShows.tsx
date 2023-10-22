@@ -1,19 +1,22 @@
 import CustomCard from "@components/shared/customs/CustomCard/CustomCard";
 import CLASSES from "../Home/UpcomingShows.module.scss";
 import CustomButton from "@components/shared/customs/CustomButton/CustomButton";
+import image1 from "/assets/upcoming-shows/img1.jpg";
+import image2 from "/assets/upcoming-shows/img2.jpg";
+import image3 from "/assets/upcoming-shows/img3.jpg";
 
 const UPCOMING_SHOWS_IMG = [
   {
     id: 1,
-    image: `/assets/upcoming-shows/img1.jpg`,
+    image: image1,
   },
   {
     id: 2,
-    image: `/assets/upcoming-shows/img2.jpg`,
+    image: image2,
   },
   {
     id: 3,
-    image: `/assets/upcoming-shows/img3.jpg`,
+    image: image3,
   },
 ];
 

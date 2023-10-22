@@ -1,24 +1,27 @@
 import CustomCard from "@components/shared/customs/CustomCard/CustomCard";
 import CLASSES from "./FeaturedPlaylists.module.scss";
-
+import image1 from '/assets/img4.jpg';
+import image2 from '/assets/img5.jpg';
+import image3 from '/assets/img6.jpg';
+import image4 from '/assets/img7.jpg';
 const FEATURED_PLAYLIST = [
   {
-    image: `/assets/img4.jpg`,
+    image: image1,
     title: `Out Run Concept`,
     description: `History of Synth music, there is probably no one.`,
   },
   {
-    image: `/assets/img5.jpg`,
+    image: image2,
     title: `Out Run Concept`,
     description: `History of Synth music, there is probably no one.`,
   },
   {
-    image: `/assets/img6.jpg`,
+    image: image3,
     title: `Out Run Concept`,
     description: `History of Synth music, there is probably no one.`,
   },
   {
-    image: `/assets/img7.jpg`,
+    image: image4,
     title: `Out Run Concept`,
     description: `History of Synth music, there is probably no one.`,
   },
