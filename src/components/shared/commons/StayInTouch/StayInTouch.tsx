@@ -4,7 +4,7 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { useMediaQuery } from "react-responsive";
 
 const StayInTouch = () => {
-  const isLargeScreen = useMediaQuery({ minWidth: 400 });
+  const isLargeScreen = useMediaQuery({ minWidth: 420 });
 
   return (
     <section className={CLASSES.root}>
@@ -19,6 +19,7 @@ const StayInTouch = () => {
               style={{
                 borderTopRightRadius: isLargeScreen ? 0 : "50px",
                 borderBottomRightRadius: isLargeScreen ? 0 : "50px",
+                width: isLargeScreen ? "auto" : "200px",
               }}
               placeholder="Enter your Email Address"
               type="email"

@@ -10,7 +10,7 @@ import {
 import { AnimatePresence, Variants, motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 import { Key, ReactNode } from "react";
-import artistBioImg from '/assets/artist_bio_image.png';
+import artistBioImg from "/assets/artist_bio_image.png";
 
 const SlideInMotionRight = ({
   motionKey,

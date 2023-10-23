@@ -1,9 +1,9 @@
 import CustomCard from "@components/shared/customs/CustomCard/CustomCard";
 import CLASSES from "./FeaturedPlaylists.module.scss";
-import image1 from '/assets/img4.jpg';
-import image2 from '/assets/img5.jpg';
-import image3 from '/assets/img6.jpg';
-import image4 from '/assets/img7.jpg';
+import image1 from "/assets/img4.jpg";
+import image2 from "/assets/img5.jpg";
+import image3 from "/assets/img6.jpg";
+import image4 from "/assets/img7.jpg";
 const FEATURED_PLAYLIST = [
   {
     image: image1,
