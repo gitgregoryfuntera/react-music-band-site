@@ -3,11 +3,7 @@ import CLASSES from "./Album.module.scss";
 
 const Album = () => {
   const variants: Variants = {
-    offscreen: {
-      opacity: 0,
-      y: 100,
-    },
-    onscreen: {
+    in: {
       opacity: 1,
       y: 0,
       transition: {
@@ -15,17 +11,28 @@ const Album = () => {
         duration: 0.5,
       },
     },
+    out: {
+      opacity: 0,
+      y: 100,
+    },
   };
 
   return (
-    <section className={CLASSES.root}>
-      <motion.h2
-        initial={"offscreen"}
-        whileInView={"onscreen"}
-        viewport={{ once: true, amount: 0.8 }}
-        variants={variants}
-      >New Album</motion.h2>
-      <div className={CLASSES.spotifyEmbed}>
+    <motion.section
+      whileInView={"in"}
+      initial={"out"}
+      viewport={{
+        once: true,
+        amount: 0.3,
+      }}
+      transition={{
+        staggerChildren: 0.3,
+        delayChildren: 0.2,
+      }}
+      className={CLASSES.root}
+    >
+      <motion.h2 variants={variants}>New Album</motion.h2>
+      <motion.div variants={variants} className={CLASSES.spotifyEmbed}>
         <iframe
           src="https://open.spotify.com/embed/album/0SgxFNwplcpKZTSRhh2Snh?utm_source=generator"
           allowFullScreen
@@ -34,14 +41,14 @@ const Album = () => {
           }
           loading="lazy"
         ></iframe>
-      </div>
+      </motion.div>
       <div className={CLASSES.albumMessage}>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque maxime,
           illo.
         </p>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

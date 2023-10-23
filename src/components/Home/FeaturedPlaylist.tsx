@@ -40,7 +40,7 @@ const FeaturedPlaylist = () => {
               <div className={CLASSES.imgContainer}>
                 <img src={item.image} />
               </div>
-              <div>
+              <div className={CLASSES.messageContainer}>
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
               </div>

@@ -7,7 +7,7 @@
   text-align: center;
   .title {
     h2 {
-      margin-top: 1rem;
+      margin-top: 3rem;
       font-size: fontSizes.$xlarge;
     }
     p {
@@ -15,7 +15,7 @@
     }
   }
   .row {
-    padding-top: 1rem;
+    padding-top: 3rem;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -57,7 +57,7 @@
     }
   }
   .buttonContainer {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
   }
 }
