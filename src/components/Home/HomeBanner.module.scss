@@ -1,5 +1,6 @@
 @use "../../styles/colors.scss" as colors;
 @use "../../styles/font-sizes.scss" as fontSizes;
+@use "../../styles/media-queries.scss" as *;
 
 section {
   position: relative;
@@ -18,7 +19,7 @@ section {
         }
         .bannerTextContainer {
           position: absolute;
-          top: 15%;
+          top: 5%;
           padding: 1rem;
           width: 50%;
           left: 10%;
@@ -58,4 +59,34 @@ section {
   z-index: 1;
   width: 100%;
   opacity: 0.8;
+}
+
+// media queries
+@include tablet {
+  .root {
+    .swiper {
+      .swiperSlide {
+        .sliderContainer {
+          .bannerTextContainer {
+            top: 15%;
+            left: 20%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include desktop {
+  .root {
+    .swiper {
+      .swiperSlide {
+        .sliderContainer {
+          .bannerTextContainer {
+            width: 30%;
+          }
+        }
+      }
+    }
+  }
 }

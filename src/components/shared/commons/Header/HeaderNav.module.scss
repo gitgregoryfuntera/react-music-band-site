@@ -9,17 +9,15 @@
       li {
         list-style: none;
         .navLink {
-          font-size: large;
           text-decoration: none;
           text-transform: uppercase;
-          font-weight: 800;
           letter-spacing: 2px;
         }
 
         .navLinkActive {
           text-decoration: line-through;
-          text-decoration-thickness: 4px;
-          text-decoration-color: pink;
+          text-decoration-thickness: 2px;
+          text-decoration-color: colors.$redPurple;
         }
 
         .navLinkActive:before,
