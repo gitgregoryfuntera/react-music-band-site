@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import CLASSES from "./NewMusicView.module.scss";
+import CLASSES from "./NewMusicVideo.module.scss";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { useMediaQuery } from "react-responsive";
 import { Key, ReactNode, useState } from "react";

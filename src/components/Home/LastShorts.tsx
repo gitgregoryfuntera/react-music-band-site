@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import CustomAnchorButton from "@components/shared/customs/CustomAnchorButton/CustomAnchorButton";
 import { Variants, motion } from "framer-motion";
+import { useMediaQuery } from "react-responsive";
 
 const variants: Variants = {
   in: {
@@ -92,10 +93,14 @@ const LAST_SHORTS = [
 ];
 
 const LastShorts = () => {
+  const isDesktopOrLaptop = useMediaQuery({
+    query: "(min-width: 1224px)",
+  });
+
   return (
     <motion.section
       whileInView={"in"}
-      initial={"out"}
+      initial={isDesktopOrLaptop ? "out" : "in"}
       viewport={{
         once: true,
         amount: 0.2,

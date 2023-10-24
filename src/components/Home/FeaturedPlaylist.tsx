@@ -5,6 +5,7 @@ import image2 from "/assets/img5.jpg";
 import image3 from "/assets/img6.jpg";
 import image4 from "/assets/img7.jpg";
 import { Variants, motion } from "framer-motion";
+import { useMediaQuery } from "react-responsive";
 
 const variants: Variants = {
   in: {
@@ -58,10 +59,13 @@ const FEATURED_PLAYLIST = [
 ];
 
 const FeaturedPlaylist = () => {
+  const isDesktopOrLaptop = useMediaQuery({
+    query: "(min-width: 1224px)",
+  });
   return (
     <motion.section
       whileInView={"in"}
-      initial={"out"}
+      initial={isDesktopOrLaptop ? "out" : "in"}
       viewport={{
         once: true,
         amount: 0.2,

@@ -6,6 +6,7 @@ import logo3 from "/assets/logo3.png";
 import logo4 from "/assets/logo4.png";
 
 import { Variants, motion } from "framer-motion";
+import { useMediaQuery } from "react-responsive";
 
 const variants: Variants = {
   in: {
@@ -38,10 +39,14 @@ const variantsSlideIn: Variants = {
 const SOCIAL_IMAGES = [logo1, logo2, logo3, logo4];
 
 const Networks = () => {
+  const isDesktopOrLaptop = useMediaQuery({
+    query: "(min-width: 1224px)",
+  });
+
   return (
     <motion.section
       whileInView={"in"}
-      initial={"out"}
+      initial={isDesktopOrLaptop ? "out" : "in"}
       viewport={{
         once: true,
         amount: 0.2,
