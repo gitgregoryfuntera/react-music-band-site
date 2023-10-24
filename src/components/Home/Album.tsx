@@ -1,29 +1,34 @@
 import { motion, Variants } from "framer-motion";
 import CLASSES from "./Album.module.scss";
+import { useMediaQuery } from "react-responsive";
+
+const variants: Variants = {
+  in: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      ease: "linear",
+      duration: 0.5,
+    },
+  },
+  out: {
+    opacity: 0,
+    y: 100,
+  },
+};
 
 const Album = () => {
-  const variants: Variants = {
-    in: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        ease: "linear",
-        duration: 0.5,
-      },
-    },
-    out: {
-      opacity: 0,
-      y: 100,
-    },
-  };
+  const isDesktopOrLaptop = useMediaQuery({
+    query: "(min-width: 1224px)",
+  });
 
   return (
     <motion.section
       whileInView={"in"}
-      initial={"out"}
+      initial={isDesktopOrLaptop ? "out" : "in"}
       viewport={{
         once: true,
-        amount: 0.3,
+        amount: 0.2,
       }}
       transition={{
         staggerChildren: 0.3,

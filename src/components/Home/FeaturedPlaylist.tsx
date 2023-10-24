@@ -4,6 +4,36 @@ import image1 from "/assets/img4.jpg";
 import image2 from "/assets/img5.jpg";
 import image3 from "/assets/img6.jpg";
 import image4 from "/assets/img7.jpg";
+import { Variants, motion } from "framer-motion";
+
+const variants: Variants = {
+  in: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      ease: "linear",
+    },
+  },
+  out: {
+    opacity: 0,
+    y: 100,
+  },
+};
+
+const variantsSlideIn: Variants = {
+  in: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      ease: "easeIn",
+    },
+  },
+  out: {
+    opacity: 0,
+    x: -100,
+  },
+};
+
 const FEATURED_PLAYLIST = [
   {
     image: image1,
@@ -29,26 +59,40 @@ const FEATURED_PLAYLIST = [
 
 const FeaturedPlaylist = () => {
   return (
-    <section className={CLASSES.root}>
-      <div>
+    <motion.section
+      whileInView={"in"}
+      initial={"out"}
+      viewport={{
+        once: true,
+        amount: 0.2,
+      }}
+      transition={{
+        staggerChildren: 0.3,
+        delayChildren: 0.5,
+      }}
+      className={CLASSES.root}
+    >
+      <motion.div variants={variants}>
         <h2>Featured Playlists</h2>
-      </div>
+      </motion.div>
       <div className={CLASSES.cardContainer}>
         {FEATURED_PLAYLIST?.map((item) => (
-          <CustomCard>
-            <div className={CLASSES.playlistWrapper}>
-              <div className={CLASSES.imgContainer}>
-                <img src={item.image} />
+          <motion.div variants={variantsSlideIn}>
+            <CustomCard>
+              <div className={CLASSES.playlistWrapper}>
+                <div className={CLASSES.imgContainer}>
+                  <img src={item.image} />
+                </div>
+                <div className={CLASSES.messageContainer}>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </div>
               </div>
-              <div className={CLASSES.messageContainer}>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </div>
-            </div>
-          </CustomCard>
+            </CustomCard>
+          </motion.div>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 };
 

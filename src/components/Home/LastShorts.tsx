@@ -3,6 +3,63 @@ import CLASSES from "./LastShorts.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import CustomAnchorButton from "@components/shared/customs/CustomAnchorButton/CustomAnchorButton";
+import { Variants, motion } from "framer-motion";
+
+const variants: Variants = {
+  in: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      ease: "linear",
+    },
+  },
+  out: {
+    opacity: 0,
+    y: 100,
+  },
+};
+
+const variantsCard1: Variants = {
+  in: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      ease: "easeIn",
+    },
+  },
+  out: {
+    opacity: 0,
+    x: -100,
+  },
+};
+
+const variantsCard2: Variants = {
+  in: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      ease: "easeIn",
+    },
+  },
+  out: {
+    opacity: 0,
+    y: 100,
+  },
+};
+
+const variantsCard3: Variants = {
+  in: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      ease: "easeIn",
+    },
+  },
+  out: {
+    opacity: 0,
+    x: 100,
+  },
+};
 
 const LAST_SHORTS = [
   {
@@ -12,6 +69,7 @@ const LAST_SHORTS = [
       title: `Rainy Night`,
       message: `History of Synth music, there is probably no one.`,
     },
+    animation: variantsCard1,
   },
   {
     link: `https://www.youtube.com/embed/J4lknAwyyWs`,
@@ -20,6 +78,7 @@ const LAST_SHORTS = [
       title: `Landscape`,
       message: `History of Synth music, there is probably no one.`,
     },
+    animation: variantsCard2,
   },
   {
     link: `https://www.youtube.com/embed/hkLEdSjlqXQ`,
@@ -28,45 +87,64 @@ const LAST_SHORTS = [
       title: `Cyborg Life`,
       message: `History of Synth music, there is probably no one.`,
     },
+    animation: variantsCard3,
   },
 ];
 
 const LastShorts = () => {
   return (
-    <section className={CLASSES.root}>
-      <div className={CLASSES.title}>
+    <motion.section
+      whileInView={"in"}
+      initial={"out"}
+      viewport={{
+        once: true,
+        amount: 0.2,
+      }}
+      transition={{
+        staggerChildren: 0.3,
+        delayChildren: 0.5,
+      }}
+      className={CLASSES.root}
+    >
+      <motion.div variants={variants} className={CLASSES.title}>
         <h2>Last shorts</h2>
-      </div>
+      </motion.div>
       <div className={CLASSES.shortContainer}>
         {LAST_SHORTS?.map((item) => (
-          <CustomCard>
-            <div className={CLASSES.cardContent}>
-              <iframe
-                width="366"
-                height="660"
-                src={item.link}
-                title={item.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                frameBorder={0}
-              />
-              <div className={CLASSES.descriptionContainer}>
-                <h3>{item.description.title}</h3>
-                <p>{item.description.message}</p>
+          <motion.div variants={item.animation}>
+            <CustomCard>
+              <div className={CLASSES.cardContent}>
+                <iframe
+                  width="366"
+                  height="660"
+                  src={item.link}
+                  title={item.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  frameBorder={0}
+                />
+                <div className={CLASSES.descriptionContainer}>
+                  <h3>{item.description.title}</h3>
+                  <p>{item.description.message}</p>
+                </div>
+                <div className={CLASSES.socialsContainer}>
+                  <CustomAnchorButton>
+                    <FontAwesomeIcon
+                      icon={faInstagram}
+                      size="2x"
+                      color="gray"
+                    />
+                  </CustomAnchorButton>
+                  <CustomAnchorButton>
+                    <FontAwesomeIcon icon={faYoutube} size="2x" color="gray" />
+                  </CustomAnchorButton>
+                </div>
               </div>
-              <div className={CLASSES.socialsContainer}>
-                <CustomAnchorButton>
-                  <FontAwesomeIcon icon={faInstagram} size="2x" color="gray" />
-                </CustomAnchorButton>
-                <CustomAnchorButton>
-                  <FontAwesomeIcon icon={faYoutube} size="2x" color="gray" />
-                </CustomAnchorButton>
-              </div>
-            </div>
-          </CustomCard>
+            </CustomCard>
+          </motion.div>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 };
 

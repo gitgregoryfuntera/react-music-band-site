@@ -6,7 +6,7 @@
   color: colors.$white;
   .title {
     h2 {
-      padding-top: 2rem;
+      padding-top: 3rem;
       font-size: fontSizes.$xlarge;
       font-weight: 600;
       position: relative;
@@ -27,6 +27,10 @@
         colors.$cornFlowerBlue
       );
       transform: translateX(-50%);
+    }
+    p {
+      text-align: center;
+      margin-top: 3rem;
     }
   }
   .row {

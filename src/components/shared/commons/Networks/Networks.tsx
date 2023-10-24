@@ -5,35 +5,82 @@ import logo2 from "/assets/logo2.png";
 import logo3 from "/assets/logo3.png";
 import logo4 from "/assets/logo4.png";
 
+import { Variants, motion } from "framer-motion";
+
+const variants: Variants = {
+  in: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      ease: "linear",
+    },
+  },
+  out: {
+    opacity: 0,
+    y: 100,
+  },
+};
+
+const variantsSlideIn: Variants = {
+  in: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      ease: "easeIn",
+    },
+  },
+  out: {
+    opacity: 0,
+    x: -100,
+  },
+};
+
 const SOCIAL_IMAGES = [logo1, logo2, logo3, logo4];
 
 const Networks = () => {
   return (
-    <section className={CLASSES.root}>
-      <div className={CLASSES.title}>
+    <motion.section
+      whileInView={"in"}
+      initial={"out"}
+      viewport={{
+        once: true,
+        amount: 0.2,
+      }}
+      transition={{
+        staggerChildren: 0.3,
+        delayChildren: 0.5,
+      }}
+      className={CLASSES.root}
+    >
+      <motion.div variants={variants} className={CLASSES.title}>
         <h2>Networks</h2>
-      </div>
-      <div className={CLASSES.row}>
         <p>
           Audio player software is used to play back sound recordings in one of
           the many formats available for computers today
         </p>
+      </motion.div>
+      <div className={CLASSES.row}>
         <div className={CLASSES.socialsContainer}>
           {SOCIAL_IMAGES.map((img) => (
-            <CustomCard className={CLASSES.socialCard}>
-              <div className={CLASSES.imageContainer}>
-                <img src={img} />
-              </div>
-            </CustomCard>
+            <motion.div variants={variantsSlideIn}>
+              <CustomCard className={CLASSES.socialCard}>
+                <div className={CLASSES.imageContainer}>
+                  <img src={img} />
+                </div>
+              </CustomCard>
+            </motion.div>
           ))}
         </div>
-        <div className={CLASSES.contactInfoContainer}>
+        <motion.div
+          variants={variants}
+          className={CLASSES.contactInfoContainer}
+        >
           <p>
             CONTACT <span>|</span> INFO@MUSIC.COM
           </p>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
