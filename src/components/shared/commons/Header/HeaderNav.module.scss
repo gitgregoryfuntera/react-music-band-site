@@ -5,24 +5,55 @@
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      column-gap: 1rem;
+      column-gap: 5rem;
       li {
         list-style: none;
         .navLink {
           text-decoration: none;
           text-transform: uppercase;
           letter-spacing: 2px;
+          font-weight: 800;
         }
 
         .navLinkActive {
-          text-decoration: line-through;
-          text-decoration-thickness: 2px;
-          text-decoration-color: colors.$redPurple;
+          position: relative;
+          padding-inline: 1rem;
         }
 
-        .navLinkActive:before,
-        .navLinkActive:after {
-          content: "\00a0\00a0";
+        .navLinkActive:before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+          width: 100%;
+          height: 2px;
+          background-color: colors.$redPurple;
+          opacity: 0;
+          visibility: visible;
+          opacity: 1;
+          transition: all 0.4s ease-in-out;
+        }
+
+        .navLink:hover {
+          color: colors.$redPurple !important;
+        }
+
+        .subPathContainer {
+          position: relative;
+          .subPathItem {
+            padding: 1rem;
+            color: colors.$white;
+            background: colors.$redPurple;
+            position: absolute;
+            width: 130px;
+            text-align: center;
+            left: 0;
+            border-bottom: 1px solid colors.$cyanBlue;
+          }
+          .subPathItem:hover {
+            background: colors.$yellowishOrange;
+          }
         }
       }
     }

@@ -5,6 +5,7 @@ import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import HeaderNav from "./HeaderNav";
 import CustomButton from "@components/shared/customs/CustomButton/CustomButton";
 import { useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 
 interface HeaderProps {
   setIsSideNavOpen: (prop: boolean) => void;
@@ -12,6 +13,9 @@ interface HeaderProps {
 }
 
 const Header = (props: HeaderProps) => {
+  const isDesktopOrLaptop = useMediaQuery({
+    query: "(min-width: 1224px)",
+  });
   const { setIsSideNavOpen, isSideNavOpen } = props;
 
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -39,14 +43,18 @@ const Header = (props: HeaderProps) => {
           <h1>Logo.</h1>
         </div>
         <HeaderNav isFadeIn={isFadeIn} />
-        <div className={CLASSES.menuContainer}>
-          <CustomButton onClick={() => setIsSideNavOpen(!isSideNavOpen)}>
-            <FontAwesomeIcon
-              className={CLASSES.barIcon}
-              icon={isSideNavOpen ? faXmark : faBars}
-            />
-          </CustomButton>
-        </div>
+        {isDesktopOrLaptop ? (
+          <div className={CLASSES.menuContainer} /> //spacer
+        ) : (
+          <div className={CLASSES.menuContainer}>
+            <CustomButton onClick={() => setIsSideNavOpen(!isSideNavOpen)}>
+              <FontAwesomeIcon
+                className={CLASSES.barIcon}
+                icon={isSideNavOpen ? faXmark : faBars}
+              />
+            </CustomButton>
+          </div>
+        )}
       </div>
     </header>
   );
