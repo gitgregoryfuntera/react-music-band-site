@@ -14,7 +14,7 @@ const Footer = () => {
       <div className={CLASSES.row}>
         <div className={CLASSES.contentContainer}>
           <p>Created By Greg Funtera</p>
-          <p className={CLASSES.reference}>
+          <div className={CLASSES.reference}>
             Reference{" "}
             <CustomAnchorButton
               customrootclass={CLASSES.website}
@@ -22,7 +22,7 @@ const Footer = () => {
             >
               website
             </CustomAnchorButton>
-          </p>
+          </div>
         </div>
         <div className={CLASSES.socialsContainer}>
           <CustomAnchorButton href="/">

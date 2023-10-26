@@ -66,8 +66,8 @@ const Networks = () => {
       </motion.div>
       <div className={CLASSES.row}>
         <div className={CLASSES.socialsContainer}>
-          {SOCIAL_IMAGES.map((img) => (
-            <motion.div variants={variantsSlideIn}>
+          {SOCIAL_IMAGES.map((img,index) => (
+            <motion.div variants={variantsSlideIn} key={`${img}-${index}`}>
               <CustomCard className={CLASSES.socialCard}>
                 <div className={CLASSES.imageContainer}>
                   <img src={img} />

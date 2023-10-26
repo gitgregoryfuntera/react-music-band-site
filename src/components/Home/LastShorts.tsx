@@ -116,7 +116,7 @@ const LastShorts = () => {
       </motion.div>
       <div className={CLASSES.shortContainer}>
         {LAST_SHORTS?.map((item) => (
-          <motion.div variants={item.animation}>
+          <motion.div variants={item.animation} key={item.link}>
             <CustomCard>
               <div className={CLASSES.cardContent}>
                 <iframe
