@@ -4,6 +4,7 @@ import CustomButton from "@components/shared/customs/CustomButton/CustomButton";
 import image1 from "/assets/upcoming-shows/img1.jpg";
 import image2 from "/assets/upcoming-shows/img2.jpg";
 import image3 from "/assets/upcoming-shows/img3.jpg";
+import { useThemeContextProvider } from "@components/shared/context/themeContextHook";
 
 const UPCOMING_SHOWS_IMG = [
   {
@@ -21,8 +22,9 @@ const UPCOMING_SHOWS_IMG = [
 ];
 
 const UpComingShows = () => {
+  const { version } = useThemeContextProvider();
   return (
-    <section className={CLASSES.root}>
+    <section className={`${CLASSES.root} ${CLASSES[version]}`}>
       <div className={CLASSES.title}>
         <h2>Upcoming Shows</h2>
         <p>Lorem ipsum dolor sit amet consectetur</p>

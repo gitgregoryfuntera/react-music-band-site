@@ -44,3 +44,13 @@
     margin: auto;
   }
 }
+
+.light {
+  background-color: colors.$white;
+  color: colors.$black;
+}
+
+.dark {
+  background-color: colors.$black;
+  color: colors.$white;
+}

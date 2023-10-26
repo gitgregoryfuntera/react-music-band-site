@@ -5,12 +5,14 @@ import CustomButton from "@components/shared/customs/CustomButton/CustomButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAdd, faMinus } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import { useThemeContextProvider } from "@components/shared/context/themeContextHook";
 
 interface SideNavProps {
   isOpen: boolean;
 }
 
 const SideNav = (props: SideNavProps) => {
+  const { version, setThemeVersion } = useThemeContextProvider();
   const [isExpanded, setIsExpanded] = useState(false);
   const { isOpen } = props;
 
@@ -34,7 +36,7 @@ const SideNav = (props: SideNavProps) => {
 
   return (
     <motion.nav
-      className={CLASSES.root}
+      className={`${CLASSES.root} ${CLASSES[version]}`}
       animate={isOpen ? "open" : "closed"}
       variants={variants}
       transition={{
@@ -53,7 +55,13 @@ const SideNav = (props: SideNavProps) => {
           </div>
           {isExpanded && (
             <div className={CLASSES.listItemInner}>
-              <CustomAnchorButton>Main Demo</CustomAnchorButton>
+              <CustomAnchorButton
+                onClick={() =>
+                  setThemeVersion(version !== "dark" ? "dark" : "light")
+                }
+              >
+                {version === "light" ? "dark" : "light"} Version
+              </CustomAnchorButton>
             </div>
           )}
         </li>

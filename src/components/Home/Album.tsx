@@ -1,6 +1,7 @@
 import { motion, Variants } from "framer-motion";
 import CLASSES from "./Album.module.scss";
 import { useMediaQuery } from "react-responsive";
+import { useThemeContextProvider } from "@components/shared/context/themeContextHook";
 
 const variants: Variants = {
   in: {
@@ -18,6 +19,8 @@ const variants: Variants = {
 };
 
 const Album = () => {
+  const { version } = useThemeContextProvider();
+
   const isDesktopOrLaptop = useMediaQuery({
     query: "(min-width: 1224px)",
   });
@@ -34,7 +37,7 @@ const Album = () => {
         staggerChildren: 0.3,
         delayChildren: 0.2,
       }}
-      className={CLASSES.root}
+      className={`${CLASSES.root} ${CLASSES[version]}`}
     >
       <motion.h2 variants={variants}>New Album</motion.h2>
       <motion.div variants={variants} className={CLASSES.spotifyEmbed}>

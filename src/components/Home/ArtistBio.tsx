@@ -11,6 +11,7 @@ import { AnimatePresence, Variants, motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 import { Key, ReactNode } from "react";
 import artistBioImg from "/assets/artist_bio_image.png";
+import { useThemeContextProvider } from "@components/shared/context/themeContextHook";
 
 const SlideInMotionRight = ({
   motionKey,
@@ -89,11 +90,13 @@ const SlideInMotionLeft = ({
 };
 
 const ArtistBio = () => {
+  const { version } = useThemeContextProvider();
   const isDesktopOrLaptop = useMediaQuery({
     query: "(min-width: 1224px)",
   });
+
   return (
-    <section className={CLASSES.root}>
+    <section className={`${CLASSES.root} ${CLASSES[version]}`}>
       <div className={CLASSES.row}>
         <AnimatePresence>
           <SlideInMotionLeft

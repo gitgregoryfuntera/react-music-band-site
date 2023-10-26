@@ -6,6 +6,7 @@ import HeaderNav from "./HeaderNav";
 import CustomButton from "@components/shared/customs/CustomButton/CustomButton";
 import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
+import { useThemeContextProvider } from "@components/shared/context/themeContextHook";
 
 interface HeaderProps {
   setIsSideNavOpen: (prop: boolean) => void;
@@ -13,6 +14,7 @@ interface HeaderProps {
 }
 
 const Header = (props: HeaderProps) => {
+  const { version } = useThemeContextProvider();
   const isDesktopOrLaptop = useMediaQuery({
     query: "(min-width: 1224px)",
   });
@@ -36,7 +38,9 @@ const Header = (props: HeaderProps) => {
 
   return (
     <header
-      className={`${CLASSES.root} ${isFadeIn ? `${CLASSES.fadeIn}` : ""}`}
+      className={`${CLASSES.root} ${isFadeIn ? `${CLASSES.fadeIn}` : ""} ${
+        CLASSES[version]
+      }`}
     >
       <div className={CLASSES.wrapper}>
         <div className={CLASSES.logoContainer}>

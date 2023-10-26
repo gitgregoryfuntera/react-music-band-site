@@ -2,8 +2,8 @@
 @use "../../styles/colors.scss" as colors;
 
 .root {
-  margin-bottom: 3rem;
-  margin-top: 3rem;
+  padding-bottom: 3rem;
+  padding-top: 3rem;
   .title {
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -56,4 +56,14 @@
       }
     }
   }
+}
+
+.light {
+  background-color: colors.$white;
+  color: colors.$black;
+}
+
+.dark {
+  background-color: colors.$black;
+  color: colors.$white;
 }

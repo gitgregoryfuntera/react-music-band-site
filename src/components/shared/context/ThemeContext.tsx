@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useContext, useState } from "react";
+import { ReactNode, createContext, useState } from "react";
 
 type Version = "light" | "dark";
 
@@ -29,5 +29,3 @@ const ThemeContextProvider = ({ children }: ThemeContextProviderProps) => {
 };
 
 export default ThemeContextProvider;
-
-export const useThemeContextProvider = () => useContext(ThemeContext);

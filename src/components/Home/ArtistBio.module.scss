@@ -2,7 +2,6 @@
 @use "../../styles/colors.scss" as colors;
 
 .root {
-  max-width: 1480px;
   margin: auto;
   padding: 1rem;
   .row {
@@ -58,10 +57,20 @@
       }
     }
     .artistImage {
-      max-width: 800px;
+      max-width: 600px;
       img {
         width: 100%;
       }
     }
   }
+}
+
+.light {
+  background-color: colors.$white;
+  color: colors.$black;
+}
+
+.dark {
+  background-color: colors.$black;
+  color: colors.$white;
 }

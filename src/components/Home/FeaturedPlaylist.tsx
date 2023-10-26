@@ -6,6 +6,7 @@ import image3 from "/assets/img6.jpg";
 import image4 from "/assets/img7.jpg";
 import { Variants, motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
+import { useThemeContextProvider } from "@components/shared/context/themeContextHook";
 
 const variants: Variants = {
   in: {
@@ -59,6 +60,8 @@ const FEATURED_PLAYLIST = [
 ];
 
 const FeaturedPlaylist = () => {
+  const { version } = useThemeContextProvider();
+
   const isDesktopOrLaptop = useMediaQuery({
     query: "(min-width: 1224px)",
   });
@@ -74,7 +77,7 @@ const FeaturedPlaylist = () => {
         staggerChildren: 0.3,
         delayChildren: 0.5,
       }}
-      className={CLASSES.root}
+      className={`${CLASSES.root} ${CLASSES[version]}`}
     >
       <motion.div variants={variants}>
         <h2>Featured Playlists</h2>

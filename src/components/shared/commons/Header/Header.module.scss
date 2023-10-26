@@ -1,11 +1,10 @@
 @use "../../../../styles/font-sizes.scss" as fontSizes;
+@use "../../../../styles/colors.scss" as colors;
 
 .root {
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: black;
-  color: white;
   .wrapper {
     display: flex;
     flex-direction: row;
@@ -27,11 +26,51 @@
 
 .root.fadeIn {
   animation: fadeIn 0.5s ease-in;
-  background-color: white;
-  color: black;
+  background-color: colors.$white;
+  color: colors.$black;
   .menuContainer {
     .barIcon {
-      color: black;
+      color: colors.$black;
+    }
+  }
+}
+
+.root.light {
+  background-color: colors.$black;
+  color: colors.$white;
+  .menuContainer {
+    .barIcon {
+      color: colors.$white;
+    }
+  }
+}
+
+.root.light.fadeIn {
+  background-color: colors.$white;
+  color: colors.$black;
+  .menuContainer {
+    .barIcon {
+      color: colors.$black;
+    }
+  }
+}
+
+.root.dark {
+  background-color: colors.$white;
+  color: colors.$black;
+  .menuContainer {
+    .barIcon {
+      color: colors.$black;
+    }
+  }
+}
+
+.root.dark.fadeIn {
+  background-color: colors.$black;
+  color: colors.$white;
+  .menuContainer {
+    .barIcon {
+      color: colors.$white;
     }
   }
 }

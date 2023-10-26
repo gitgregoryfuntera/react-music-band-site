@@ -3,7 +3,7 @@ import CustomAnchorButton from "../../customs/CustomAnchorButton/CustomAnchorBut
 import CLASSES from "./HeaderNav.module.scss";
 import { useMediaQuery } from "react-responsive";
 import CustomButton from "@components/shared/customs/CustomButton/CustomButton";
-import { useThemeContextProvider } from "@components/shared/context/ThemeContext";
+import { useThemeContextProvider } from "@components/shared/context/themeContextHook";
 
 interface HeaderNavProps {
   isFadeIn: boolean;
@@ -21,7 +21,7 @@ const HeaderNav = (props: HeaderNavProps) => {
       path: "/react-music-band-site/",
       subPath: [
         {
-          name: "Version",
+          name: `${version === "light" ? "dark" : "light"} Version`,
           key: "version",
           onClick: () => {
             setThemeVersion(version !== "dark" ? "dark" : "light");
@@ -52,10 +52,12 @@ const HeaderNav = (props: HeaderNavProps) => {
 
   const [revealSubPath, setRevealSubPath] = useState<string | null>(null);
 
+  const fadeClass = props?.isFadeIn ? "fadeIn" : "fadeOut";
+
   return (
     <>
       {isDesktopOrLaptop && (
-        <div className={CLASSES.root}>
+        <div className={`${CLASSES.root} ${CLASSES[version]}`}>
           <nav>
             <ul>
               {NAV_PATH.map((route) => (
@@ -63,11 +65,8 @@ const HeaderNav = (props: HeaderNavProps) => {
                   <CustomAnchorButton
                     className={`${CLASSES.navLink} ${
                       currentPath === route.path ? CLASSES.navLinkActive : ""
-                    }`}
+                    } ${CLASSES[fadeClass]}`}
                     href={route.path}
-                    style={{
-                      color: `${props?.isFadeIn ? "black" : "white"}`,
-                    }}
                     onMouseEnter={() => setRevealSubPath(route.key)}
                     onMouseLeave={() => setRevealSubPath(null)}
                   >

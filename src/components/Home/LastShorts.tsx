@@ -5,6 +5,7 @@ import { faInstagram, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import CustomAnchorButton from "@components/shared/customs/CustomAnchorButton/CustomAnchorButton";
 import { Variants, motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
+import { useThemeContextProvider } from "@components/shared/context/themeContextHook";
 
 const variants: Variants = {
   in: {
@@ -93,6 +94,8 @@ const LAST_SHORTS = [
 ];
 
 const LastShorts = () => {
+  const { version } = useThemeContextProvider();
+
   const isDesktopOrLaptop = useMediaQuery({
     query: "(min-width: 1224px)",
   });
@@ -109,7 +112,7 @@ const LastShorts = () => {
         staggerChildren: 0.3,
         delayChildren: 0.5,
       }}
-      className={CLASSES.root}
+      className={`${CLASSES.root} ${CLASSES[version]}`}
     >
       <motion.div variants={variants} className={CLASSES.title}>
         <h2>Last shorts</h2>

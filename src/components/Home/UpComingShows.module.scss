@@ -1,5 +1,6 @@
 @use "../../styles/colors.scss" as colors;
 @use "../../styles/font-sizes.scss" as fontSizes;
+
 .root {
   padding: 1rem;
   background: colors.$black;
@@ -60,4 +61,12 @@
     padding-top: 3rem;
     padding-bottom: 3rem;
   }
+}
+
+.light {
+  background-color: colors.$black;
+}
+
+.dark {
+  background-color: colors.$rangoonGreen;
 }
