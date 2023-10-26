@@ -80,7 +80,7 @@ const FeaturedPlaylist = () => {
         <h2>Featured Playlists</h2>
       </motion.div>
       <div className={CLASSES.cardContainer}>
-        {FEATURED_PLAYLIST?.map((item,index) => (
+        {FEATURED_PLAYLIST?.map((item, index) => (
           <motion.div variants={variantsSlideIn} key={`${item.title}-${index}`}>
             <CustomCard>
               <div className={CLASSES.playlistWrapper}>
