@@ -3,42 +3,48 @@ import CustomAnchorButton from "../../customs/CustomAnchorButton/CustomAnchorBut
 import CLASSES from "./HeaderNav.module.scss";
 import { useMediaQuery } from "react-responsive";
 import CustomButton from "@components/shared/customs/CustomButton/CustomButton";
-
-const NAV_PATH = [
-  {
-    key: "home",
-    name: "Home",
-    path: "/react-music-band-site/",
-    subPath: [
-      {
-        name: "Version",
-        key: "version",
-      },
-    ],
-  },
-  {
-    key: "albums",
-    name: "Albums",
-    path: "/",
-  },
-  {
-    key: "gallery",
-    name: "Gallery",
-    path: "/",
-  },
-  {
-    key: "contacts",
-    name: "Contacts",
-    path: "/",
-  },
-];
+import { useThemeContextProvider } from "@components/shared/context/ThemeContext";
 
 interface HeaderNavProps {
   isFadeIn: boolean;
 }
 
 const HeaderNav = (props: HeaderNavProps) => {
+  const { version, setThemeVersion } = useThemeContextProvider();
+
   const currentPath = window.location.pathname;
+
+  const NAV_PATH = [
+    {
+      key: "home",
+      name: "Home",
+      path: "/react-music-band-site/",
+      subPath: [
+        {
+          name: "Version",
+          key: "version",
+          onClick: () => {
+            setThemeVersion(version !== "dark" ? "dark" : "light");
+          },
+        },
+      ],
+    },
+    {
+      key: "albums",
+      name: "Albums",
+      path: "/",
+    },
+    {
+      key: "gallery",
+      name: "Gallery",
+      path: "/",
+    },
+    {
+      key: "contacts",
+      name: "Contacts",
+      path: "/",
+    },
+  ];
 
   const isDesktopOrLaptop = useMediaQuery({
     query: "(min-width: 1224px)",
@@ -73,9 +79,12 @@ const HeaderNav = (props: HeaderNavProps) => {
                         className={CLASSES.subPathContainer}
                         onMouseEnter={() => setRevealSubPath(route.key)}
                         onMouseLeave={() => setRevealSubPath(null)}
+                        key={sub.key}
                       >
                         <li className={CLASSES.subPathItem}>
-                          <CustomButton>{sub.name}</CustomButton>
+                          <CustomButton onClick={() => sub.onClick()}>
+                            {sub.name}
+                          </CustomButton>
                         </li>
                       </ul>
                     ))}

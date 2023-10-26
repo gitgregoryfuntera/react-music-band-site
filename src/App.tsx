@@ -6,14 +6,17 @@ import Networks from "@components/shared/commons/Networks/Networks";
 import StayInTouch from "@components/shared/commons/StayInTouch/StayInTouch";
 import Footer from "@components/shared/commons/Footer/Footer";
 import { Routes, Route, Outlet } from "react-router-dom";
+import ThemeContextProvider from "@components/shared/context/ThemeContext";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/react-music-band-site/" element={<Layout />}>
-        <Route index element={<Home />} />
-      </Route>
-    </Routes>
+    <ThemeContextProvider>
+      <Routes>
+        <Route path="/react-music-band-site/" element={<Layout />}>
+          <Route index element={<Home />} />
+        </Route>
+      </Routes>
+    </ThemeContextProvider>
   );
 }
 
