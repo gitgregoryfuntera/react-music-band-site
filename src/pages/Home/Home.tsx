@@ -1,10 +1,10 @@
-import Album from "../../components/Home/Album";
-import ArtistBio from "../../components/Home/ArtistBio";
-import FeaturedPlaylist from "../../components/Home/FeaturedPlaylist";
-import HomeBanner from "../../components/Home/HomeBanner";
-import LastShorts from "../../components/Home/LastShorts";
-import NewMusicVideo from "../../components/Home/NewMusicVideo";
-import UpComingShows from "../../components/Home/UpComingShows";
+import Album from "../../components/Home/Album/Album";
+import ArtistBio from "../../components/Home/ArtistBio/ArtistBio";
+import FeaturedPlaylist from "../../components/Home/FeaturePlaylist/FeaturedPlaylist";
+import HomeBanner from "../../components/Home/HomeBanner/HomeBanner";
+import LastShorts from "../../components/Home/LastShorts/LastShorts";
+import NewMusicVideo from "../../components/Home/NewMusicVideo/NewMusicVideo";
+import UpComingShows from "../../components/Home/UpComingShows/UpComingShows";
 
 const Home = () => {
   return (

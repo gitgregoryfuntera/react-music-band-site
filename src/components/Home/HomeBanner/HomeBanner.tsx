@@ -13,7 +13,7 @@ import { faSpotify, faApple } from "@fortawesome/free-brands-svg-icons";
 
 import CustomButton from "@components/shared/customs/CustomButton/CustomButton";
 import { faCirclePlay } from "@fortawesome/free-regular-svg-icons";
-import SpotifyPlayer from "./SpotifyPlayer";
+import SpotifyPlayer from "../SpotifyPlayer/SpotifyPlayer";
 import { useMediaQuery } from "react-responsive";
 import { motion } from "framer-motion";
 import { useState } from "react";
