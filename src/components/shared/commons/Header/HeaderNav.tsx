@@ -32,7 +32,7 @@ const HeaderNav = (props: HeaderNavProps) => {
     {
       key: "albums",
       name: "Albums",
-      path: "/",
+      path: "/react-music-band-site/discography",
     },
     {
       key: "gallery",
@@ -66,27 +66,28 @@ const HeaderNav = (props: HeaderNavProps) => {
                     className={`${CLASSES.navLink} ${
                       currentPath === route.path ? CLASSES.navLinkActive : ""
                     } ${CLASSES[fadeClass]}`}
-                    href={route.path}
+                    to={route.path}
                     onMouseEnter={() => setRevealSubPath(route.key)}
                     onMouseLeave={() => setRevealSubPath(null)}
                   >
                     {route.name}
                   </CustomAnchorButton>
                   {revealSubPath === route.key &&
-                    route.subPath?.map((sub) => (
+                    (route?.subPath?.length ?? 0) > 0 && (
                       <ul
                         className={CLASSES.subPathContainer}
                         onMouseEnter={() => setRevealSubPath(route.key)}
                         onMouseLeave={() => setRevealSubPath(null)}
-                        key={sub.key}
                       >
-                        <li className={CLASSES.subPathItem}>
-                          <CustomButton onClick={() => sub.onClick()}>
-                            {sub.name}
-                          </CustomButton>
-                        </li>
+                        {route.subPath?.map((sub) => (
+                          <li className={CLASSES.subPathItem}>
+                            <CustomButton onClick={() => sub.onClick()}>
+                              {sub.name}
+                            </CustomButton>
+                          </li>
+                        ))}
                       </ul>
-                    ))}
+                    )}
                 </li>
               ))}
             </ul>

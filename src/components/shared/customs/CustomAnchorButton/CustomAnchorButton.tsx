@@ -1,8 +1,9 @@
 import { AnchorHTMLAttributes, ReactNode } from "react";
 import CLASSES from "./CustomAnchorButton.module.scss";
+import { Link, LinkProps } from "react-router-dom";
 
 interface CustomAnchorButtonProps
-  extends AnchorHTMLAttributes<HTMLAnchorElement> {
+  extends LinkProps {
   customrootclass?: string;
   children: ReactNode;
 }
@@ -14,7 +15,7 @@ const CustomAnchorButton = ({
 }: CustomAnchorButtonProps) => {
   return (
     <div className={`${CLASSES.root} ${customrootclass}`}>
-      <a {...props}>{children}</a>
+      <Link {...props}>{children}</Link>
     </div>
   );
 };

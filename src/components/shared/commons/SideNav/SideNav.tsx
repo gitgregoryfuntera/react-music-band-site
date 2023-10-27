@@ -46,7 +46,7 @@ const SideNav = (props: SideNavProps) => {
       <ul>
         <li>
           <div className={CLASSES.listItemWrapper}>
-            <CustomAnchorButton>Home</CustomAnchorButton>
+            <CustomAnchorButton to="/react-music-band-site/">Home</CustomAnchorButton>
             <CustomButton
               onClick={() => setIsExpanded((prevState) => !prevState)}
             >
@@ -55,19 +55,19 @@ const SideNav = (props: SideNavProps) => {
           </div>
           {isExpanded && (
             <div className={CLASSES.listItemInner}>
-              <CustomAnchorButton
+              <CustomButton
                 onClick={() =>
                   setThemeVersion(version !== "dark" ? "dark" : "light")
                 }
               >
                 {version === "light" ? "dark" : "light"} Version
-              </CustomAnchorButton>
+              </CustomButton>
             </div>
           )}
         </li>
         <li>
           <div className={CLASSES.listItemWrapper}>
-            <CustomAnchorButton>Albums</CustomAnchorButton>
+            <CustomAnchorButton to="/discography">Albums</CustomAnchorButton>
             <CustomButton>
               <FontAwesomeIcon icon={faAdd} />
             </CustomButton>
@@ -75,17 +75,17 @@ const SideNav = (props: SideNavProps) => {
         </li>
         <li>
           <div className={CLASSES.listItemWrapper}>
-            <CustomAnchorButton>Live</CustomAnchorButton>
+            <CustomAnchorButton to="/">Live</CustomAnchorButton>
           </div>
         </li>
         <li>
           <div className={CLASSES.listItemWrapper}>
-            <CustomAnchorButton>About</CustomAnchorButton>
+            <CustomAnchorButton to="/">About</CustomAnchorButton>
           </div>
         </li>
         <li>
           <div className={CLASSES.listItemWrapper}>
-            <CustomAnchorButton>Gallery</CustomAnchorButton>
+            <CustomAnchorButton to="/">Gallery</CustomAnchorButton>
           </div>
         </li>
       </ul>

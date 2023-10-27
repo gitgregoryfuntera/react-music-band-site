@@ -136,14 +136,14 @@ const LastShorts = () => {
                   <p>{item.description.message}</p>
                 </div>
                 <div className={CLASSES.socialsContainer}>
-                  <CustomAnchorButton>
+                  <CustomAnchorButton to="/react-music-band-site/">
                     <FontAwesomeIcon
                       icon={faInstagram}
                       size="2x"
                       color="gray"
                     />
                   </CustomAnchorButton>
-                  <CustomAnchorButton>
+                  <CustomAnchorButton to="/react-music-band-site/">
                     <FontAwesomeIcon icon={faYoutube} size="2x" color="gray" />
                   </CustomAnchorButton>
                 </div>

@@ -7,6 +7,7 @@ import StayInTouch from "@components/shared/commons/StayInTouch/StayInTouch";
 import Footer from "@components/shared/commons/Footer/Footer";
 import { Routes, Route, Outlet } from "react-router-dom";
 import ThemeContextProvider from "@components/shared/context/ThemeContext";
+import Discography from "pages/Discography/Discography";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/react-music-band-site/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="discography" element={<Discography />} />
         </Route>
       </Routes>
     </ThemeContextProvider>
