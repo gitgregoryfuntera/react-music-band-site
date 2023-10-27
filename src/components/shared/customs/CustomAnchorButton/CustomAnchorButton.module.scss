@@ -1,5 +1,9 @@
+@use "../../../../styles/colors.scss" as colors;
+
 .root {
   a {
+    text-decoration: none;
+    color: colors.$white;
   }
   a:hover {
     cursor: pointer;

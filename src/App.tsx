@@ -9,7 +9,7 @@ import { Routes, Route, Outlet } from "react-router-dom";
 import ThemeContextProvider from "@components/shared/context/ThemeContext";
 import Discography from "pages/Discography/Discography";
 
-function App() {
+const App = () => {
   return (
     <ThemeContextProvider>
       <Routes>
