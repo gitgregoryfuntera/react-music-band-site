@@ -71,7 +71,7 @@ const List = () => {
       <div className={CLASSES.row}>
         {ITEM_LIST.map((item) => (
           <CustomCard customrootclass={CLASSES.card} key={item.id}>
-            <CustomAnchorButton to="/react-music-band-site/discography">
+            <CustomAnchorButton to="/discography">
               <div
                 className={CLASSES.cardContent}>
                 <motion.div className={CLASSES.imgContainer} whileHover={{

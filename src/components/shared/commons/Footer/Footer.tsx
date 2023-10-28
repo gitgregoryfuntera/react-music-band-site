@@ -25,16 +25,16 @@ const Footer = () => {
           </div>
         </div>
         <div className={CLASSES.socialsContainer}>
-          <CustomAnchorButton to="/react-music-band-site/">
+          <CustomAnchorButton to="/">
             <FontAwesomeIcon icon={faXTwitter} size="lg" color="white" />
           </CustomAnchorButton>
-          <CustomAnchorButton to="/react-music-band-site/">
+          <CustomAnchorButton to="/">
             <FontAwesomeIcon icon={faThreads} size="lg" color="white" />
           </CustomAnchorButton>
-          <CustomAnchorButton to="/react-music-band-site/">
+          <CustomAnchorButton to="/">
             <FontAwesomeIcon icon={faFacebook} size="lg" color="white" />
           </CustomAnchorButton>
-          <CustomAnchorButton to="/react-music-band-site/">
+          <CustomAnchorButton to="/">
             <FontAwesomeIcon icon={faInstagram} size="lg" color="white" />
           </CustomAnchorButton>
         </div>

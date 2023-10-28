@@ -13,9 +13,9 @@ const App = () => {
   return (
     <ThemeContextProvider>
       <Routes>
-        <Route path="/react-music-band-site/" element={<Layout />}>
+        <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="discography" element={<Discography />} />
+          <Route path="/discography" element={<Discography />} />
         </Route>
       </Routes>
     </ThemeContextProvider>

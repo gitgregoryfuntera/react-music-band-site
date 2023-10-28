@@ -18,7 +18,7 @@ const HeaderNav = (props: HeaderNavProps) => {
     {
       key: "home",
       name: "Home",
-      path: "/react-music-band-site/",
+      path: "/",
       subPath: [
         {
           name: `${version === "light" ? "dark" : "light"} Version`,
@@ -32,7 +32,7 @@ const HeaderNav = (props: HeaderNavProps) => {
     {
       key: "albums",
       name: "Albums",
-      path: "/react-music-band-site/discography",
+      path: "/discography",
     },
     {
       key: "gallery",

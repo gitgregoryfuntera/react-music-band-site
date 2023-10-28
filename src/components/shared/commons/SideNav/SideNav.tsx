@@ -46,7 +46,7 @@ const SideNav = (props: SideNavProps) => {
       <ul>
         <li>
           <div className={CLASSES.listItemWrapper}>
-            <CustomAnchorButton to="/react-music-band-site/">
+            <CustomAnchorButton to="/">
               Home
             </CustomAnchorButton>
             <CustomButton
@@ -69,12 +69,9 @@ const SideNav = (props: SideNavProps) => {
         </li>
         <li>
           <div className={CLASSES.listItemWrapper}>
-            <CustomAnchorButton to="/react-music-band-site/discography">
+            <CustomAnchorButton to="/discography">
               Albums
             </CustomAnchorButton>
-            <CustomButton>
-              <FontAwesomeIcon icon={faAdd} />
-            </CustomButton>
           </div>
         </li>
         <li>

@@ -121,16 +121,16 @@ const ArtistBio = () => {
             </div>
 
             <div className={CLASSES.bioSocials}>
-              <CustomAnchorButton to="/react-music-band-site/">
+              <CustomAnchorButton to="/">
                 <FontAwesomeIcon icon={faXTwitter} />
               </CustomAnchorButton>
-              <CustomAnchorButton to="/react-music-band-site/">
+              <CustomAnchorButton to="/">
                 <FontAwesomeIcon icon={faThreads} />
               </CustomAnchorButton>
-              <CustomAnchorButton to="/react-music-band-site/">
+              <CustomAnchorButton to="/">
                 <FontAwesomeIcon icon={faFacebookF} />
               </CustomAnchorButton>
-              <CustomAnchorButton to="/react-music-band-site/">
+              <CustomAnchorButton to="/">
                 <FontAwesomeIcon icon={faInstagram} />
               </CustomAnchorButton>
             </div>
