@@ -1,0 +1,29 @@
+@use "../font-sizes.scss" as fontSizes;
+@use "../colors.scss" as colors;
+
+@mixin h2CustomTitle {
+  h2 {
+    padding-top: 1rem;
+    font-size: fontSizes.$xlarge;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 2rem;
+    text-transform: capitalize;
+    text-align: center;
+  }
+
+  h2:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 87px;
+    height: 14px;
+    background: linear-gradient(
+      to left,
+      colors.$radicalRed,
+      colors.$cornFlowerBlue
+    );
+    transform: translateX(-50%);
+  }
+}

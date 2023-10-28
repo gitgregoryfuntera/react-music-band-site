@@ -2,8 +2,7 @@ import { AnchorHTMLAttributes, ReactNode } from "react";
 import CLASSES from "./CustomAnchorButton.module.scss";
 import { Link, LinkProps } from "react-router-dom";
 
-interface CustomAnchorButtonProps
-  extends LinkProps {
+interface CustomAnchorButtonProps extends LinkProps {
   customrootclass?: string;
   children: ReactNode;
 }

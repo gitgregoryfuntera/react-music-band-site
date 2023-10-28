@@ -20,7 +20,7 @@ const App = () => {
       </Routes>
     </ThemeContextProvider>
   );
-}
+};
 
 export const Layout = () => {
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);

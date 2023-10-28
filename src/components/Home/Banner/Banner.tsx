@@ -7,7 +7,7 @@ import "swiper/scss/navigation";
 
 import banner1 from "/assets/banner1.jpg";
 import banner2 from "/assets/banner2.jpg";
-import CLASSES from "./HomeBanner.module.scss";
+import CLASSES from "./Banner.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpotify, faApple } from "@fortawesome/free-brands-svg-icons";
 

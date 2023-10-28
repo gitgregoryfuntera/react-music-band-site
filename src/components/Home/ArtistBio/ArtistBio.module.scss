@@ -1,5 +1,6 @@
 @use "../../../styles/font-sizes.scss" as fontSizes;
 @use "../../../styles/colors.scss" as colors;
+@use "../../../styles/commons/typography.scss" as *;
 
 .root {
   margin: auto;
@@ -16,27 +17,7 @@
       width: 400px;
       overflow: hidden;
       .title {
-        h2 {
-          padding-top: 1rem;
-          font-size: fontSizes.$xlarge;
-          font-weight: 600;
-          position: relative;
-          padding-bottom: 2rem;
-          text-transform: capitalize;
-        }
-        h2:before {
-          content: "";
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 87px;
-          height: 14px;
-          background: linear-gradient(
-            to left,
-            colors.$radicalRed,
-            colors.$cornFlowerBlue
-          );
-        }
+        @include h2CustomTitle;
       }
       .bioContent {
         margin-top: 1rem;

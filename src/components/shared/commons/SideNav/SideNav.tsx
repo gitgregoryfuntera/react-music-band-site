@@ -46,7 +46,9 @@ const SideNav = (props: SideNavProps) => {
       <ul>
         <li>
           <div className={CLASSES.listItemWrapper}>
-            <CustomAnchorButton to="/react-music-band-site/">Home</CustomAnchorButton>
+            <CustomAnchorButton to="/react-music-band-site/">
+              Home
+            </CustomAnchorButton>
             <CustomButton
               onClick={() => setIsExpanded((prevState) => !prevState)}
             >
@@ -67,7 +69,9 @@ const SideNav = (props: SideNavProps) => {
         </li>
         <li>
           <div className={CLASSES.listItemWrapper}>
-            <CustomAnchorButton to="/react-music-band-site/discography">Albums</CustomAnchorButton>
+            <CustomAnchorButton to="/react-music-band-site/discography">
+              Albums
+            </CustomAnchorButton>
             <CustomButton>
               <FontAwesomeIcon icon={faAdd} />
             </CustomButton>

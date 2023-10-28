@@ -1,0 +1,14 @@
+.root {
+  .bannerContainer {
+    position: relative;
+    .title {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      height: 90%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}

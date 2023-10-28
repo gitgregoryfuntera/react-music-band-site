@@ -50,9 +50,6 @@ const Networks = () => {
     <motion.section
       whileInView={"in"}
       initial={isDesktopOrLaptop ? "out" : "in"}
-      viewport={{
-        once: true,
-      }}
       transition={{
         staggerChildren: 0.3,
         delayChildren: 0.5,
