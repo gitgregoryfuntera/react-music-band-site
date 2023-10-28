@@ -52,7 +52,6 @@ const Networks = () => {
       initial={isDesktopOrLaptop ? "out" : "in"}
       viewport={{
         once: true,
-        amount: 0.2,
       }}
       transition={{
         staggerChildren: 0.3,

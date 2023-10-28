@@ -9,7 +9,7 @@ const variants: Variants = {
     y: 0,
     transition: {
       ease: "linear",
-      duration: 0.5,
+      duration: 0.3,
     },
   },
   out: {
@@ -31,7 +31,6 @@ const Album = () => {
       initial={isDesktopOrLaptop ? "out" : "in"}
       viewport={{
         once: true,
-        amount: 0.2,
       }}
       transition={{
         staggerChildren: 0.3,

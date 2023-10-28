@@ -81,7 +81,7 @@ const SlideInMotionLeft = ({
       className={className}
       initial={isDesktopOrLaptop ? "offscreen" : "onscreen"}
       whileInView="onscreen"
-      viewport={{ once: true, amount: 0.8 }}
+      viewport={{ once: true }}
       variants={variants}
     >
       {children}
