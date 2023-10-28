@@ -17,4 +17,11 @@
       color: colors.$white;
     }
   }
+  .imgContainer {
+    min-height: 200px;
+    img {
+      object-fit: cover;
+      min-height: 200px;
+    }
+  }
 }
