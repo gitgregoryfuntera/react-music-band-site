@@ -1,4 +1,4 @@
-import { AnchorHTMLAttributes, ReactNode } from "react";
+import { ReactNode } from "react";
 import CLASSES from "./CustomAnchorButton.module.scss";
 import { Link, LinkProps } from "react-router-dom";
 
