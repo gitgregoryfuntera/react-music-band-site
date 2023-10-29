@@ -1,0 +1,46 @@
+@use "../../../styles/font-sizes.scss" as fontSizes;
+@use "../../../styles/colors.scss" as colors;
+
+.root {
+  padding: 3rem 1rem;
+  .content {
+    max-width: 800px;
+    margin: auto;
+    .title {
+      h2 {
+        position: relative;
+        font-size: fontSizes.$xlarge;
+        padding: 1rem 0;
+      }
+      h2:before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 87px;
+        height: 3px;
+        background-color: colors.$redPurple;
+      }
+    }
+    .detail {
+      padding: 3rem 0;
+      h2 {
+        font-size: fontSizes.$large;
+      }
+      p {
+        padding: 1rem 0;
+        line-height: 2rem;
+      }
+    }
+  }
+}
+
+.light {
+  background-color: colors.$white;
+  color: colors.$black;
+}
+
+.dark {
+  background-color: colors.$black;
+  color: colors.$white;
+}

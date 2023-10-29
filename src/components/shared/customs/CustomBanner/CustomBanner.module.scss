@@ -7,7 +7,7 @@
     position: absolute;
     width: 100%;
     text-align: center;
-    height: 90%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,10 +18,10 @@
     }
   }
   .imgContainer {
-    min-height: 200px;
+    height: 300px;
     img {
       object-fit: cover;
-      min-height: 200px;
+      min-height: 300px;
     }
   }
 }

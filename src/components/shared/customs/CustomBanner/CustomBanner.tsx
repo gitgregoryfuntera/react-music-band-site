@@ -13,7 +13,7 @@ const CustomBanner = (props: CustomBannerProps) => {
         <h2>{title}</h2>
       </div>
       <div className={CLASSES.imgContainer}>
-        <img src={bannerImage} width={"100%"} />
+        <img src={bannerImage} width={"100%"} height={300} />
       </div>
     </div>
   );

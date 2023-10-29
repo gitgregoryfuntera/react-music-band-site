@@ -8,6 +8,7 @@ import Footer from "@components/shared/commons/Footer/Footer";
 import { Routes, Route, Outlet } from "react-router-dom";
 import ThemeContextProvider from "@components/shared/context/ThemeContext";
 import Discography from "pages/Discography/Discography";
+import SingleAlbum from "pages/Discography/SingleAlbum";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/discography" element={<Discography />} />
+          <Route path="/discography/:id" element={<SingleAlbum />} />
         </Route>
       </Routes>
     </ThemeContextProvider>

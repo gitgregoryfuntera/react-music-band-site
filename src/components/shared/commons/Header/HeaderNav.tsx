@@ -4,7 +4,7 @@ import CLASSES from "./HeaderNav.module.scss";
 import { useMediaQuery } from "react-responsive";
 import CustomButton from "@components/shared/customs/CustomButton/CustomButton";
 import { useThemeContextProvider } from "@components/shared/context/themeContextHook";
-
+import { useLocation } from "react-router-dom";
 interface HeaderNavProps {
   isFadeIn: boolean;
 }
@@ -12,7 +12,7 @@ interface HeaderNavProps {
 const HeaderNav = (props: HeaderNavProps) => {
   const { version, setThemeVersion } = useThemeContextProvider();
 
-  const currentPath = window.location.pathname;
+  const location = useLocation();
 
   const NAV_PATH = [
     {
@@ -37,12 +37,12 @@ const HeaderNav = (props: HeaderNavProps) => {
     {
       key: "gallery",
       name: "Gallery",
-      path: "/",
+      path: "/gallery",
     },
     {
       key: "contacts",
       name: "Contacts",
-      path: "/",
+      path: "/contacts",
     },
   ];
 
@@ -64,7 +64,9 @@ const HeaderNav = (props: HeaderNavProps) => {
                 <li key={route.key}>
                   <CustomAnchorButton
                     className={`${CLASSES.navLink} ${
-                      currentPath === route.path ? CLASSES.navLinkActive : ""
+                      location?.pathname === route.path
+                        ? CLASSES.navLinkActive
+                        : ""
                     } ${CLASSES[fadeClass]}`}
                     to={route.path}
                     onMouseEnter={() => setRevealSubPath(route.key)}

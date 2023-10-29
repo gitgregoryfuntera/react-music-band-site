@@ -9,7 +9,8 @@ import cardImg4 from "/assets/discography/list/image4.jpg";
 import cardImg5 from "/assets/discography/list/image5.jpg";
 import cardImg6 from "/assets/discography/list/image6.jpg";
 
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+import { useThemeContextProvider } from "@components/shared/context/themeContextHook";
 
 const ITEM_LIST = [
   {
@@ -63,20 +64,23 @@ const ITEM_LIST = [
 ];
 
 const List = () => {
+  const { version } = useThemeContextProvider();
   return (
-    <section className={CLASSES.root}>
+    <section className={`${CLASSES.root} ${CLASSES[version]}`}>
       <div className={CLASSES.titleContainer}>
         <h2>Discography</h2>
       </div>
       <div className={CLASSES.row}>
         {ITEM_LIST.map((item) => (
           <CustomCard customrootclass={CLASSES.card} key={item.id}>
-            <CustomAnchorButton to="/discography">
-              <div
-                className={CLASSES.cardContent}>
-                <motion.div className={CLASSES.imgContainer} whileHover={{
-                  y: -25
-                }}>
+            <CustomAnchorButton to={`/discography/${item.id}`}>
+              <div className={CLASSES.cardContent}>
+                <motion.div
+                  className={CLASSES.imgContainer}
+                  whileHover={{
+                    y: -25,
+                  }}
+                >
                   <img src={item.image} />
                 </motion.div>
                 <div className={CLASSES.messageContainer}>

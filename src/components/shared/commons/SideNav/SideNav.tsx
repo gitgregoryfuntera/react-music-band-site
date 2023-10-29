@@ -46,9 +46,7 @@ const SideNav = (props: SideNavProps) => {
       <ul>
         <li>
           <div className={CLASSES.listItemWrapper}>
-            <CustomAnchorButton to="/">
-              Home
-            </CustomAnchorButton>
+            <CustomAnchorButton to="/">Home</CustomAnchorButton>
             <CustomButton
               onClick={() => setIsExpanded((prevState) => !prevState)}
             >
@@ -69,9 +67,7 @@ const SideNav = (props: SideNavProps) => {
         </li>
         <li>
           <div className={CLASSES.listItemWrapper}>
-            <CustomAnchorButton to="/discography">
-              Albums
-            </CustomAnchorButton>
+            <CustomAnchorButton to="/discography">Albums</CustomAnchorButton>
           </div>
         </li>
         <li>
