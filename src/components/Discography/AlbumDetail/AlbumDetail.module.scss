@@ -32,15 +32,44 @@
         line-height: 2rem;
       }
     }
+    .anchorContainer {
+      text-align: center;
+      .anchor {
+        a {
+          text-transform: uppercase;
+          font-weight: 800;
+          font-size: fontSizes.$large;
+          border-bottom: 1px solid colors.$redPurple;
+        }
+      }
+    }
   }
 }
 
 .light {
   background-color: colors.$white;
   color: colors.$black;
+  .content {
+    .anchorContainer {
+      .anchor {
+        a {
+          color: colors.$black;
+        }
+      }
+    }
+  }
 }
 
 .dark {
   background-color: colors.$black;
   color: colors.$white;
+  .content {
+    .anchorContainer {
+      .anchor {
+        a {
+          color: colors.$white;
+        }
+      }
+    }
+  }
 }

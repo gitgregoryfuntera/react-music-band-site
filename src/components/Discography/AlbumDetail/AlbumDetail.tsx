@@ -1,17 +1,52 @@
 import { useThemeContextProvider } from "@components/shared/context/themeContextHook";
 import CLASSES from "./AlbumDetail.module.scss";
 import singleAlbumImg from "/assets/discography/single-album.png";
+import { Variants, motion } from "framer-motion";
+import { useMediaQuery } from "react-responsive";
+import CustomAnchorButton from "@components/shared/customs/CustomAnchorButton/CustomAnchorButton";
+import { useLocation } from "react-router-dom";
 
 const AlbumDetail = () => {
+  const location = useLocation();
   const { version } = useThemeContextProvider();
-  return (
-    <section className={`${CLASSES.root} ${CLASSES[version]}`}>
-      <div className={CLASSES.content}>
-        <div className={CLASSES.title}>
-          <h2>New - Cyber Rad EP</h2>
-        </div>
+  const isDesktopOrLaptop = useMediaQuery({
+    query: "(min-width: 1224px)",
+  });
 
-        <div className={CLASSES.detail}>
+  const variants: Variants = {
+    offscreen: {
+      opacity: 0,
+      y: 100,
+    },
+    onscreen: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        ease: "linear",
+        duration: 0.3,
+      },
+    },
+  };
+
+  return (
+    <motion.section
+      whileInView={"onscreen"}
+      initial={isDesktopOrLaptop ? "offscreen" : "onscreen"}
+      viewport={{
+        once: true,
+      }}
+      transition={{
+        staggerChildren: 0.3,
+        delayChildren: 0.2,
+      }}
+      className={`${CLASSES.root} ${CLASSES[version]}`}
+    >
+      <div className={CLASSES.content}>
+        <motion.div variants={variants} className={CLASSES.title}>
+          <h2>New - Cyber Rad EP</h2>
+        </motion.div>
+
+        <motion.div variants={variants} className={CLASSES.detail}>
           <h2>
             The second full-length release for the Australian trio was recorded
             in Los Angeles with producer Lars Stalfors.
@@ -27,12 +62,21 @@ const AlbumDetail = () => {
             so, he manages to develop a new sound that makes way for bolder and
             more experimental productions.
           </p>
-        </div>
-        <div className={CLASSES.albumImgContainer}>
+        </motion.div>
+        <motion.div variants={variants} className={CLASSES.albumImgContainer}>
           <img src={singleAlbumImg} width={"100%"} />
+        </motion.div>
+
+        <div className={CLASSES.anchorContainer}>
+          <CustomAnchorButton
+            customrootclass={CLASSES.anchor}
+            to={location?.pathname}
+          >
+            Buy the vinyl
+          </CustomAnchorButton>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
