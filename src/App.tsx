@@ -5,21 +5,31 @@ import { useState } from "react";
 import Networks from "@components/shared/commons/Networks/Networks";
 import StayInTouch from "@components/shared/commons/StayInTouch/StayInTouch";
 import Footer from "@components/shared/commons/Footer/Footer";
-import { Routes, Route, Outlet } from "react-router-dom";
+import {
+  Route,
+  Outlet,
+  ScrollRestoration,
+  createRoutesFromElements,
+  createHashRouter,
+  RouterProvider,
+} from "react-router-dom";
 import ThemeContextProvider from "@components/shared/context/ThemeContext";
 import Discography from "pages/Discography/Discography";
 import SingleAlbum from "pages/Discography/SingleAlbum";
 
 const App = () => {
+  const router = createHashRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="/discography" element={<Discography />} />
+        <Route path="/discography/:id" element={<SingleAlbum />} />
+      </Route>,
+    ),
+  );
   return (
     <ThemeContextProvider>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="/discography" element={<Discography />} />
-          <Route path="/discography/:id" element={<SingleAlbum />} />
-        </Route>
-      </Routes>
+      <RouterProvider router={router} />
     </ThemeContextProvider>
   );
 };
@@ -42,6 +52,11 @@ export const Layout = () => {
         <StayInTouch />
       </main>
       <Footer />
+      {/*
+        Including this component inside a data router component tree is what
+        enables restoration
+      */}
+      <ScrollRestoration />
     </>
   );
 };
