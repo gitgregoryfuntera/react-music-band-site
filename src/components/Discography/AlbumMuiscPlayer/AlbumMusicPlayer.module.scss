@@ -1,9 +1,13 @@
 .root {
-  .controlContainer {
-    .btnPlay {
-      button {
-        color: black;
-      }
+  max-width: 800px;
+  margin: auto;
+  .playerContainer {
+    .player {
+      width: 0 !important;
+      height: 0 !important;
     }
+  }
+  .controlContainer {
+    padding: 1rem;
   }
 }

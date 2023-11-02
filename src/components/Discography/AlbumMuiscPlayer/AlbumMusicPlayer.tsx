@@ -1,53 +1,90 @@
-import CustomButton from "@components/shared/customs/CustomButton/CustomButton";
-import { LegacyRef, RefObject, useRef, useState } from "react";
+import { LegacyRef, useReducer, useRef } from "react";
 import ReactPlayer from "react-player";
 import CLASSES from "./AlbumMusicPlayer.module.scss";
-import CustomAudioPlayer from "@components/shared/customs/CustomAudioPlayer/CustomAudioPlayer";
+import CustomControlPlayer from "@components/shared/customs/CustomControlPlayer/CustomControlPlayer";
 import { BaseReactPlayerProps, OnProgressProps } from "react-player/base";
+
+interface PlayerState {
+  duration: number;
+  played: number;
+  playing: boolean;
+  muted: boolean;
+  seeking: boolean;
+}
 
 const AlbumMusicPlayer = () => {
   const music =
     "https://storage.googleapis.com/media-session/elephants-dream/the-wires.mp3";
 
+  const [playerState, setPlayerState] = useReducer(
+    (state: PlayerState, action: Partial<PlayerState>) => ({
+      ...state,
+      ...action,
+    }),
+    {
+      duration: 0,
+      played: 0,
+      playing: false,
+      muted: false,
+      seeking: false,
+    },
+  );
 
-  const [duration, setDuration] = useState(0);
-  const [playing, setPlaying] = useState(false);
-  const [muted, setMuted] = useState(false);
-  const [played, setPlayed] = useState(0);
-  const [seeking, setSeeking] = useState(false);
   const player = useRef<LegacyRef<ReactPlayer> | null>(null);
 
   const handleOnPlay = () => {
-    setPlaying((prevState) => !prevState);
+    setPlayerState({
+      playing: !playerState.playing,
+    });
   };
 
   const handleOnMute = () => {
-    setMuted((prevState) => !prevState);
+    setPlayerState({
+      muted: !playerState.muted,
+    });
   };
 
   const handleOnDuration = (duration: number) => {
-    setDuration(duration)
+    setPlayerState({
+      duration,
+    });
   };
 
   const handleSeekChange = (value: number) => {
-    setPlayed(value);
+    setPlayerState({
+      played: value,
+    });
   };
 
   const handleSeekMouseDown = () => {
-    setSeeking(true);
+    setPlayerState({
+      seeking: true,
+    });
   };
 
   const handleSeekMouseUp = (value: number) => {
-    setSeeking(false);
-    setPlayed(value);
+    setPlayerState({
+      seeking: false,
+    });
+    setPlayerState({
+      played: value,
+    });
     player && (player?.current as BaseReactPlayerProps)?.seekTo(value);
   };
 
   const handleProgress = (state: OnProgressProps) => {
     const { played } = state;
-    if (!seeking) {
-      setPlayed(played);
+    if (!playerState.seeking) {
+      setPlayerState({
+        played,
+      });
     }
+  };
+
+  const handleOnEnded = () => {
+    setPlayerState({
+      playing: false,
+    });
   };
 
   const ref = (playerRef: LegacyRef<ReactPlayer>) => {
@@ -56,30 +93,34 @@ const AlbumMusicPlayer = () => {
 
   return (
     <section className={CLASSES.root}>
-      <div>
+      <div className={CLASSES.playerContainer}>
         <ReactPlayer
+          style={{
+            height: 0,
+            width: 0,
+          }}
+          className={CLASSES.player}
           ref={ref as LegacyRef<ReactPlayer>}
-          className="react-player"
           url={music}
-          playing={playing}
-          controls={true}
-          muted={muted}
+          playing={playerState.playing}
+          muted={playerState.muted}
           onDuration={handleOnDuration}
           onProgress={handleProgress}
+          onEnded={handleOnEnded}
         />
       </div>
 
       <div className={CLASSES.controlContainer}>
-        <CustomAudioPlayer
-          played={played}
+        <CustomControlPlayer
+          played={playerState.played}
           onPlay={handleOnPlay}
-          playing={playing}
-          muted={muted}
+          playing={playerState.playing}
+          muted={playerState.muted}
           onMuted={handleOnMute}
           onSeek={handleSeekChange}
           handleSeekMouseDown={handleSeekMouseDown}
           handleSeekMouseUp={handleSeekMouseUp}
-          duration={duration}
+          duration={playerState.duration}
         />
       </div>
     </section>
