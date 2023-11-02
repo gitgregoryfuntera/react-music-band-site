@@ -48,9 +48,12 @@
     justify-content: center;
     margin-top: 1rem;
     .btnPlay {
-      border-radius: 50%;
-      padding: 10px;
-      background: #f8386b;
+      button {
+        border-radius: 50%;
+        padding: 10px;
+        background: #f8386b;
+        width: 45px;
+      }
     }
 
     .btnControl {
