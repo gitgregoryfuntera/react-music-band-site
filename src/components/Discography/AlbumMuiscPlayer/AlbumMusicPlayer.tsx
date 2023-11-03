@@ -74,12 +74,24 @@ const AlbumMusicPlayer = () => {
                         <li key={music.id}>
                           <CustomButton
                             onClick={() => {
-                              if (playerState?.music.id === music.id) {
-                                handleOnPlay();
-                              }
                               setPlayerState({
                                 music,
                               });
+
+                              if (playerState?.music.id === music.id) {
+                                setPlayerState({
+                                  playing: true,
+                                });
+                              }
+
+                              if (
+                                playerState?.music.id === music.id &&
+                                playerState.playing
+                              ) {
+                                setPlayerState({
+                                  playing: false,
+                                });
+                              }
                             }}
                           >
                             <div
