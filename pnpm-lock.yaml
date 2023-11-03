@@ -38,6 +38,9 @@ dependencies:
   react-router-dom:
     specifier: ^6.17.0
     version: 6.17.0(react-dom@18.2.0)(react@18.2.0)
+  react-slider:
+    specifier: ^2.0.6
+    version: 2.0.6(react@18.2.0)
   swiper:
     specifier: ^10.2.0
     version: 10.2.0
@@ -46,12 +49,18 @@ dependencies:
     version: 4.2.0(typescript@5.0.2)(vite@4.4.5)
 
 devDependencies:
+  "@babel/runtime":
+    specifier: ^7.23.2
+    version: 7.23.2
   "@types/react":
     specifier: ^18.2.15
     version: 18.2.15
   "@types/react-dom":
     specifier: ^18.2.7
     version: 18.2.7
+  "@types/react-slider":
+    specifier: ^1.3.3
+    version: 1.3.3
   "@typescript-eslint/eslint-plugin":
     specifier: ^6.0.0
     version: 6.0.0(@typescript-eslint/parser@6.0.0)(eslint@8.45.0)(typescript@5.0.2)
@@ -347,6 +356,16 @@ packages:
     dependencies:
       "@babel/core": 7.22.10
       "@babel/helper-plugin-utils": 7.22.5
+    dev: true
+
+  /@babel/runtime@7.23.2:
+    resolution:
+      {
+        integrity: sha512-mM8eg4yl5D6i3lu2QKPuPH4FArvJ8KhTofbE7jwMUv9KX5mBvwPAqnV3MlyBNqdp9RyRKP6Yck8TrfYrPvX3bg==,
+      }
+    engines: { node: ">=6.9.0" }
+    dependencies:
+      regenerator-runtime: 0.14.0
     dev: true
 
   /@babel/template@7.22.5:
@@ -901,6 +920,15 @@ packages:
     resolution:
       {
         integrity: sha512-GRaAEriuT4zp9N4p1i8BDBYmEyfo+xQ3yHjJU4eiK5NDa1RmUZG+unZABUTK4/Ox/M+GaHwb6Ow8rUITrtjszA==,
+      }
+    dependencies:
+      "@types/react": 18.2.15
+    dev: true
+
+  /@types/react-slider@1.3.3:
+    resolution:
+      {
+        integrity: sha512-UMzMsqZh3wzHM4h/3yy3xQKTa3DfjF+S4WLuryDCmOcufgX2m+bNjSQV/xWsKAMfV5DXucQBsFlIu9dcvS+e1A==,
       }
     dependencies:
       "@types/react": 18.2.15
@@ -2671,6 +2699,18 @@ packages:
       react: 18.2.0
     dev: false
 
+  /react-slider@2.0.6(react@18.2.0):
+    resolution:
+      {
+        integrity: sha512-gJxG1HwmuMTJ+oWIRCmVWvgwotNCbByTwRkFZC6U4MBsHqJBmxwbYRJUmxy4Tke1ef8r9jfXjgkmY/uHOCEvbA==,
+      }
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+    dependencies:
+      prop-types: 15.8.1
+      react: 18.2.0
+    dev: false
+
   /react@18.2.0:
     resolution:
       {
@@ -2689,6 +2729,13 @@ packages:
     engines: { node: ">=8.10.0" }
     dependencies:
       picomatch: 2.3.1
+
+  /regenerator-runtime@0.14.0:
+    resolution:
+      {
+        integrity: sha512-srw17NI0TUWHuGa5CFGGmhfNIeja30WMBfbslPNhf6JrqQlLN5gcrvig1oqPxiVaXb0oW0XRKtH6Nngs5lKCIA==,
+      }
+    dev: true
 
   /resolve-from@4.0.0:
     resolution:

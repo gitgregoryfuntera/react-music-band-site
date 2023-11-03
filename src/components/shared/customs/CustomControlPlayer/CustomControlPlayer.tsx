@@ -10,6 +10,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { ReactPlayerProps } from "react-player";
 import CustomButton from "../CustomButton/CustomButton";
+import ReactSlider from "react-slider";
+import Duration from "./Duration";
 
 interface CustomControlPlayerProps extends ReactPlayerProps {
   customrootclass?: string;
@@ -31,24 +33,26 @@ const CustomControlPlayer = (props: CustomControlPlayerProps) => {
     handleSeekMouseDown,
     handleSeekMouseUp,
     played,
+    duration,
   } = props;
 
   return (
     <div className={`${CLASSES.root} ${customrootclass}`}>
       <div className={CLASSES.durationContainer}>
-        <input
-          type="range"
+        <ReactSlider
+          className={CLASSES.horizontalSlider}
+          thumbClassName={"slider-thumb"}
+          trackClassName={"slider-track"}
+          renderThumb={(props) => <div {...props} />}
+          renderTrack={(trackProps) => <div {...trackProps} />}
           min={0}
-          max={0.999999}
-          step="any"
-          value={played ?? 0}
-          onChange={({ target: { value } }) =>
-            onSeek && onSeek(parseFloat(value))
+          max={100}
+          value={(played ?? 0) * 100}
+          onChange={(value) => onSeek && onSeek(value / 100)}
+          onBeforeChange={() => handleSeekMouseDown && handleSeekMouseDown()}
+          onAfterChange={(value) =>
+            handleSeekMouseUp && handleSeekMouseUp(value / 100)
           }
-          onMouseUp={(e) =>
-            handleSeekMouseUp && handleSeekMouseUp((e.target as any).value)
-          }
-          onMouseDown={() => handleSeekMouseDown && handleSeekMouseDown()}
         />
       </div>
       <div className={CLASSES.controlContainer}>
@@ -68,10 +72,10 @@ const CustomControlPlayer = (props: CustomControlPlayerProps) => {
         <p>Singer</p>
       </div> */}
 
-      {/* <div>
+      <div>
         <Duration seconds={(duration ?? 0) * (played ?? 0)} />/{" "}
         <Duration seconds={duration ?? 0} />
-      </div> */}
+      </div>
 
       <div className={CLASSES.bottomControlContainer}>
         <CustomButton onClick={onMuted}>
