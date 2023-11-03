@@ -50,7 +50,7 @@ const AlbumMusicPlayer = () => {
       muted: false,
       seeking: false,
       music: availableMusic[0],
-    }
+    },
   );
 
   const player = useRef<LegacyRef<ReactPlayer> | null>(null);
@@ -112,7 +112,7 @@ const AlbumMusicPlayer = () => {
 
   const handlePlayNext = () => {
     const currentIndx = availableMusic.findIndex(
-      (sound) => sound.id === playerState.music.id
+      (sound) => sound.id === playerState.music.id,
     );
     const nextPlayIndx = currentIndx + 1;
     const nextMusic = availableMusic[nextPlayIndx];
@@ -125,7 +125,7 @@ const AlbumMusicPlayer = () => {
 
   const handlePlayPrev = () => {
     const currentIndx = availableMusic.findIndex(
-      (sound) => sound.id === playerState.music.id
+      (sound) => sound.id === playerState.music.id,
     );
     const prevPlayIndx = currentIndx - 1;
     const prevMusic = availableMusic[prevPlayIndx];

@@ -71,13 +71,19 @@ const CustomControlPlayer = (props: CustomControlPlayerProps) => {
         </div>
 
         <div className={CLASSES.playerControl}>
-          <CustomButton customrootclass={CLASSES.btnControl} onClick={handlePlayPrev}>
+          <CustomButton
+            customrootclass={CLASSES.btnControl}
+            onClick={handlePlayPrev}
+          >
             <FontAwesomeIcon icon={faBackwardFast} size="2x" />
           </CustomButton>
           <CustomButton customButtonClassType="gradientCircle" onClick={onPlay}>
             <FontAwesomeIcon icon={playing ? faPause : faPlay} size="2x" />
           </CustomButton>
-          <CustomButton customrootclass={CLASSES.btnControl} onClick={handlePlayNext}>
+          <CustomButton
+            customrootclass={CLASSES.btnControl}
+            onClick={handlePlayNext}
+          >
             <FontAwesomeIcon icon={faForwardFast} size="2x" />
           </CustomButton>
         </div>
