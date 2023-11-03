@@ -1,27 +1,18 @@
-import { LegacyRef, useReducer, useRef } from "react";
+import { LegacyRef } from "react";
 import ReactPlayer from "react-player";
 import CLASSES from "./AlbumMusicPlayer.module.scss";
 import CustomControlPlayer from "@components/shared/customs/CustomControlPlayer/CustomControlPlayer";
-import { BaseReactPlayerProps, OnProgressProps } from "react-player/base";
 import loveStory from "/assets/discography/love-story.mp3";
-
-type Music = {
-  id: number;
-  song: string;
-  singer: string;
-  track: string;
-};
-
-interface PlayerState {
-  duration: number;
-  played: number;
-  playing: boolean;
-  muted: boolean;
-  seeking: boolean;
-  music: Music;
-}
+import { useCustomReactPlayer } from "@components/shared/customs/CustomControlPlayer/customReactPlayerHook";
+import CustomCard from "@components/shared/customs/CustomCard/CustomCard";
+import albumImg from "/assets/discography/album.jpg";
+import CustomButton from "@components/shared/customs/CustomButton/CustomButton";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPause, faPlay } from "@fortawesome/free-solid-svg-icons";
+import { useThemeContextProvider } from "@components/shared/context/themeContextHook";
 
 const AlbumMusicPlayer = () => {
+  const { version } = useThemeContextProvider();
   const availableMusic = [
     {
       id: 1,
@@ -38,143 +29,130 @@ const AlbumMusicPlayer = () => {
     },
   ];
 
-  const [playerState, setPlayerState] = useReducer(
-    (state: PlayerState, action: Partial<PlayerState>) => ({
-      ...state,
-      ...action,
-    }),
-    {
-      duration: 0,
-      played: 0,
-      playing: false,
-      muted: false,
-      seeking: false,
-      music: availableMusic[0],
-    },
-  );
-
-  const player = useRef<LegacyRef<ReactPlayer> | null>(null);
-
-  const handleOnPlay = () => {
-    setPlayerState({
-      playing: !playerState.playing,
-    });
-  };
-
-  const handleOnMute = () => {
-    setPlayerState({
-      muted: !playerState.muted,
-    });
-  };
-
-  const handleOnDuration = (duration: number) => {
-    setPlayerState({
-      duration,
-    });
-  };
-
-  const handleSeekChange = (value: number) => {
-    setPlayerState({
-      played: value,
-    });
-  };
-
-  const handleSeekMouseDown = () => {
-    setPlayerState({
-      seeking: true,
-    });
-  };
-
-  const handleSeekMouseUp = (value: number) => {
-    setPlayerState({
-      seeking: false,
-    });
-    setPlayerState({
-      played: value,
-    });
-    player && (player?.current as BaseReactPlayerProps)?.seekTo(value);
-  };
-
-  const handleProgress = (state: OnProgressProps) => {
-    const { played } = state;
-    if (!playerState.seeking) {
-      setPlayerState({
-        played,
-      });
-    }
-  };
-
-  const handleOnEnded = () => {
-    setPlayerState({
-      playing: false,
-    });
-  };
-
-  const handlePlayNext = () => {
-    const currentIndx = availableMusic.findIndex(
-      (sound) => sound.id === playerState.music.id,
-    );
-    const nextPlayIndx = currentIndx + 1;
-    const nextMusic = availableMusic[nextPlayIndx];
-    const defaultMusic = availableMusic[0];
-
-    setPlayerState({
-      music: nextMusic ? nextMusic : defaultMusic,
-    });
-  };
-
-  const handlePlayPrev = () => {
-    const currentIndx = availableMusic.findIndex(
-      (sound) => sound.id === playerState.music.id,
-    );
-    const prevPlayIndx = currentIndx - 1;
-    const prevMusic = availableMusic[prevPlayIndx];
-    const defaultMusic = availableMusic[0];
-
-    setPlayerState({
-      music: prevMusic ? prevMusic : defaultMusic,
-    });
-  };
-
-  const ref = (playerRef: LegacyRef<ReactPlayer>) => {
-    player.current = playerRef;
-  };
+  const {
+    playerState,
+    setPlayerState,
+    playerRef,
+    handleOnPlay,
+    handleOnMute,
+    handleOnDuration,
+    handleSeekChange,
+    handleSeekMouseDown,
+    handleSeekMouseUp,
+    handleProgress,
+    handleOnEnded,
+    handlePlayNext,
+    handlePlayPrev,
+  } = useCustomReactPlayer({
+    playerList: availableMusic,
+  });
 
   return (
-    <section className={CLASSES.root}>
-      <div className={CLASSES.playerContainer}>
-        <ReactPlayer
-          style={{
-            height: 0,
-            width: 0,
-          }}
-          className={CLASSES.player}
-          ref={ref as LegacyRef<ReactPlayer>}
-          url={playerState.music.track}
-          playing={playerState.playing}
-          muted={playerState.muted}
-          onDuration={handleOnDuration}
-          onProgress={handleProgress}
-          onEnded={handleOnEnded}
-        />
-      </div>
+    <section className={`${CLASSES.root} ${CLASSES[version]}`}>
+      <div className={CLASSES.wrapper}>
+        <div></div>
 
-      <div className={CLASSES.controlContainer}>
-        <CustomControlPlayer
-          songName={playerState.music.song}
-          singer={playerState.music.singer}
-          played={playerState.played}
-          onPlay={handleOnPlay}
-          playing={playerState.playing}
-          muted={playerState.muted}
-          onMuted={handleOnMute}
-          onSeek={handleSeekChange}
-          handleSeekMouseDown={handleSeekMouseDown}
-          handleSeekMouseUp={handleSeekMouseUp}
-          duration={playerState.duration}
-          handlePlayNext={handlePlayNext}
-          handlePlayPrev={handlePlayPrev}
-        />
+        <div className={CLASSES.cardAlbumContainer}>
+          <CustomCard>
+            <div className={CLASSES.cardContent}>
+              <div className={CLASSES.albumImgContainer}>
+                <img src={albumImg} width={"100%"} />
+              </div>
+              <div className={CLASSES.albumPlayListContainer}>
+                <div className={CLASSES.albumPlayList}>
+                  <div className={CLASSES.albumTitle}>
+                    <p>Album</p>
+                    <h2>Written in The Stars</h2>
+                  </div>
+                  <div className={CLASSES.albumDetails}>
+                    <h5>By Keane</h5>
+                    <p>15 songs - 53 Min - 2016</p>
+                  </div>
+                  <div>
+                    <ul>
+                      {availableMusic.map((music) => (
+                        <li key={music.id}>
+                          <CustomButton
+                            onClick={() => {
+                              if (playerState?.music.id === music.id) {
+                                handleOnPlay();
+                              }
+                              setPlayerState({
+                                music,
+                              });
+                            }}
+                          >
+                            <div
+                              className={`${CLASSES.listItem} ${
+                                playerState?.music.id === music.id
+                                  ? CLASSES.selected
+                                  : ""
+                              }`}
+                            >
+                              <div className={CLASSES.playIcon}>
+                                <FontAwesomeIcon
+                                  size={"1x"}
+                                  transform={`down-7 ${
+                                    music.id === playerState.music.id &&
+                                    playerState.playing
+                                      ? ""
+                                      : "right-1"
+                                  }`}
+                                  icon={
+                                    music.id === playerState.music.id &&
+                                    playerState.playing
+                                      ? faPause
+                                      : faPlay
+                                  }
+                                />
+                              </div>
+                              <p>{music.song}</p>
+                            </div>
+                          </CustomButton>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </CustomCard>
+        </div>
+
+        <div className={CLASSES.playerContainer}>
+          <ReactPlayer
+            style={{
+              height: 0,
+              width: 0,
+            }}
+            className={CLASSES.player}
+            ref={playerRef as LegacyRef<ReactPlayer>}
+            url={playerState.music.track}
+            playing={playerState.playing}
+            muted={playerState.muted}
+            onDuration={handleOnDuration}
+            onProgress={handleProgress}
+            onEnded={handleOnEnded}
+          />
+        </div>
+
+        <div className={CLASSES.controlContainer}>
+          <CustomControlPlayer
+            songName={playerState.music.song}
+            singer={playerState.music.singer}
+            played={playerState.played}
+            onPlay={handleOnPlay}
+            playing={playerState.playing}
+            muted={playerState.muted}
+            onMuted={handleOnMute}
+            onSeek={handleSeekChange}
+            handleSeekMouseDown={handleSeekMouseDown}
+            handleSeekMouseUp={handleSeekMouseUp}
+            duration={playerState.duration}
+            handlePlayNext={handlePlayNext}
+            handlePlayPrev={handlePlayPrev}
+          />
+        </div>
       </div>
     </section>
   );

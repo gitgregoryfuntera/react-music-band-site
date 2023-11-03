@@ -78,7 +78,11 @@ const CustomControlPlayer = (props: CustomControlPlayerProps) => {
             <FontAwesomeIcon icon={faBackwardFast} size="2x" />
           </CustomButton>
           <CustomButton customButtonClassType="gradientCircle" onClick={onPlay}>
-            <FontAwesomeIcon icon={playing ? faPause : faPlay} size="2x" />
+            <FontAwesomeIcon
+              icon={playing ? faPause : faPlay}
+              size="2x"
+              transform={playing ? "" : "right-1"}
+            />
           </CustomButton>
           <CustomButton
             customrootclass={CLASSES.btnControl}

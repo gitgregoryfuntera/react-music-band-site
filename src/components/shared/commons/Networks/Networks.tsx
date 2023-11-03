@@ -8,51 +8,56 @@ import logo4 from "/assets/logo4.png";
 import { Variants, motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 import { useThemeContextProvider } from "@components/shared/context/themeContextHook";
-
-const variants: Variants = {
-  in: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      ease: "linear",
-    },
-  },
-  out: {
-    opacity: 0,
-    y: 100,
-  },
-};
-
-const variantsSlideIn: Variants = {
-  in: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      ease: "easeIn",
-    },
-  },
-  out: {
-    opacity: 0,
-    x: -100,
-  },
-};
+import { useLocation } from "react-router-dom";
 
 const SOCIAL_IMAGES = [logo1, logo2, logo3, logo4];
 
 const Networks = () => {
   const { version } = useThemeContextProvider();
-
+  const location = useLocation();
   const isDesktopOrLaptop = useMediaQuery({
     query: "(min-width: 1224px)",
   });
 
+  const variants: Variants = {
+    in: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        ease: "linear",
+      },
+    },
+    out: {
+      opacity: 0,
+      y: 100,
+    },
+  };
+
+  const variantsSlideIn: Variants = {
+    in: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        ease: "easeIn",
+      },
+    },
+    out: {
+      opacity: 0,
+      x: -100,
+    },
+  };
+
   return (
     <motion.section
+      key={location.key}
       whileInView={"in"}
       initial={isDesktopOrLaptop ? "out" : "in"}
       transition={{
         staggerChildren: 0.3,
         delayChildren: 0.5,
+      }}
+      viewport={{
+        once: true,
       }}
       className={`${CLASSES.root} ${CLASSES[version]}`}
     >
