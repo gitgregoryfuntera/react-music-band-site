@@ -17,9 +17,13 @@ interface CustomControlPlayerProps extends ReactPlayerProps {
   customrootclass?: string;
   played?: number;
   duration?: number;
+  songName: string;
+  singer: string;
   onMuted?: () => void;
   handleSeekMouseDown?: () => void;
   handleSeekMouseUp?: (value: number) => void;
+  handlePlayNext?: () => void;
+  handlePlayPrev?: () => void;
 }
 
 const CustomControlPlayer = (props: CustomControlPlayerProps) => {
@@ -32,15 +36,19 @@ const CustomControlPlayer = (props: CustomControlPlayerProps) => {
     onSeek,
     handleSeekMouseDown,
     handleSeekMouseUp,
+    handlePlayNext,
+    handlePlayPrev,
     played,
     duration,
+    songName,
+    singer,
   } = props;
 
   return (
     <div className={`${CLASSES.root} ${customrootclass}`}>
       <div className={CLASSES.durationContainer}>
         <ReactSlider
-          className={CLASSES.horizontalSlider}
+          className={"horizontal-slider"}
           thumbClassName={"slider-thumb"}
           trackClassName={"slider-track"}
           renderThumb={(props) => <div {...props} />}
@@ -55,35 +63,37 @@ const CustomControlPlayer = (props: CustomControlPlayerProps) => {
           }
         />
       </div>
+
       <div className={CLASSES.controlContainer}>
-        <CustomButton customrootclass={CLASSES.btnControl}>
-          <FontAwesomeIcon icon={faBackwardFast} size="2x" />
-        </CustomButton>
-        <CustomButton customrootclass={CLASSES.btnPlay} onClick={onPlay}>
-          <FontAwesomeIcon icon={playing ? faPause : faPlay} size="2x" />
-        </CustomButton>
-        <CustomButton customrootclass={CLASSES.btnControl}>
-          <FontAwesomeIcon icon={faForwardFast} size="2x" />
-        </CustomButton>
-      </div>
+        <div className={CLASSES.singerDetailsContainer}>
+          <h3>{songName}</h3>
+          <p>{singer}</p>
+        </div>
 
-      {/* <div>
-        <h3>Song Name</h3>
-        <p>Singer</p>
-      </div> */}
+        <div className={CLASSES.playerControl}>
+          <CustomButton customrootclass={CLASSES.btnControl} onClick={handlePlayPrev}>
+            <FontAwesomeIcon icon={faBackwardFast} size="2x" />
+          </CustomButton>
+          <CustomButton customButtonClassType="gradientCircle" onClick={onPlay}>
+            <FontAwesomeIcon icon={playing ? faPause : faPlay} size="2x" />
+          </CustomButton>
+          <CustomButton customrootclass={CLASSES.btnControl} onClick={handlePlayNext}>
+            <FontAwesomeIcon icon={faForwardFast} size="2x" />
+          </CustomButton>
+        </div>
 
-      <div>
-        <Duration seconds={(duration ?? 0) * (played ?? 0)} />/{" "}
-        <Duration seconds={duration ?? 0} />
-      </div>
-
-      <div className={CLASSES.bottomControlContainer}>
-        <CustomButton onClick={onMuted}>
-          <FontAwesomeIcon
-            icon={muted ? faVolumeMute : faVolumeUp}
-            size={"2x"}
-          />
-        </CustomButton>
+        <div className={CLASSES.musicControlContainer}>
+          <div className={CLASSES.durationContainer}>
+            <Duration seconds={(duration ?? 0) * (played ?? 0)} />/{" "}
+            <Duration seconds={duration ?? 0} />
+          </div>
+          <CustomButton onClick={onMuted}>
+            <FontAwesomeIcon
+              icon={muted ? faVolumeMute : faVolumeUp}
+              size={"2x"}
+            />
+          </CustomButton>
+        </div>
       </div>
     </div>
   );

@@ -50,12 +50,17 @@ body {
 }
 
 // Music Player Sliders
+.horizontal-slider {
+  width: 100%;
+  height: 10px;
+}
+
 .slider-thumb {
   height: 20px;
   line-height: 20px;
   width: 8px;
   text-align: center;
-  background-color: #f8386b;
+  background-color: colors.$yellowishOrange;
   cursor: grab;
   bottom: -5px;
 }
@@ -66,7 +71,7 @@ body {
 }
 
 .slider-track.slider-track-0 {
-  background: #f8386b;
+  background: colors.$yellowishOrange;
 }
 
 .slider-track.slider-track-1 {

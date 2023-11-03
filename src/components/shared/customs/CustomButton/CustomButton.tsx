@@ -3,7 +3,7 @@ import CLASSES from "./CustomButton.module.scss";
 
 interface CustomButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   customrootclass?: string;
-  customButtonClassType?: "gradientRound" | "round";
+  customButtonClassType?: "gradientRound" | "gradientCircle" | "round";
   children: ReactNode;
 }
 

@@ -18,6 +18,17 @@
     );
   }
 
+  button.gradientCircle {
+    padding: 10px;
+    min-width: 45px;
+    border-radius: 50%;
+    background: linear-gradient(
+      to left,
+      colors.$radicalRed,
+      colors.$cornFlowerBlue
+    );
+  }
+
   button.round {
     min-width: 150px;
     border: 2px solid colors.$white;
