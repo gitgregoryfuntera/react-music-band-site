@@ -51,12 +51,13 @@ body {
 
 // Music Player Sliders
 .slider-thumb {
-  height: 10px;
-  line-height: 10px;
-  width: 10px;
+  height: 20px;
+  line-height: 20px;
+  width: 8px;
   text-align: center;
   background-color: #f8386b;
   cursor: grab;
+  bottom: -5px;
 }
 
 .slider-track {
