@@ -10,6 +10,7 @@ import CustomButton from "@components/shared/customs/CustomButton/CustomButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPause, faPlay } from "@fortawesome/free-solid-svg-icons";
 import { useThemeContextProvider } from "@components/shared/context/themeContextHook";
+import AlbumClosing from "../AlbumClosing/AlbumClosing";
 
 const AlbumMusicPlayer = () => {
   const { version } = useThemeContextProvider();
@@ -50,7 +51,23 @@ const AlbumMusicPlayer = () => {
   return (
     <section className={`${CLASSES.root} ${CLASSES[version]}`}>
       <div className={CLASSES.wrapper}>
-        <div></div>
+        <div className={CLASSES.recordLabelContainer}>
+          <div className={CLASSES.label}>
+            <p>New Album</p>
+            <h2>Ghost EP</h2>
+          </div>
+
+          <div className={CLASSES.release}>
+            <div>
+              <p>Record Label</p>
+              <h4>Blackmas Music</h4>
+            </div>
+            <div>
+              <p>Release</p>
+              <h4>October 2020</h4>
+            </div>
+          </div>
+        </div>
 
         <div className={CLASSES.cardAlbumContainer}>
           <CustomCard>
@@ -165,7 +182,11 @@ const AlbumMusicPlayer = () => {
             handlePlayPrev={handlePlayPrev}
           />
         </div>
+
+        <AlbumClosing />
       </div>
+
+    
     </section>
   );
 };
