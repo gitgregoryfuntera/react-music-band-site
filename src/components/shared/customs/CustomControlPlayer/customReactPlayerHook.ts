@@ -2,14 +2,14 @@ import { LegacyRef, useReducer, useRef } from "react";
 import ReactPlayer from "react-player";
 import { BaseReactPlayerProps, OnProgressProps } from "react-player/base";
 
-type Music = {
+export type Music = {
   id: number;
   song: string;
   singer: string;
   track: string;
 };
 
-interface PlayerState {
+export interface PlayerState {
   duration: number;
   played: number;
   playing: boolean;

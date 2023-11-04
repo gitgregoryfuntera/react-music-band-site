@@ -1,0 +1,112 @@
+@use "../../../styles/commons/typography.scss" as *;
+@use "../../../styles/font-sizes" as fontSizes;
+@use "../../../styles/colors.scss" as colors;
+
+.root {
+  padding: 3rem 0;
+  .title {
+    @include h2CustomTitle;
+  }
+  .tourListContainer {
+    padding: 3rem 1rem;
+    min-width: 300px;
+    max-width: 950px;
+    margin: auto;
+    .tour {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      column-gap: 1rem;
+      row-gap: 1rem;
+      padding: 2rem 0;
+      .date {
+        .calendar {
+          padding: 1rem;
+          text-align: center;
+          color: colors.$white;
+          border-top-left-radius: 8px;
+          border-bottom-left-radius: 8px;
+          max-width: 50px;
+          background: linear-gradient(
+            to top,
+            colors.$radicalRed,
+            colors.$cornFlowerBlue
+          );
+          h3 {
+            letter-spacing: 4px;
+            font-size: fontSizes.$xlarge;
+          }
+        }
+      }
+
+      .detail {
+        min-width: 350px;
+        p {
+          color: colors.$cornFlowerBlue;
+        }
+      }
+
+      .time {
+        min-width: 290px;
+        letter-spacing: 2px;
+        .item {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          column-gap: 0.5rem;
+          .timestamp {
+            color: colors.$cornFlowerBlue;
+            font-weight: 500;
+          }
+        }
+      }
+
+      .action {
+        min-width: 180px;
+        .btn {
+          button {
+            width: 180px;
+            padding: 1rem 0;
+            font-weight: 800;
+          }
+        }
+      }
+    }
+  }
+}
+
+.light {
+  background-color: colors.$white;
+  color: colors.$black;
+  .tourListContainer {
+    .tour {
+      border-bottom: 1px solid colors.$black;
+      .action {
+        .btn {
+          button {
+            border: 2px solid colors.$black;
+            color: colors.$black;
+          }
+        }
+      }
+    }
+  }
+}
+
+.dark {
+  background-color: colors.$black;
+  color: colors.$white;
+  .tourListContainer {
+    .tour {
+      border-bottom: 1px solid colors.$white;
+      .action {
+        .btn {
+          button {
+            border: 2px solid colors.$white;
+            color: colors.$white;
+          }
+        }
+      }
+    }
+  }
+}

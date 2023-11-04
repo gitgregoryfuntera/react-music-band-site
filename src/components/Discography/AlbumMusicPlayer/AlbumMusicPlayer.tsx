@@ -6,15 +6,13 @@ import loveStory from "/assets/discography/love-story.mp3";
 import { useCustomReactPlayer } from "@components/shared/customs/CustomControlPlayer/customReactPlayerHook";
 import CustomCard from "@components/shared/customs/CustomCard/CustomCard";
 import albumImg from "/assets/discography/album.jpg";
-import CustomButton from "@components/shared/customs/CustomButton/CustomButton";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPause, faPlay } from "@fortawesome/free-solid-svg-icons";
 import { useThemeContextProvider } from "@components/shared/context/themeContextHook";
-import AlbumClosing from "../AlbumClosing/AlbumClosing";
+import AlbumClosing from "./AlbumClosing";
+import MusicPlayerListItem from "./MusicPlayerListItem";
 
 const AlbumMusicPlayer = () => {
   const { version } = useThemeContextProvider();
-  const availableMusic = [
+  const AVAILABLE_MUSIC = [
     {
       id: 1,
       song: "Love Story",
@@ -45,7 +43,7 @@ const AlbumMusicPlayer = () => {
     handlePlayNext,
     handlePlayPrev,
   } = useCustomReactPlayer({
-    playerList: availableMusic,
+    playerList: AVAILABLE_MUSIC,
   });
 
   return (
@@ -87,58 +85,13 @@ const AlbumMusicPlayer = () => {
                   </div>
                   <div>
                     <ul>
-                      {availableMusic.map((music) => (
-                        <li key={music.id}>
-                          <CustomButton
-                            onClick={() => {
-                              setPlayerState({
-                                music,
-                              });
-
-                              if (playerState?.music.id === music.id) {
-                                setPlayerState({
-                                  playing: true,
-                                });
-                              }
-
-                              if (
-                                playerState?.music.id === music.id &&
-                                playerState.playing
-                              ) {
-                                setPlayerState({
-                                  playing: false,
-                                });
-                              }
-                            }}
-                          >
-                            <div
-                              className={`${CLASSES.listItem} ${
-                                playerState?.music.id === music.id
-                                  ? CLASSES.selected
-                                  : ""
-                              }`}
-                            >
-                              <div className={CLASSES.playIcon}>
-                                <FontAwesomeIcon
-                                  size={"1x"}
-                                  transform={`down-7 ${
-                                    music.id === playerState.music.id &&
-                                    playerState.playing
-                                      ? ""
-                                      : "right-1"
-                                  }`}
-                                  icon={
-                                    music.id === playerState.music.id &&
-                                    playerState.playing
-                                      ? faPause
-                                      : faPlay
-                                  }
-                                />
-                              </div>
-                              <p>{music.song}</p>
-                            </div>
-                          </CustomButton>
-                        </li>
+                      {AVAILABLE_MUSIC.map((music) => (
+                        <MusicPlayerListItem
+                          key={music.id}
+                          music={music}
+                          playerState={playerState}
+                          setPlayerState={setPlayerState}
+                        />
                       ))}
                     </ul>
                   </div>
@@ -185,8 +138,6 @@ const AlbumMusicPlayer = () => {
 
         <AlbumClosing />
       </div>
-
-    
     </section>
   );
 };
