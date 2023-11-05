@@ -40,6 +40,11 @@ const HeaderNav = (props: HeaderNavProps) => {
       path: "/live-shows",
     },
     {
+      key: "about",
+      name: "About",
+      path: "/about",
+    },
+    {
       key: "gallery",
       name: "Gallery",
       path: "/gallery",

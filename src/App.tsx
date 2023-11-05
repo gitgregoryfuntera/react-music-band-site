@@ -17,6 +17,7 @@ import ThemeContextProvider from "@components/shared/context/ThemeContext";
 import Discography from "pages/Discography/Discography";
 import SingleAlbum from "pages/Discography/SingleAlbum";
 import Live from "pages/Live/Live";
+import Gallery from "pages/Gallery/Gallery";
 
 const App = () => {
   const router = createHashRouter(
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="/discography" element={<Discography />} />
         <Route path="/discography/:id" element={<SingleAlbum />} />
         <Route path="/live-shows" element={<Live />} />
+        <Route path="/gallery" element={<Gallery />} />
       </Route>,
     ),
   );

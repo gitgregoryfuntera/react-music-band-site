@@ -1,0 +1,94 @@
+@use "../../../styles/colors.scss" as colors;
+@use "../../../styles/font-sizes.scss" as fontSizes;
+
+.root {
+  padding: 2rem 0;
+  .content {
+    .tabHeader {
+      padding: 2rem 0;
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      column-gap: 1rem;
+      justify-content: center;
+      row-gap: 1rem;
+      li {
+        .btn {
+          button {
+            position: relative;
+            p {
+              font-size: fontSizes.$large;
+              font-weight: 700;
+            }
+            .underline {
+              position: absolute;
+              bottom: -5px;
+              left: 0;
+              right: 0;
+              height: 2px;
+              background-color: colors.$redPurple;
+            }
+          }
+        }
+        .btn.selected {
+          button {
+            p {
+              color: colors.$redPurple;
+            }
+          }
+        }
+      }
+    }
+
+    .tabContent {
+      max-width: 1400px;
+      margin: auto;
+      .items {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        .item {
+          .btn {
+            button {
+              max-width: 450px;
+              padding: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.light {
+  background-color: colors.$white;
+  color: colors.$black;
+  .content {
+    .tabHeader {
+      li {
+        .btn {
+          button {
+            color: colors.$black;
+          }
+        }
+      }
+    }
+  }
+}
+
+.dark {
+  background-color: colors.$black;
+  color: colors.$white;
+  .content {
+    .tabHeader {
+      li {
+        .btn {
+          button {
+            color: colors.$white;
+          }
+        }
+      }
+    }
+  }
+}
