@@ -1,0 +1,39 @@
+@use "../../../styles/commons/typography.scss" as *;
+@use "../../../styles/colors" as colors;
+@use "../../../styles/font-sizes.scss" as fontSizes;
+
+.root {
+  .content {
+    max-width: 1280px;
+    margin: auto;
+    .title {
+      @include h2CustomTitle;
+    }
+
+    .message {
+      padding: 2rem 0;
+      display: flex;
+      flex-direction: column;
+      row-gap: 2rem;
+      line-height: 3rem;
+      padding-inline: 1rem;
+      p {
+        font-size: fontSizes.$large;
+      }
+      h3 {
+        font-size: fontSizes.$xlarge;
+        font-family: "Unbounded", cursive;
+      }
+    }
+  }
+}
+
+.light {
+  background-color: colors.$white;
+  color: colors.$black;
+}
+
+.dark {
+  background-color: colors.$black;
+  color: colors.$white;
+}
