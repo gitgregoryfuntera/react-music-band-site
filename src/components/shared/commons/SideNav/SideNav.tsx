@@ -77,7 +77,7 @@ const SideNav = (props: SideNavProps) => {
         </li>
         <li>
           <div className={CLASSES.listItemWrapper}>
-            <CustomAnchorButton to="/">About</CustomAnchorButton>
+            <CustomAnchorButton to="/about">About</CustomAnchorButton>
           </div>
         </li>
         <li>
