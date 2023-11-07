@@ -6,7 +6,6 @@ import { Key, ReactNode, useState } from "react";
 import { motion, Variants } from "framer-motion";
 import PlayDialog from "../Dialogs/PlayDialog/PlayDialog";
 
-
 const SlideInMotionLeft = ({
   motionKey,
   children,
