@@ -180,6 +180,10 @@ const MediaContent = () => {
                     setOpen(true);
                     setSelectedMedia(item);
                   }}
+                  style={{
+                    background: `url(${item.image})`,
+                    backgroundSize: "contain",
+                  }}
                 >
                   <div className={CLASSES.btnOverlay} />
 
@@ -194,7 +198,7 @@ const MediaContent = () => {
                       size={"6x"}
                     />
                   </motion.div>
-                  <img src={item.image} width={"100%"} />
+                  {/* <img src={item.image} width={"100%"} /> */}
                 </CustomButton>
               </motion.div>
             ))}
