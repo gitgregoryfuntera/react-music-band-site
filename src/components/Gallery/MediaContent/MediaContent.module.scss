@@ -53,6 +53,34 @@
             button {
               max-width: 450px;
               padding: 0;
+              position: relative;
+              .btnOverlay,
+              .overlayIcon {
+                display: none;
+              }
+            }
+          }
+
+          .btn:hover {
+            button {
+              .btnOverlay {
+                position: absolute;
+                display: block;
+                background-color: #f40674;
+                height: 99%;
+                width: 100%;
+                opacity: 0.3;
+              }
+
+              .overlayIcon {
+                position: absolute;
+                display: block;
+                height: 100%;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+              }
             }
           }
         }

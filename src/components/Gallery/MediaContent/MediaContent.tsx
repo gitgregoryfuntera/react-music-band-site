@@ -13,6 +13,8 @@ import img6 from "/assets/gallery/media/gallery6.jpg";
 import CustomButton from "@components/shared/customs/CustomButton/CustomButton";
 import { useThemeContextProvider } from "@components/shared/context/themeContextHook";
 import ViewMediaDialog from "../Dialogs/ViewMediaDialog/ViewMediaDialog";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAdd, faPlay } from "@fortawesome/free-solid-svg-icons";
 
 type TabHeader = {
   id: number;
@@ -179,6 +181,19 @@ const MediaContent = () => {
                     setSelectedMedia(item);
                   }}
                 >
+                  <div className={CLASSES.btnOverlay} />
+
+                  <motion.div
+                    whileHover={{
+                      y: -20,
+                    }}
+                    className={CLASSES.overlayIcon}
+                  >
+                    <FontAwesomeIcon
+                      icon={item.tags.includes("videos") ? faPlay : faAdd}
+                      size={"6x"}
+                    />
+                  </motion.div>
                   <img src={item.image} width={"100%"} />
                 </CustomButton>
               </motion.div>

@@ -8,6 +8,8 @@ import {
   faClose,
 } from "@fortawesome/free-solid-svg-icons";
 import { Media } from "@components/Gallery/MediaContent/MediaContent";
+import { Variants, motion } from "framer-motion";
+import { useState } from "react";
 
 interface ViewMediaDialogProps {
   open: boolean;
@@ -19,6 +21,7 @@ interface ViewMediaDialogProps {
 
 const ViewMediaDialog = (props: ViewMediaDialogProps) => {
   const { open, handleOpen, media, setSelectedMedia, galleryItems } = props;
+  const [slideDirection, setSlideDirection] = useState("right");
 
   const handleOnPrev = () => {
     const currentIdx = galleryItems.findIndex((item) => item.id === media?.id);
@@ -27,6 +30,7 @@ const ViewMediaDialog = (props: ViewMediaDialogProps) => {
     setSelectedMedia(
       prevMedia ? prevMedia : galleryItems[galleryItems.length - 1],
     );
+    setSlideDirection("left");
   };
 
   const handleOnNext = () => {
@@ -34,6 +38,29 @@ const ViewMediaDialog = (props: ViewMediaDialogProps) => {
     const nextMediaIdx = currentIdx + 1;
     const nextMedia = galleryItems[nextMediaIdx];
     setSelectedMedia(nextMedia ? nextMedia : galleryItems[0]);
+    setSlideDirection("right");
+  };
+
+  const variantSlideRight: Variants = {
+    offscreen: {
+      opacity: 0,
+      x: -100,
+    },
+    onscreen: {
+      opacity: 1,
+      x: 0,
+    },
+  };
+
+  const variantSlideLeft: Variants = {
+    offscreen: {
+      opacity: 0,
+      x: 100,
+    },
+    onscreen: {
+      opacity: 1,
+      x: 0,
+    },
   };
 
   return (
@@ -52,7 +79,17 @@ const ViewMediaDialog = (props: ViewMediaDialogProps) => {
                   <FontAwesomeIcon icon={faClose} size={"2x"} />
                 </CustomButton>
               </div>
-              <div className={CLASSES.content}>
+              <motion.div
+                key={media?.id}
+                variants={
+                  slideDirection === "right"
+                    ? variantSlideRight
+                    : variantSlideLeft
+                }
+                whileInView={"onscreen"}
+                initial={"offscreen"}
+                className={CLASSES.content}
+              >
                 {media?.tags.includes("videos") ? (
                   <div className={CLASSES.mediaContainer}>
                     <iframe
@@ -70,7 +107,7 @@ const ViewMediaDialog = (props: ViewMediaDialogProps) => {
                     <img src={media?.image} width={"100%"} />
                   </div>
                 )}
-              </div>
+              </motion.div>
 
               <div className={CLASSES.btnContainer}>
                 <div className={CLASSES.btnActions}>
