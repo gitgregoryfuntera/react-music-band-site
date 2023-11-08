@@ -85,6 +85,11 @@ const SideNav = (props: SideNavProps) => {
             <CustomAnchorButton to="/gallery">Gallery</CustomAnchorButton>
           </div>
         </li>
+        <li>
+          <div className={CLASSES.listItemWrapper}>
+            <CustomAnchorButton to="/contact">Contact</CustomAnchorButton>
+          </div>
+        </li>
       </ul>
     </motion.nav>
   );

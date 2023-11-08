@@ -50,9 +50,9 @@ const HeaderNav = (props: HeaderNavProps) => {
       path: "/gallery",
     },
     {
-      key: "contacts",
-      name: "Contacts",
-      path: "/contacts",
+      key: "contact",
+      name: "Contact",
+      path: "/contact",
     },
   ];
 

@@ -19,6 +19,7 @@ import SingleAlbum from "pages/Discography/SingleAlbum";
 import Live from "pages/Live/Live";
 import Gallery from "pages/Gallery/Gallery";
 import About from "pages/About/About";
+import Contact from "pages/Contact/Contact";
 
 const App = () => {
   const router = createHashRouter(
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="/live-shows" element={<Live />} />
         <Route path="/about" element={<About />} />
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="/contact" element={<Contact />} />
       </Route>,
     ),
   );

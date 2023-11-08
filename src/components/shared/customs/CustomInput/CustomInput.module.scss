@@ -1,0 +1,20 @@
+@use "../../../../styles/colors.scss" as colors;
+
+.root {
+  input {
+    border: none;
+    width: 100%;
+    padding: 1rem;
+  }
+
+  input.default {
+    font-weight: 700;
+    padding: 1rem 0;
+    outline: 0;
+    border-bottom: 2px solid colors.$quillGrey;
+  }
+
+  input.default::placeholder {
+    font-weight: 700;
+  }
+}

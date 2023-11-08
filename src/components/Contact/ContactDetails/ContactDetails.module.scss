@@ -1,0 +1,59 @@
+@use "../../../styles/commons/typography.scss" as *;
+@use "../../../styles/colors" as colors;
+@use "../../../styles/font-sizes.scss" as fontSizes;
+
+.root {
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .title {
+      @include h2CustomTitle;
+    }
+    .content {
+      padding: 4rem 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      row-gap: 2rem;
+      column-gap: 10rem;
+      .contactContainer {
+        max-width: 500px;
+        min-width: 300px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 3rem;
+        .address {
+          display: flex;
+          flex-direction: column;
+          row-gap: 1rem;
+          .block {
+            font-size: fontSizes.$small;
+            .label {
+              color: colors.$redPink;
+            }
+            .value {
+              font-weight: 800;
+            }
+          }
+        }
+        .contactMessage {
+          font-size: fontSizes.$small;
+        }
+      }
+
+      .sendMessageContainer {
+        max-width: 500px;
+        min-width: 300px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 3rem;
+        .formContainer {
+          display: flex;
+          flex-direction: column;
+          row-gap: 1rem;
+        }
+      }
+    }
+  }
+}
