@@ -32,8 +32,9 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/contact" element={<Contact />} />
-      </Route>,
-    ),
+        <Route path="*" element={<Home />} />
+      </Route>
+    )
   );
   return (
     <ThemeContextProvider>

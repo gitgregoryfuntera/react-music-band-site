@@ -3,6 +3,7 @@
 @use "../../../styles/font-sizes.scss" as fontSizes;
 
 .root {
+  padding: 5rem 0;
   .content {
     max-width: 1280px;
     margin: auto;
