@@ -19,6 +19,7 @@ interface CustomControlPlayerProps extends ReactPlayerProps {
   duration?: number;
   songName: string;
   singer: string;
+  imgThumbnail?: string;
   onMuted?: () => void;
   handleSeekMouseDown?: () => void;
   handleSeekMouseUp?: (value: number) => void;
@@ -41,8 +42,13 @@ const CustomControlPlayer = (props: CustomControlPlayerProps) => {
     played,
     duration,
     songName,
+    imgThumbnail,
     singer,
   } = props;
+  console.log(
+    "🚀 ~ file: CustomControlPlayer.tsx:48 ~ CustomControlPlayer ~ imgThumbnail:",
+    imgThumbnail,
+  );
 
   return (
     <div className={`${CLASSES.root} ${customrootclass}`}>
@@ -66,8 +72,11 @@ const CustomControlPlayer = (props: CustomControlPlayerProps) => {
 
       <div className={CLASSES.controlContainer}>
         <div className={CLASSES.singerDetailsContainer}>
-          <h3>{songName}</h3>
-          <p>{singer}</p>
+          {imgThumbnail && <img src={imgThumbnail} />}
+          <div className={CLASSES.singerDetails}>
+            <h3>{songName}</h3>
+            <p>{singer}</p>
+          </div>
         </div>
 
         <div className={CLASSES.playerControl}>

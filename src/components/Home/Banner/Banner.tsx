@@ -13,7 +13,7 @@ import { faSpotify, faApple } from "@fortawesome/free-brands-svg-icons";
 
 import CustomButton from "@components/shared/customs/CustomButton/CustomButton";
 import { faCirclePlay } from "@fortawesome/free-regular-svg-icons";
-import SpotifyPlayer from "../SpotifyPlayer/SpotifyPlayer";
+import MusicPlayer from "../MusicPlayer/MusicPlayer";
 import { useMediaQuery } from "react-responsive";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -145,8 +145,8 @@ const HomeBanner = () => {
         </Swiper>
       </div>
       {isDesktopOrLaptop && (
-        <div className={CLASSES.spotifyPlayer}>
-          <SpotifyPlayer />
+        <div className={CLASSES.musicPlayer}>
+          <MusicPlayer />
         </div>
       )}
     </section>

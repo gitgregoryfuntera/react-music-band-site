@@ -7,6 +7,7 @@ export type Music = {
   song: string;
   singer: string;
   track: string;
+  imgThumbnail?: string;
 };
 
 export interface PlayerState {

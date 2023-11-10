@@ -104,8 +104,7 @@ const AlbumMusicPlayer = () => {
         <div className={CLASSES.playerContainer}>
           <ReactPlayer
             style={{
-              height: 0,
-              width: 0,
+              display: "none",
             }}
             className={CLASSES.player}
             ref={playerRef as LegacyRef<ReactPlayer>}

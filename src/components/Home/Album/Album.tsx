@@ -2,6 +2,7 @@ import { motion, Variants } from "framer-motion";
 import CLASSES from "./Album.module.scss";
 import { useMediaQuery } from "react-responsive";
 import { useThemeContextProvider } from "@components/shared/context/themeContextHook";
+import MusicPlayer from "../MusicPlayer/MusicPlayer";
 
 const variants: Variants = {
   in: {
@@ -38,6 +39,12 @@ const Album = () => {
       }}
       className={`${CLASSES.root} ${CLASSES[version]}`}
     >
+      {!isDesktopOrLaptop && (
+        <div className={CLASSES.musicPlayer}>
+          <MusicPlayer />
+        </div>
+      )}
+
       <motion.h2 variants={variants}>New Album</motion.h2>
       <motion.div variants={variants} className={CLASSES.spotifyEmbed}>
         <iframe

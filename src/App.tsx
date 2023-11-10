@@ -33,8 +33,8 @@ const App = () => {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<Home />} />
-      </Route>
-    )
+      </Route>,
+    ),
   );
   return (
     <ThemeContextProvider>
