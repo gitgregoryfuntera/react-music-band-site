@@ -3,7 +3,7 @@
 @use "../../../../styles/commons/typography.scss" as *;
 
 .root {
-  padding-bottom: 3rem;
+  padding: 3rem 0;
   background-color: colors.$black;
   color: colors.$white;
   .title {
