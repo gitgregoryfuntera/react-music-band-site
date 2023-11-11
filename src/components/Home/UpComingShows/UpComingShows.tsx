@@ -5,9 +5,13 @@ import image1 from "/assets/upcoming-shows/img1.jpg";
 import image2 from "/assets/upcoming-shows/img2.jpg";
 import image3 from "/assets/upcoming-shows/img3.jpg";
 import { useThemeContextProvider } from "@components/shared/context/themeContextHook";
+import { useNavigate } from "react-router-dom";
 
 const UpComingShows = () => {
   const { version } = useThemeContextProvider();
+
+  const navigate = useNavigate();
+
   const UPCOMING_SHOWS_IMG = [
     {
       id: 1,
@@ -49,6 +53,8 @@ const UpComingShows = () => {
               <CustomButton
                 customButtonClassType="gradientRound"
                 customrootclass={CLASSES.cardButton}
+                customButtonHoverType="radicalRedHover"
+                onClick={() => navigate("/live-shows")}
               >
                 <span>Book My Ticket</span>
               </CustomButton>
@@ -57,7 +63,11 @@ const UpComingShows = () => {
         ))}
       </div>
       <div className={CLASSES.buttonContainer}>
-        <CustomButton customButtonClassType="round">
+        <CustomButton
+          customButtonClassType="round"
+          customButtonHoverType="defaultHover"
+          onClick={() => navigate("/live-shows")}
+        >
           View All Shows
         </CustomButton>
       </div>

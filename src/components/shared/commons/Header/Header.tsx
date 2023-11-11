@@ -1,6 +1,11 @@
 import CLASSES from "./Header.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBars,
+  faMoon,
+  faSun,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 
 import HeaderNav from "./HeaderNav";
 import CustomButton from "@components/shared/customs/CustomButton/CustomButton";
@@ -15,7 +20,7 @@ interface HeaderProps {
 }
 
 const Header = (props: HeaderProps) => {
-  const { version } = useThemeContextProvider();
+  const { version, setThemeVersion } = useThemeContextProvider();
   const isDesktopOrLaptop = useMediaQuery({
     query: "(min-width: 1224px)",
   });
@@ -50,18 +55,27 @@ const Header = (props: HeaderProps) => {
           </CustomAnchorButton>
         </div>
         <HeaderNav isFadeIn={isFadeIn} />
-        {isDesktopOrLaptop ? (
-          <div className={CLASSES.menuContainer} /> //spacer
-        ) : (
-          <div className={CLASSES.menuContainer}>
+        <div className={CLASSES.menuContainer}>
+          <CustomButton
+            onClick={() =>
+              setThemeVersion(version === "light" ? "dark" : "light")
+            }
+          >
+            <FontAwesomeIcon
+              className={CLASSES.themeIcon}
+              icon={version === "light" ? faSun : faMoon}
+            />
+          </CustomButton>
+
+          {!isDesktopOrLaptop && (
             <CustomButton onClick={() => setIsSideNavOpen(!isSideNavOpen)}>
               <FontAwesomeIcon
                 className={CLASSES.barIcon}
                 icon={isSideNavOpen ? faXmark : faBars}
               />
             </CustomButton>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </header>
   );

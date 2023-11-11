@@ -39,4 +39,23 @@
   button:hover {
     cursor: pointer;
   }
+
+  button.defaultHover:hover {
+    background: colors.$white;
+    color: colors.$black;
+  }
+
+  button.radicalRedHover:hover {
+    background: colors.$white;
+    color: colors.$radicalRed;
+  }
+
+  button.gradientHover:hover {
+    background: linear-gradient(
+      to left,
+      colors.$radicalRed,
+      colors.$cornFlowerBlue
+    );
+    color: colors.$white;
+  }
 }

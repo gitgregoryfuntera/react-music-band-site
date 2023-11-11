@@ -1,10 +1,6 @@
 import CustomAnchorButton from "@components/shared/customs/CustomAnchorButton/CustomAnchorButton";
 import CLASSES from "./SideNav.module.scss";
 import { motion } from "framer-motion";
-import CustomButton from "@components/shared/customs/CustomButton/CustomButton";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAdd, faMinus } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
 import { useThemeContextProvider } from "@components/shared/context/themeContextHook";
 
 interface SideNavProps {
@@ -13,8 +9,7 @@ interface SideNavProps {
 }
 
 const SideNav = (props: SideNavProps) => {
-  const { version, setThemeVersion } = useThemeContextProvider();
-  const [isExpanded, setIsExpanded] = useState(false);
+  const { version } = useThemeContextProvider();
   const { isSideNavOpen, setIsSideNavOpen } = props;
 
   const variants = {
@@ -53,23 +48,7 @@ const SideNav = (props: SideNavProps) => {
             >
               Home
             </CustomAnchorButton>
-            <CustomButton
-              onClick={() => setIsExpanded((prevState) => !prevState)}
-            >
-              <FontAwesomeIcon icon={isExpanded ? faMinus : faAdd} />
-            </CustomButton>
           </div>
-          {isExpanded && (
-            <div className={CLASSES.listItemInner}>
-              <CustomButton
-                onClick={() =>
-                  setThemeVersion(version !== "dark" ? "dark" : "light")
-                }
-              >
-                {version === "light" ? "dark" : "light"} Version
-              </CustomButton>
-            </div>
-          )}
         </li>
         <li>
           <div className={CLASSES.listItemWrapper}>

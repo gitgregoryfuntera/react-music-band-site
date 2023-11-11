@@ -45,6 +45,11 @@
       }
       .socialCard:hover {
         cursor: pointer;
+        background: linear-gradient(
+          to left,
+          colors.$radicalRed,
+          colors.$cornFlowerBlue
+        );
       }
     }
     .contactInfoContainer {

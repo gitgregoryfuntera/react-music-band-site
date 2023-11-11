@@ -67,6 +67,15 @@
                 text-transform: uppercase;
                 min-width: 180px;
               }
+
+              button:hover {
+                background: linear-gradient(
+                  to left,
+                  colors.$radicalRed,
+                  colors.$cornFlowerBlue
+                );
+                color: colors.$white;
+              }
             }
           }
         }

@@ -11,6 +11,7 @@ import {
   slideLeftVariant,
   slideUpVariant,
 } from "@components/shared/animations/commonVariants";
+import CustomAnchorButton from "@components/shared/customs/CustomAnchorButton/CustomAnchorButton";
 
 const FeaturedPlaylist = () => {
   const { version } = useThemeContextProvider();
@@ -24,21 +25,25 @@ const FeaturedPlaylist = () => {
       image: image1,
       title: `Out Run Concept`,
       description: `History of Synth music, there is probably no one.`,
+      link: "https://open.spotify.com/album/6w8mGg73sQl4QJEhpDUvpI?si=DJlyJ2sQR_qtSubKyvvb9Q",
     },
     {
       image: image2,
       title: `Out Run Concept`,
       description: `History of Synth music, there is probably no one.`,
+      link: "https://open.spotify.com/album/6yiXkzHvC0OTmhfDQOEWtS?si=UE25-H30TXWX2W6JB8NY2g",
     },
     {
       image: image3,
       title: `Out Run Concept`,
       description: `History of Synth music, there is probably no one.`,
+      link: "https://open.spotify.com/album/6r1lh7fHMB499vGKtIyJLy?si=vbv9p7NmSDesAFtALRUw1w",
     },
     {
       image: image4,
       title: `Out Run Concept`,
       description: `History of Synth music, there is probably no one.`,
+      link: "https://open.spotify.com/album/1xJHno7SmdVtZAtXbdbDZp?si=Zb330j5NSDOKPeksmUqYQw",
     },
   ];
 
@@ -70,17 +75,22 @@ const FeaturedPlaylist = () => {
           <motion.div
             variants={variantsSlideLeft}
             key={`${item.title}-${index}`}
+            whileHover={{
+              y: -20,
+            }}
           >
             <CustomCard>
-              <div className={CLASSES.playlistWrapper}>
-                <div className={CLASSES.imgContainer}>
-                  <img src={item.image} />
+              <CustomAnchorButton to={item.link} target="_blank">
+                <div className={CLASSES.playlistWrapper}>
+                  <div className={CLASSES.imgContainer}>
+                    <img src={item.image} />
+                  </div>
+                  <div className={CLASSES.messageContainer}>
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
+                  </div>
                 </div>
-                <div className={CLASSES.messageContainer}>
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
-                </div>
-              </div>
+              </CustomAnchorButton>
             </CustomCard>
           </motion.div>
         ))}

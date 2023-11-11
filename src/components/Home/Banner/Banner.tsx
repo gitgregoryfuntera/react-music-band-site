@@ -94,6 +94,7 @@ const HomeBanner = () => {
                     <CustomButton
                       customrootclass={CLASSES.buttonWrapper}
                       customButtonClassType="round"
+                      customButtonHoverType="gradientHover"
                     >
                       <FontAwesomeIcon
                         icon={faSpotify}
