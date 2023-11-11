@@ -9,9 +9,13 @@ import cardImg4 from "/assets/discography/list/image4.jpg";
 import cardImg5 from "/assets/discography/list/image5.jpg";
 import cardImg6 from "/assets/discography/list/image6.jpg";
 
-import { Variants, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useThemeContextProvider } from "@components/shared/context/themeContextHook";
 import { useMediaQuery } from "react-responsive";
+import {
+  slideLeftVariant,
+  slideUpVariant,
+} from "@components/shared/animations/commonVariants";
 
 const List = () => {
   const { version } = useThemeContextProvider();
@@ -69,39 +73,17 @@ const List = () => {
     },
   ];
 
-  const variantSlideY: Variants = {
-    offscreen: {
-      opacity: 0,
-      y: 100,
-    },
-    onscreen: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        ease: "linear",
-        duration: 0.3,
-      },
-    },
-  };
-
-  const variantSlideX: Variants = {
-    onscreen: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        ease: "easeIn",
-      },
-    },
-    offscreen: {
-      opacity: 0,
-      x: -100,
-    },
-  };
-
+  const { variantKeys: variantSlideUpKeys, variants: variantsSlideUp } =
+    slideUpVariant();
+  const { variants: variantsSlideLeft } = slideLeftVariant();
   return (
     <motion.section
-      whileInView={"onscreen"}
-      initial={isDesktopOrLaptop ? "offscreen" : "onscreen"}
+      whileInView={variantSlideUpKeys.onscreen}
+      initial={
+        isDesktopOrLaptop
+          ? variantSlideUpKeys.offscreen
+          : variantSlideUpKeys.onscreen
+      }
       viewport={{
         once: true,
       }}
@@ -111,12 +93,12 @@ const List = () => {
       }}
       className={`${CLASSES.root} ${CLASSES[version]}`}
     >
-      <motion.div variants={variantSlideY} className={CLASSES.titleContainer}>
+      <motion.div variants={variantsSlideUp} className={CLASSES.titleContainer}>
         <h2>Discography</h2>
       </motion.div>
       <div className={CLASSES.row}>
         {ITEM_LIST.map((item) => (
-          <motion.div variants={variantSlideX}>
+          <motion.div variants={variantsSlideLeft}>
             <CustomCard customrootclass={CLASSES.card} key={item.id}>
               <CustomAnchorButton to={`/discography/${item.id}`}>
                 <div className={CLASSES.cardContent}>

@@ -21,7 +21,7 @@ const Album = () => {
       initial={isDesktopOrLaptop ? offscreen : onscreen}
       viewport={{
         once: true,
-        amount: 0.5
+        amount: 0.5,
       }}
       transition={{
         staggerChildren: 0.3,

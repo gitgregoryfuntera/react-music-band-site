@@ -24,7 +24,7 @@ const HomeBanner = () => {
     query: "(min-width: 1224px)",
   });
 
-  const variants:Variants = {
+  const variants: Variants = {
     in: {
       opacity: [0, 1],
       x: [100, 0],

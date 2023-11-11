@@ -3,81 +3,48 @@ import CLASSES from "./ContactDetails.module.scss";
 import CustomInput from "@components/shared/customs/CustomInput/CustomInput";
 import CustomTextArea from "@components/shared/customs/CustomTextArea/CustomTextArea";
 import CustomButton from "@components/shared/customs/CustomButton/CustomButton";
-import { Variants, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
+import {
+  slideLeftVariant,
+  slideRightVariant,
+  slideUpVariant,
+} from "@components/shared/animations/commonVariants";
 
 const ContactDetails = () => {
   const { version } = useThemeContextProvider();
   const isDesktopOrLaptop = useMediaQuery({
     query: "(min-width: 1224px)",
   });
-  const variantSlideUp: Variants = {
-    offscreen: {
-      opacity: 0,
-      y: 100,
-    },
-    onscreen: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        ease: "linear",
-        duration: 0.5,
-      },
-    },
-  };
 
-  const variantSlideLeft: Variants = {
-    offscreen: {
-      opacity: 0,
-      x: -100,
-    },
-    onscreen: {
-      x: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: "linear",
-      },
-    },
-  };
-
-  const variantSlideRight: Variants = {
-    offscreen: {
-      opacity: 0,
-      x: 100,
-    },
-    onscreen: {
-      x: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: "linear",
-      },
-    },
-  };
-
+  const { variantKeys: variantSlideUpKeys, variants: variantsSlideUp } =
+    slideUpVariant();
+  const { variants: variantsSlideLeftVariant } = slideLeftVariant();
+  const { variants: variantsSlideRightVariant } = slideRightVariant();
   return (
-    <section className={`${CLASSES.root} ${CLASSES[version]}`}>
+    <motion.section
+      whileInView={variantSlideUpKeys.onscreen}
+      initial={
+        isDesktopOrLaptop
+          ? variantSlideUpKeys.offscreen
+          : variantSlideUpKeys.onscreen
+      }
+      viewport={{
+        once: true,
+      }}
+      transition={{
+        staggerChildren: 0,
+        delayChildren: 0.3,
+      }}
+      className={`${CLASSES.root} ${CLASSES[version]}`}
+    >
       <div className={CLASSES.wrapper}>
-        <motion.div
-          whileInView={"onscreen"}
-          initial={isDesktopOrLaptop ? "offscreen" : "onscreen"}
-          variants={variantSlideUp}
-          viewport={{
-            once: true,
-          }}
-          className={CLASSES.title}
-        >
+        <motion.div variants={variantsSlideUp} className={CLASSES.title}>
           <h2>Get In Touch</h2>
         </motion.div>
         <div className={CLASSES.content}>
           <motion.div
-            whileInView={"onscreen"}
-            initial={isDesktopOrLaptop ? "offscreen" : "onscreen"}
-            variants={variantSlideLeft}
-            viewport={{
-              once: true,
-            }}
+            variants={variantsSlideLeftVariant}
             className={CLASSES.contactContainer}
           >
             <div className={CLASSES.email}>
@@ -104,12 +71,7 @@ const ContactDetails = () => {
           </motion.div>
 
           <motion.div
-            whileInView={"onscreen"}
-            initial={isDesktopOrLaptop ? "offscreen" : "onscreen"}
-            variants={variantSlideRight}
-            viewport={{
-              once: true,
-            }}
+            variants={variantsSlideRightVariant}
             className={CLASSES.sendMessageContainer}
           >
             <h3>Send Message</h3>
@@ -143,7 +105,7 @@ const ContactDetails = () => {
           </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

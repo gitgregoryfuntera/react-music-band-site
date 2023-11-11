@@ -1,10 +1,11 @@
 import { useThemeContextProvider } from "@components/shared/context/themeContextHook";
 import CLASSES from "./AlbumDetail.module.scss";
 import singleAlbumImg from "/assets/discography/single-album.png";
-import { Variants, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 import CustomAnchorButton from "@components/shared/customs/CustomAnchorButton/CustomAnchorButton";
 import { useLocation } from "react-router-dom";
+import { slideUpVariant } from "@components/shared/animations/commonVariants";
 
 const AlbumDetail = () => {
   const location = useLocation();
@@ -13,25 +14,12 @@ const AlbumDetail = () => {
     query: "(min-width: 1224px)",
   });
 
-  const variants: Variants = {
-    offscreen: {
-      opacity: 0,
-      y: 100,
-    },
-    onscreen: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        ease: "linear",
-        duration: 0.3,
-      },
-    },
-  };
+  const { variantKeys, variants } = slideUpVariant();
 
   return (
     <motion.section
-      whileInView={"onscreen"}
-      initial={isDesktopOrLaptop ? "offscreen" : "onscreen"}
+      whileInView={variantKeys.onscreen}
+      initial={isDesktopOrLaptop ? variantKeys.offscreen : variantKeys.onscreen}
       viewport={{
         once: true,
       }}

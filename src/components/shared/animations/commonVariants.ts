@@ -13,7 +13,7 @@ type CommonVariants = {
   variants: Variants;
 };
 
-interface CommonVariantsProps extends Record<VariantKeys, VariantTransitions> {}
+interface CommonVariantsProps extends Partial<Record<VariantKeys, VariantTransitions>> {}
 
 export const slideUpVariant = (props?: CommonVariantsProps): CommonVariants => {
   return {
@@ -39,7 +39,7 @@ export const slideUpVariant = (props?: CommonVariantsProps): CommonVariants => {
 };
 
 export const slideLeftVariant = (
-  props?: CommonVariantsProps
+  props?: CommonVariantsProps,
 ): CommonVariants => {
   return {
     variants: {
@@ -64,7 +64,7 @@ export const slideLeftVariant = (
 };
 
 export const slideRightVariant = (
-  props?: CommonVariantsProps
+  props?: CommonVariantsProps,
 ): CommonVariants => {
   return {
     variants: {
@@ -89,7 +89,7 @@ export const slideRightVariant = (
 };
 
 export const scaleToOneVariant = (
-  props?: CommonVariantsProps
+  props?: CommonVariantsProps,
 ): CommonVariants => {
   return {
     variants: {

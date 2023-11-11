@@ -4,7 +4,8 @@ import { faClock, faLocationArrow } from "@fortawesome/free-solid-svg-icons";
 import CustomButton from "@components/shared/customs/CustomButton/CustomButton";
 import { useThemeContextProvider } from "@components/shared/context/themeContextHook";
 import { useMediaQuery } from "react-responsive";
-import { Variants, motion } from "framer-motion";
+import { motion } from "framer-motion";
+import { slideUpVariant } from "@components/shared/animations/commonVariants";
 
 const Tours = () => {
   const { version } = useThemeContextProvider();
@@ -13,20 +14,6 @@ const Tours = () => {
     query: "(min-width: 1224px)",
   });
 
-  const variants: Variants = {
-    offscreen: {
-      opacity: 0,
-      y: 100,
-    },
-    onscreen: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        ease: "linear",
-        duration: 0.3,
-      },
-    },
-  };
   const TOURS = [
     {
       id: 1,
@@ -57,10 +44,12 @@ const Tours = () => {
       time: "11:45 PM",
     },
   ];
+
+  const { variantKeys, variants } = slideUpVariant()
   return (
     <motion.section
-      whileInView={"onscreen"}
-      initial={isDesktopOrLaptop ? "offscreen" : "onscreen"}
+      whileInView={variantKeys.onscreen}
+      initial={isDesktopOrLaptop ? variantKeys.offscreen : variantKeys.onscreen}
       viewport={{
         once: true,
       }}

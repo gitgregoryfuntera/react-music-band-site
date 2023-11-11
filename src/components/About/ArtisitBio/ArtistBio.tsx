@@ -2,7 +2,8 @@ import { useThemeContextProvider } from "@components/shared/context/themeContext
 import CLASSES from "./ArtistBio.module.scss";
 import aboutImg from "/assets/about/about-img.jpg";
 import { useMediaQuery } from "react-responsive";
-import { Variants, motion } from "framer-motion";
+import { motion } from "framer-motion";
+import { slideUpVariant } from "@components/shared/animations/commonVariants";
 
 const ArtistBio = () => {
   const { version } = useThemeContextProvider();
@@ -11,25 +12,18 @@ const ArtistBio = () => {
     query: "(min-width: 1224px)",
   });
 
-  const variants: Variants = {
-    offscreen: {
-      opacity: 0,
-      y: 100,
-    },
+  const { variantKeys, variants } = slideUpVariant({
     onscreen: {
-      opacity: 1,
-      y: 0,
       transition: {
-        ease: "linear",
         duration: 0.5,
       },
     },
-  };
+  });
 
   return (
     <motion.section
-      whileInView={"onscreen"}
-      initial={isDesktopOrLaptop ? "offscreen" : "onscreen"}
+      whileInView={variantKeys.onscreen}
+      initial={isDesktopOrLaptop ? variantKeys.offscreen : variantKeys.onscreen}
       viewport={{
         once: true,
       }}

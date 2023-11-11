@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 import CLASSES from "./MediaContent.module.scss";
-
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 
 import img1 from "/assets/gallery/media/gallery1.jpg";
 import img2 from "/assets/gallery/media/gallery2.jpg";
@@ -15,6 +14,7 @@ import { useThemeContextProvider } from "@components/shared/context/themeContext
 import ViewMediaDialog from "../Dialogs/ViewMediaDialog/ViewMediaDialog";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAdd, faPlay } from "@fortawesome/free-solid-svg-icons";
+import { scaleToOneVariant } from "@components/shared/animations/commonVariants";
 
 type TabHeader = {
   id: number;
@@ -50,7 +50,7 @@ const MediaContent = () => {
   ];
 
   const [selectedTabHeader, setSelectedTabHeader] = useState<TabHeader>(
-    TAB_HEADERS[0],
+    TAB_HEADERS[0]
   );
 
   const [selectedMedia, setSelectedMedia] = useState<Media | null>(null);
@@ -95,40 +95,26 @@ const MediaContent = () => {
     ];
     if (selectedTabHeader.id === 2) {
       return MEDIA_ASSETS.filter((media) =>
-        media.tags.includes("live-shows"),
+        media.tags.includes("live-shows")
       ).sort((mediaA, mediaB) => mediaA.id - mediaB.id);
     }
 
     if (selectedTabHeader.id === 3) {
       return MEDIA_ASSETS.filter((media) => media.tags.includes("photos")).sort(
-        (mediaA, mediaB) => mediaA.id - mediaB.id,
+        (mediaA, mediaB) => mediaA.id - mediaB.id
       );
     }
 
     if (selectedTabHeader.id === 4) {
       return MEDIA_ASSETS.filter((media) => media.tags.includes("videos")).sort(
-        (mediaA, mediaB) => mediaA.id - mediaB.id,
+        (mediaA, mediaB) => mediaA.id - mediaB.id
       );
     }
 
     return MEDIA_ASSETS.sort((mediaA, mediaB) => mediaA.id - mediaB.id);
   }, [selectedTabHeader.id]);
 
-  const variants: Variants = {
-    offscreen: {
-      opacity: 0,
-      y: 100,
-      scale: 0,
-    },
-    onscreen: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        ease: "linear",
-      },
-    },
-  };
+  const { variantKeys, variants } = scaleToOneVariant();
 
   return (
     <section className={`${CLASSES.root} ${CLASSES[version]}`}>
@@ -157,8 +143,8 @@ const MediaContent = () => {
         <div className={CLASSES.tabContent}>
           <motion.div
             key={`${selectedTabHeader.id}`}
-            initial={"offscreen"}
-            whileInView={"onscreen"}
+            initial={variantKeys.offscreen}
+            whileInView={variantKeys.onscreen}
             className={CLASSES.items}
             viewport={{
               once: true,

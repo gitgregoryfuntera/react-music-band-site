@@ -8,8 +8,12 @@ import {
   faClose,
 } from "@fortawesome/free-solid-svg-icons";
 import { Media } from "@components/Gallery/MediaContent/MediaContent";
-import { Variants, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState } from "react";
+import {
+  slideLeftVariant,
+  slideRightVariant,
+} from "@components/shared/animations/commonVariants";
 
 interface ViewMediaDialogProps {
   open: boolean;
@@ -28,7 +32,7 @@ const ViewMediaDialog = (props: ViewMediaDialogProps) => {
     const prevMediaIdx = currentIdx - 1;
     const prevMedia = galleryItems[prevMediaIdx];
     setSelectedMedia(
-      prevMedia ? prevMedia : galleryItems[galleryItems.length - 1],
+      prevMedia ? prevMedia : galleryItems[galleryItems.length - 1]
     );
     setSlideDirection("left");
   };
@@ -41,27 +45,8 @@ const ViewMediaDialog = (props: ViewMediaDialogProps) => {
     setSlideDirection("right");
   };
 
-  const variantSlideRight: Variants = {
-    offscreen: {
-      opacity: 0,
-      x: -100,
-    },
-    onscreen: {
-      opacity: 1,
-      x: 0,
-    },
-  };
-
-  const variantSlideLeft: Variants = {
-    offscreen: {
-      opacity: 0,
-      x: 100,
-    },
-    onscreen: {
-      opacity: 1,
-      x: 0,
-    },
-  };
+  const { variants: variantsSlideLeft } = slideLeftVariant();
+  const { variants: variantsSlideRight } = slideRightVariant();
 
   return (
     <>
@@ -83,8 +68,8 @@ const ViewMediaDialog = (props: ViewMediaDialogProps) => {
                 key={media?.id}
                 variants={
                   slideDirection === "right"
-                    ? variantSlideRight
-                    : variantSlideLeft
+                    ? variantsSlideLeft
+                    : variantsSlideRight
                 }
                 whileInView={"onscreen"}
                 initial={"offscreen"}
