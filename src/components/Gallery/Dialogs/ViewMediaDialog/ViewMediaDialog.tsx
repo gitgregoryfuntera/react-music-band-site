@@ -32,7 +32,7 @@ const ViewMediaDialog = (props: ViewMediaDialogProps) => {
     const prevMediaIdx = currentIdx - 1;
     const prevMedia = galleryItems[prevMediaIdx];
     setSelectedMedia(
-      prevMedia ? prevMedia : galleryItems[galleryItems.length - 1]
+      prevMedia ? prevMedia : galleryItems[galleryItems.length - 1],
     );
     setSlideDirection("left");
   };

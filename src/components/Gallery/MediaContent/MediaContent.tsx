@@ -50,7 +50,7 @@ const MediaContent = () => {
   ];
 
   const [selectedTabHeader, setSelectedTabHeader] = useState<TabHeader>(
-    TAB_HEADERS[0]
+    TAB_HEADERS[0],
   );
 
   const [selectedMedia, setSelectedMedia] = useState<Media | null>(null);
@@ -95,19 +95,19 @@ const MediaContent = () => {
     ];
     if (selectedTabHeader.id === 2) {
       return MEDIA_ASSETS.filter((media) =>
-        media.tags.includes("live-shows")
+        media.tags.includes("live-shows"),
       ).sort((mediaA, mediaB) => mediaA.id - mediaB.id);
     }
 
     if (selectedTabHeader.id === 3) {
       return MEDIA_ASSETS.filter((media) => media.tags.includes("photos")).sort(
-        (mediaA, mediaB) => mediaA.id - mediaB.id
+        (mediaA, mediaB) => mediaA.id - mediaB.id,
       );
     }
 
     if (selectedTabHeader.id === 4) {
       return MEDIA_ASSETS.filter((media) => media.tags.includes("videos")).sort(
-        (mediaA, mediaB) => mediaA.id - mediaB.id
+        (mediaA, mediaB) => mediaA.id - mediaB.id,
       );
     }
 

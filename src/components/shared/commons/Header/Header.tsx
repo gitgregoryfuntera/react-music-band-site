@@ -7,6 +7,7 @@ import CustomButton from "@components/shared/customs/CustomButton/CustomButton";
 import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { useThemeContextProvider } from "@components/shared/context/themeContextHook";
+import CustomAnchorButton from "@components/shared/customs/CustomAnchorButton/CustomAnchorButton";
 
 interface HeaderProps {
   setIsSideNavOpen: (prop: boolean) => void;
@@ -44,7 +45,9 @@ const Header = (props: HeaderProps) => {
     >
       <div className={CLASSES.wrapper}>
         <div className={CLASSES.logoContainer}>
-          <h1>Logo.</h1>
+          <CustomAnchorButton to={"/"} customrootclass={CLASSES.logoBtn}>
+            <h1>Logo.</h1>
+          </CustomAnchorButton>
         </div>
         <HeaderNav isFadeIn={isFadeIn} />
         {isDesktopOrLaptop ? (

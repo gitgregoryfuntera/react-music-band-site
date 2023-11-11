@@ -13,7 +13,8 @@ type CommonVariants = {
   variants: Variants;
 };
 
-interface CommonVariantsProps extends Partial<Record<VariantKeys, VariantTransitions>> {}
+interface CommonVariantsProps
+  extends Partial<Record<VariantKeys, VariantTransitions>> {}
 
 export const slideUpVariant = (props?: CommonVariantsProps): CommonVariants => {
   return {

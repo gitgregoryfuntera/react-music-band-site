@@ -8,13 +8,14 @@ import { useState } from "react";
 import { useThemeContextProvider } from "@components/shared/context/themeContextHook";
 
 interface SideNavProps {
-  isOpen: boolean;
+  isSideNavOpen: boolean;
+  setIsSideNavOpen: (isSideNavOpen: boolean) => void;
 }
 
 const SideNav = (props: SideNavProps) => {
   const { version, setThemeVersion } = useThemeContextProvider();
   const [isExpanded, setIsExpanded] = useState(false);
-  const { isOpen } = props;
+  const { isSideNavOpen, setIsSideNavOpen } = props;
 
   const variants = {
     open: {
@@ -37,7 +38,7 @@ const SideNav = (props: SideNavProps) => {
   return (
     <motion.nav
       className={`${CLASSES.root} ${CLASSES[version]}`}
-      animate={isOpen ? "open" : "closed"}
+      animate={isSideNavOpen ? "open" : "closed"}
       variants={variants}
       transition={{
         duration: 0.5,
@@ -46,7 +47,12 @@ const SideNav = (props: SideNavProps) => {
       <ul>
         <li>
           <div className={CLASSES.listItemWrapper}>
-            <CustomAnchorButton to="/">Home</CustomAnchorButton>
+            <CustomAnchorButton
+              to="/"
+              onClick={() => setIsSideNavOpen(!isSideNavOpen)}
+            >
+              Home
+            </CustomAnchorButton>
             <CustomButton
               onClick={() => setIsExpanded((prevState) => !prevState)}
             >
@@ -67,27 +73,52 @@ const SideNav = (props: SideNavProps) => {
         </li>
         <li>
           <div className={CLASSES.listItemWrapper}>
-            <CustomAnchorButton to="/discography">Albums</CustomAnchorButton>
+            <CustomAnchorButton
+              to="/discography"
+              onClick={() => setIsSideNavOpen(!isSideNavOpen)}
+            >
+              Albums
+            </CustomAnchorButton>
           </div>
         </li>
         <li>
           <div className={CLASSES.listItemWrapper}>
-            <CustomAnchorButton to="/live-shows">Live</CustomAnchorButton>
+            <CustomAnchorButton
+              to="/live-shows"
+              onClick={() => setIsSideNavOpen(!isSideNavOpen)}
+            >
+              Live
+            </CustomAnchorButton>
           </div>
         </li>
         <li>
           <div className={CLASSES.listItemWrapper}>
-            <CustomAnchorButton to="/about">About</CustomAnchorButton>
+            <CustomAnchorButton
+              to="/about"
+              onClick={() => setIsSideNavOpen(!isSideNavOpen)}
+            >
+              About
+            </CustomAnchorButton>
           </div>
         </li>
         <li>
           <div className={CLASSES.listItemWrapper}>
-            <CustomAnchorButton to="/gallery">Gallery</CustomAnchorButton>
+            <CustomAnchorButton
+              to="/gallery"
+              onClick={() => setIsSideNavOpen(!isSideNavOpen)}
+            >
+              Gallery
+            </CustomAnchorButton>
           </div>
         </li>
         <li>
           <div className={CLASSES.listItemWrapper}>
-            <CustomAnchorButton to="/contact">Contact</CustomAnchorButton>
+            <CustomAnchorButton
+              to="/contact"
+              onClick={() => setIsSideNavOpen(!isSideNavOpen)}
+            >
+              Contact
+            </CustomAnchorButton>
           </div>
         </li>
       </ul>

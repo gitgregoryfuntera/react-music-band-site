@@ -11,8 +11,12 @@
     flex-wrap: wrap;
     justify-content: space-between;
     .logoContainer {
-      h1 {
-        padding: 0.5rem;
+      .logoBtn {
+        a {
+          h1 {
+            padding-inline: 1rem;
+          }
+        }
       }
     }
     .menuContainer {
@@ -24,20 +28,18 @@
   }
 }
 
-.root.fadeIn {
-  animation: fadeIn 0.5s ease-in;
-  background-color: colors.$white;
-  color: colors.$black;
-  .menuContainer {
-    .barIcon {
-      color: colors.$black;
-    }
-  }
-}
-
 .root.light {
   background-color: colors.$black;
   color: colors.$white;
+  .logoContainer {
+    .logoBtn {
+      a {
+        h1 {
+          color: colors.$white;
+        }
+      }
+    }
+  }
   .menuContainer {
     .barIcon {
       color: colors.$white;
@@ -48,6 +50,15 @@
 .root.light.fadeIn {
   background-color: colors.$white;
   color: colors.$black;
+  .logoContainer {
+    .logoBtn {
+      a {
+        h1 {
+          color: colors.$black;
+        }
+      }
+    }
+  }
   .menuContainer {
     .barIcon {
       color: colors.$black;
@@ -58,6 +69,15 @@
 .root.dark {
   background-color: colors.$white;
   color: colors.$black;
+  .logoContainer {
+    .logoBtn {
+      a {
+        h1 {
+          color: colors.$black;
+        }
+      }
+    }
+  }
   .menuContainer {
     .barIcon {
       color: colors.$black;
@@ -68,6 +88,15 @@
 .root.dark.fadeIn {
   background-color: colors.$black;
   color: colors.$white;
+  .logoContainer {
+    .logoBtn {
+      a {
+        h1 {
+          color: colors.$white;
+        }
+      }
+    }
+  }
   .menuContainer {
     .barIcon {
       color: colors.$white;

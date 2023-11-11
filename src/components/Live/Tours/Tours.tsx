@@ -45,7 +45,7 @@ const Tours = () => {
     },
   ];
 
-  const { variantKeys, variants } = slideUpVariant()
+  const { variantKeys, variants } = slideUpVariant();
   return (
     <motion.section
       whileInView={variantKeys.onscreen}
