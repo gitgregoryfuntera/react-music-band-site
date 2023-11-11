@@ -1,7 +1,7 @@
-@use "../../../styles/commons/typography.scss" as *;
+@use "../../../styles/commons/utilities.scss" as *;
 @use "../../../styles/colors" as colors;
-@use "../../../styles/font-sizes.scss" as fontSizes;
-@use "../../../styles/media-queries.scss" as *;
+@use "../../../styles/fontSizes.scss" as fontSizes;
+@use "../../../styles/mediaQueries.scss" as *;
 
 .root {
   padding: 3rem 0;

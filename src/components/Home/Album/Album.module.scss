@@ -1,6 +1,6 @@
-@use "../../../styles/font-sizes.scss" as fontSizes;
+@use "../../../styles/fontSizes.scss" as fontSizes;
 @use "../../../styles/colors.scss" as colors;
-@use "../../../styles/commons/typography.scss" as *;
+@use "../../../styles/commons/utilities.scss" as *;
 
 .root {
   @include h2CustomTitle;

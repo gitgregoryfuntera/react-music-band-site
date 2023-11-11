@@ -18,7 +18,8 @@ const Footer = () => {
             Reference{" "}
             <CustomAnchorButton
               customrootclass={CLASSES.website}
-              to="http://preview.themeforest.net/item/vyrva-music-band-musician-template/full_screen_preview/46935654?_ga=2.125948941.1471238601.1692440368-1395985756.1609849438&_gac=1.154807882.1692275436.CjwKCAjwivemBhBhEiwAJxNWNw-Q0ykQH5JE2T5ZZ0j9rFNuxmyqZ8FA4O7RTGAaUCQW7xtwku42RRoCXL4QAvD_BwE"
+              target="_blank"
+              to="https://themeforest.net/item/vyrva-music-band-musician-template/46935654"
             >
               website
             </CustomAnchorButton>
