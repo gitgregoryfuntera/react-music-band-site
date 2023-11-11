@@ -24,6 +24,16 @@
         justify-content: space-between;
         padding: 1rem;
         border-bottom: 1px solid colors.$cyanBlue;
+        position: relative;
+        .underline {
+          position: absolute;
+          left: 3px;
+          right: 0;
+          height: 2px;
+          background-color: colors.$white;
+          top: 25px;
+          width: 35%;
+        }
       }
       .listItemInner {
         padding: 2rem;

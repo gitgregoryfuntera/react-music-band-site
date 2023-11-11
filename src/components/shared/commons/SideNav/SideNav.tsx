@@ -2,6 +2,7 @@ import CustomAnchorButton from "@components/shared/customs/CustomAnchorButton/Cu
 import CLASSES from "./SideNav.module.scss";
 import { motion } from "framer-motion";
 import { useThemeContextProvider } from "@components/shared/context/themeContextHook";
+import { useLocation } from "react-router-dom";
 
 interface SideNavProps {
   isSideNavOpen: boolean;
@@ -10,6 +11,7 @@ interface SideNavProps {
 
 const SideNav = (props: SideNavProps) => {
   const { version } = useThemeContextProvider();
+  const { pathname } = useLocation();
   const { isSideNavOpen, setIsSideNavOpen } = props;
 
   const variants = {
@@ -47,6 +49,7 @@ const SideNav = (props: SideNavProps) => {
               onClick={() => setIsSideNavOpen(!isSideNavOpen)}
             >
               Home
+              {pathname === "/" && <div className={CLASSES.underline} />}
             </CustomAnchorButton>
           </div>
         </li>
@@ -57,6 +60,9 @@ const SideNav = (props: SideNavProps) => {
               onClick={() => setIsSideNavOpen(!isSideNavOpen)}
             >
               Albums
+              {pathname === "/discography" && (
+                <div className={CLASSES.underline} />
+              )}
             </CustomAnchorButton>
           </div>
         </li>
@@ -67,6 +73,9 @@ const SideNav = (props: SideNavProps) => {
               onClick={() => setIsSideNavOpen(!isSideNavOpen)}
             >
               Live
+              {pathname === "/live-shows" && (
+                <div className={CLASSES.underline} />
+              )}
             </CustomAnchorButton>
           </div>
         </li>
@@ -77,6 +86,7 @@ const SideNav = (props: SideNavProps) => {
               onClick={() => setIsSideNavOpen(!isSideNavOpen)}
             >
               About
+              {pathname === "/about" && <div className={CLASSES.underline} />}
             </CustomAnchorButton>
           </div>
         </li>
@@ -87,6 +97,7 @@ const SideNav = (props: SideNavProps) => {
               onClick={() => setIsSideNavOpen(!isSideNavOpen)}
             >
               Gallery
+              {pathname === "/gallery" && <div className={CLASSES.underline} />}
             </CustomAnchorButton>
           </div>
         </li>
@@ -97,6 +108,7 @@ const SideNav = (props: SideNavProps) => {
               onClick={() => setIsSideNavOpen(!isSideNavOpen)}
             >
               Contact
+              {pathname === "/contact" && <div className={CLASSES.underline} />}
             </CustomAnchorButton>
           </div>
         </li>
