@@ -15,7 +15,7 @@ import CustomButton from "@components/shared/customs/CustomButton/CustomButton";
 import { faCirclePlay } from "@fortawesome/free-regular-svg-icons";
 import MusicPlayer from "../MusicPlayer/MusicPlayer";
 import { useMediaQuery } from "react-responsive";
-import { motion } from "framer-motion";
+import { Variants, motion } from "framer-motion";
 import { useState } from "react";
 
 const HomeBanner = () => {
@@ -24,7 +24,7 @@ const HomeBanner = () => {
     query: "(min-width: 1224px)",
   });
 
-  const variants = {
+  const variants:Variants = {
     in: {
       opacity: [0, 1],
       x: [100, 0],

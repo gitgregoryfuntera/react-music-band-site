@@ -1,23 +1,9 @@
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import CLASSES from "./Album.module.scss";
 import { useMediaQuery } from "react-responsive";
 import { useThemeContextProvider } from "@components/shared/context/themeContextHook";
 import MusicPlayer from "../MusicPlayer/MusicPlayer";
-
-const variants: Variants = {
-  in: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      ease: "linear",
-      duration: 0.3,
-    },
-  },
-  out: {
-    opacity: 0,
-    y: 100,
-  },
-};
+import { slideUpVariant } from "@components/shared/animations/commonVariants";
 
 const Album = () => {
   const { version } = useThemeContextProvider();
@@ -26,12 +12,16 @@ const Album = () => {
     query: "(min-width: 1224px)",
   });
 
+  const { variantKeys, variants } = slideUpVariant();
+  const { offscreen, onscreen } = variantKeys;
+
   return (
     <motion.section
-      whileInView={"in"}
-      initial={isDesktopOrLaptop ? "out" : "in"}
+      whileInView={onscreen}
+      initial={isDesktopOrLaptop ? offscreen : onscreen}
       viewport={{
         once: true,
+        amount: 0.5
       }}
       transition={{
         staggerChildren: 0.3,

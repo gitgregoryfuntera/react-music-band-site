@@ -45,10 +45,6 @@ const CustomControlPlayer = (props: CustomControlPlayerProps) => {
     imgThumbnail,
     singer,
   } = props;
-  console.log(
-    "🚀 ~ file: CustomControlPlayer.tsx:48 ~ CustomControlPlayer ~ imgThumbnail:",
-    imgThumbnail,
-  );
 
   return (
     <div className={`${CLASSES.root} ${customrootclass}`}>

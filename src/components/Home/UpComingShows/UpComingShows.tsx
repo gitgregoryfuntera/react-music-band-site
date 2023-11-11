@@ -6,23 +6,23 @@ import image2 from "/assets/upcoming-shows/img2.jpg";
 import image3 from "/assets/upcoming-shows/img3.jpg";
 import { useThemeContextProvider } from "@components/shared/context/themeContextHook";
 
-const UPCOMING_SHOWS_IMG = [
-  {
-    id: 1,
-    image: image1,
-  },
-  {
-    id: 2,
-    image: image2,
-  },
-  {
-    id: 3,
-    image: image3,
-  },
-];
-
 const UpComingShows = () => {
   const { version } = useThemeContextProvider();
+  const UPCOMING_SHOWS_IMG = [
+    {
+      id: 1,
+      image: image1,
+    },
+    {
+      id: 2,
+      image: image2,
+    },
+    {
+      id: 3,
+      image: image3,
+    },
+  ];
+
   return (
     <section className={`${CLASSES.root} ${CLASSES[version]}`}>
       <div className={CLASSES.title}>

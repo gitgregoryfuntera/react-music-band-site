@@ -7,87 +7,14 @@ import {
   faThreads,
   faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import { AnimatePresence, Variants, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
-import { Key, ReactNode } from "react";
 import artistBioImg from "/assets/artist_bio_image.png";
 import { useThemeContextProvider } from "@components/shared/context/themeContextHook";
-
-const SlideInMotionRight = ({
-  motionKey,
-  children,
-  className,
-  isDesktopOrLaptop,
-}: {
-  motionKey: Key;
-  children: ReactNode;
-  className: string;
-  isDesktopOrLaptop: boolean;
-}) => {
-  const variants: Variants = {
-    offscreen: {
-      opacity: 0,
-      x: 100,
-    },
-    onscreen: {
-      x: 0,
-      opacity: 1,
-      transition: {
-        ease: "linear",
-      },
-    },
-  };
-  return (
-    <motion.div
-      key={motionKey}
-      className={className}
-      initial={isDesktopOrLaptop ? "offscreen" : "onscreen"}
-      whileInView="onscreen"
-      viewport={{ once: true, amount: 0.8 }}
-      variants={variants}
-    >
-      {children}
-    </motion.div>
-  );
-};
-
-const SlideInMotionLeft = ({
-  motionKey,
-  children,
-  className,
-  isDesktopOrLaptop,
-}: {
-  motionKey: Key;
-  children: ReactNode;
-  isDesktopOrLaptop: boolean;
-  className: string;
-}) => {
-  const variants: Variants = {
-    offscreen: {
-      opacity: 0,
-      x: -100,
-    },
-    onscreen: {
-      x: 0,
-      opacity: 1,
-      transition: {
-        ease: "linear",
-      },
-    },
-  };
-  return (
-    <motion.div
-      key={motionKey}
-      className={className}
-      initial={isDesktopOrLaptop ? "offscreen" : "onscreen"}
-      whileInView="onscreen"
-      viewport={{ once: true }}
-      variants={variants}
-    >
-      {children}
-    </motion.div>
-  );
-};
+import {
+  slideLeftVariant,
+  slideRightVariant,
+} from "@components/shared/animations/commonVariants";
 
 const ArtistBio = () => {
   const { version } = useThemeContextProvider();
@@ -95,59 +22,68 @@ const ArtistBio = () => {
     query: "(min-width: 1224px)",
   });
 
+  const { variantKeys: variantKeysLeft, variants: variantsLeft } =
+    slideLeftVariant();
+  const { variants: variantsRight } = slideRightVariant();
+
   return (
-    <section className={`${CLASSES.root} ${CLASSES[version]}`}>
+    <motion.section
+      initial={
+        isDesktopOrLaptop ? variantKeysLeft.offscreen : variantKeysLeft.onscreen
+      }
+      whileInView={variantKeysLeft.onscreen}
+      viewport={{
+        once: true,
+        amount: 0.8,
+      }}
+      transition={{
+        staggerChildren: 0,
+        delayChildren: 0,
+      }}
+      className={`${CLASSES.root} ${CLASSES[version]}`}
+    >
       <div className={CLASSES.row}>
-        <AnimatePresence>
-          <SlideInMotionLeft
-            motionKey={"slideLeft"}
-            isDesktopOrLaptop={isDesktopOrLaptop}
-            className={CLASSES.artistBioContainer}
-          >
-            <div className={CLASSES.title}>
-              <h2>Artist Bio</h2>
-            </div>
-            <div className={CLASSES.bioContent}>
-              <q>
-                If I can play one note and make you cry, then that's better than
-                those fancy dancers playing twenty notes.
-              </q>
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio,
-                maxime ab facilis id explicabo accusantium doloremque ad quod
-                consectetur inventore sequi. Ad temporibus fugit voluptates
-                tempora perferendis sunt pariatur eveniet?
-              </p>
-            </div>
+        <motion.div
+          variants={variantsLeft}
+          className={CLASSES.artistBioContainer}
+        >
+          <div className={CLASSES.title}>
+            <h2>Artist Bio</h2>
+          </div>
+          <div className={CLASSES.bioContent}>
+            <q>
+              If I can play one note and make you cry, then that's better than
+              those fancy dancers playing twenty notes.
+            </q>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio,
+              maxime ab facilis id explicabo accusantium doloremque ad quod
+              consectetur inventore sequi. Ad temporibus fugit voluptates
+              tempora perferendis sunt pariatur eveniet?
+            </p>
+          </div>
 
-            <div className={CLASSES.bioSocials}>
-              <CustomAnchorButton to="/">
-                <FontAwesomeIcon icon={faXTwitter} />
-              </CustomAnchorButton>
-              <CustomAnchorButton to="/">
-                <FontAwesomeIcon icon={faThreads} />
-              </CustomAnchorButton>
-              <CustomAnchorButton to="/">
-                <FontAwesomeIcon icon={faFacebookF} />
-              </CustomAnchorButton>
-              <CustomAnchorButton to="/">
-                <FontAwesomeIcon icon={faInstagram} />
-              </CustomAnchorButton>
-            </div>
-          </SlideInMotionLeft>
-        </AnimatePresence>
+          <div className={CLASSES.bioSocials}>
+            <CustomAnchorButton to="/">
+              <FontAwesomeIcon icon={faXTwitter} />
+            </CustomAnchorButton>
+            <CustomAnchorButton to="/">
+              <FontAwesomeIcon icon={faThreads} />
+            </CustomAnchorButton>
+            <CustomAnchorButton to="/">
+              <FontAwesomeIcon icon={faFacebookF} />
+            </CustomAnchorButton>
+            <CustomAnchorButton to="/">
+              <FontAwesomeIcon icon={faInstagram} />
+            </CustomAnchorButton>
+          </div>
+        </motion.div>
 
-        <AnimatePresence>
-          <SlideInMotionRight
-            isDesktopOrLaptop={isDesktopOrLaptop}
-            motionKey={"rightScope"}
-            className={CLASSES.artistImage}
-          >
-            <img src={artistBioImg} />
-          </SlideInMotionRight>
-        </AnimatePresence>
+        <motion.div variants={variantsRight} className={CLASSES.artistImage}>
+          <img src={artistBioImg} />
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

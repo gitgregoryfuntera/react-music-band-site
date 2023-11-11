@@ -3,95 +3,14 @@ import CLASSES from "./LastShorts.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import CustomAnchorButton from "@components/shared/customs/CustomAnchorButton/CustomAnchorButton";
-import { Variants, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 import { useThemeContextProvider } from "@components/shared/context/themeContextHook";
-
-const variants: Variants = {
-  in: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      ease: "linear",
-    },
-  },
-  out: {
-    opacity: 0,
-    y: 100,
-  },
-};
-
-const variantsCard1: Variants = {
-  in: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      ease: "easeIn",
-    },
-  },
-  out: {
-    opacity: 0,
-    x: -100,
-  },
-};
-
-const variantsCard2: Variants = {
-  in: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      ease: "easeIn",
-    },
-  },
-  out: {
-    opacity: 0,
-    y: 100,
-  },
-};
-
-const variantsCard3: Variants = {
-  in: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      ease: "easeIn",
-    },
-  },
-  out: {
-    opacity: 0,
-    x: 100,
-  },
-};
-
-const LAST_SHORTS = [
-  {
-    link: `https://www.youtube.com/embed/Lssi0T6rHEo`,
-    title: `Aggressive Dark Electro Mix | Dark Techno | Cyberpunk | Industrial Mix Music [ Copyright Free ]`,
-    description: {
-      title: `Rainy Night`,
-      message: `History of Synth music, there is probably no one.`,
-    },
-    animation: variantsCard1,
-  },
-  {
-    link: `https://www.youtube.com/embed/J4lknAwyyWs`,
-    title: `The ending we desired | Cyberpunk Edgerunners | #anime #amv #shorts #cyberpunk2077 #music #watch`,
-    description: {
-      title: `Landscape`,
-      message: `History of Synth music, there is probably no one.`,
-    },
-    animation: variantsCard2,
-  },
-  {
-    link: `https://www.youtube.com/embed/hkLEdSjlqXQ`,
-    title: `Best Ambient Cyberpunk Mix | Dystopian Atmospheric Sci-Fi Music for Blade Runners`,
-    description: {
-      title: `Cyborg Life`,
-      message: `History of Synth music, there is probably no one.`,
-    },
-    animation: variantsCard3,
-  },
-];
+import {
+  slideLeftVariant,
+  slideRightVariant,
+  slideUpVariant,
+} from "@components/shared/animations/commonVariants";
 
 const LastShorts = () => {
   const { version } = useThemeContextProvider();
@@ -100,10 +19,49 @@ const LastShorts = () => {
     query: "(min-width: 1224px)",
   });
 
+  const { variantKeys: variantSlideUpKeys, variants: variantsSlideUp } =
+    slideUpVariant();
+  const { variants: variantsSlideLeft } = slideLeftVariant();
+  const { variants: variantsSlideRight } = slideRightVariant();
+
+  const LAST_SHORTS = [
+    {
+      link: `https://www.youtube.com/embed/Lssi0T6rHEo`,
+      title: `Aggressive Dark Electro Mix | Dark Techno | Cyberpunk | Industrial Mix Music [ Copyright Free ]`,
+      description: {
+        title: `Rainy Night`,
+        message: `History of Synth music, there is probably no one.`,
+      },
+      animation: variantsSlideLeft,
+    },
+    {
+      link: `https://www.youtube.com/embed/J4lknAwyyWs`,
+      title: `The ending we desired | Cyberpunk Edgerunners | #anime #amv #shorts #cyberpunk2077 #music #watch`,
+      description: {
+        title: `Landscape`,
+        message: `History of Synth music, there is probably no one.`,
+      },
+      animation: variantsSlideUp,
+    },
+    {
+      link: `https://www.youtube.com/embed/hkLEdSjlqXQ`,
+      title: `Best Ambient Cyberpunk Mix | Dystopian Atmospheric Sci-Fi Music for Blade Runners`,
+      description: {
+        title: `Cyborg Life`,
+        message: `History of Synth music, there is probably no one.`,
+      },
+      animation: variantsSlideRight,
+    },
+  ];
+
   return (
     <motion.section
-      whileInView={"in"}
-      initial={isDesktopOrLaptop ? "out" : "in"}
+      whileInView={variantSlideUpKeys.onscreen}
+      initial={
+        isDesktopOrLaptop
+          ? variantSlideUpKeys.offscreen
+          : variantSlideUpKeys.onscreen
+      }
       viewport={{
         once: true,
       }}
@@ -113,7 +71,7 @@ const LastShorts = () => {
       }}
       className={`${CLASSES.root} ${CLASSES[version]}`}
     >
-      <motion.div variants={variants} className={CLASSES.title}>
+      <motion.div variants={variantsSlideUp} className={CLASSES.title}>
         <h2>Last shorts</h2>
       </motion.div>
       <div className={CLASSES.shortContainer}>

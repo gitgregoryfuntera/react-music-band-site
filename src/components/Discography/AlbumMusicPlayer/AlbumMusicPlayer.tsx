@@ -2,7 +2,6 @@ import { LegacyRef } from "react";
 import ReactPlayer from "react-player";
 import CLASSES from "./AlbumMusicPlayer.module.scss";
 import CustomControlPlayer from "@components/shared/customs/CustomControlPlayer/CustomControlPlayer";
-import loveStory from "/assets/discography/love-story.mp3";
 import { useCustomReactPlayer } from "@components/shared/customs/CustomControlPlayer/customReactPlayerHook";
 import CustomCard from "@components/shared/customs/CustomCard/CustomCard";
 import albumImg from "/assets/discography/album.jpg";
@@ -10,21 +9,50 @@ import { useThemeContextProvider } from "@components/shared/context/themeContext
 import AlbumClosing from "./AlbumClosing";
 import MusicPlayerListItem from "./MusicPlayerListItem";
 
+import music1 from "/assets/music/drive-breakbeat-by-rockot.mp3";
+import music2 from "/assets/music/glossy-Coma-Media.mp3";
+import music3 from "/assets/music/once-in-paris-Pumpupthemind.mp3";
+import music4 from "/assets/music/science-documentary-Lexin_Music.mp3";
+import music5 from "/assets/music/titanium-by_Alisha_Sutudo.mp3";
+import imgThumbnail from "/assets/music-album-thumbnail.jpg";
+
 const AlbumMusicPlayer = () => {
   const { version } = useThemeContextProvider();
   const AVAILABLE_MUSIC = [
     {
       id: 1,
-      song: "Love Story",
-      singer: "Taylor Swift",
-      track: loveStory,
+      song: "Drive Breakbeat",
+      singer: "Rockot",
+      track: music1,
+      imgThumbnail,
     },
     {
       id: 2,
-      song: "Elephants Dream",
-      singer: "The Wires",
-      track:
-        "https://storage.googleapis.com/media-session/elephants-dream/the-wires.mp3",
+      song: "Glossy",
+      singer: "Coma-Media",
+      track: music2,
+      imgThumbnail,
+    },
+    {
+      id: 3,
+      song: "Once in Paris",
+      singer: "Pumpupthemind",
+      track: music3,
+      imgThumbnail,
+    },
+    {
+      id: 4,
+      song: "Science Documentary",
+      singer: "Lexin_Music",
+      track: music4,
+      imgThumbnail,
+    },
+    {
+      id: 5,
+      song: "Titanium",
+      singer: "Alisha_Sutudo",
+      track: music5,
+      imgThumbnail,
     },
   ];
 

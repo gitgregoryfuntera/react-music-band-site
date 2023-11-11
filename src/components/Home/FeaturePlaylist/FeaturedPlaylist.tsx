@@ -4,60 +4,13 @@ import image1 from "/assets/img4.jpg";
 import image2 from "/assets/img5.jpg";
 import image3 from "/assets/img6.jpg";
 import image4 from "/assets/img7.jpg";
-import { Variants, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 import { useThemeContextProvider } from "@components/shared/context/themeContextHook";
-
-const variants: Variants = {
-  in: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      ease: "linear",
-    },
-  },
-  out: {
-    opacity: 0,
-    y: 100,
-  },
-};
-
-const variantsSlideIn: Variants = {
-  in: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      ease: "easeIn",
-    },
-  },
-  out: {
-    opacity: 0,
-    x: -100,
-  },
-};
-
-const FEATURED_PLAYLIST = [
-  {
-    image: image1,
-    title: `Out Run Concept`,
-    description: `History of Synth music, there is probably no one.`,
-  },
-  {
-    image: image2,
-    title: `Out Run Concept`,
-    description: `History of Synth music, there is probably no one.`,
-  },
-  {
-    image: image3,
-    title: `Out Run Concept`,
-    description: `History of Synth music, there is probably no one.`,
-  },
-  {
-    image: image4,
-    title: `Out Run Concept`,
-    description: `History of Synth music, there is probably no one.`,
-  },
-];
+import {
+  slideLeftVariant,
+  slideUpVariant,
+} from "@components/shared/animations/commonVariants";
 
 const FeaturedPlaylist = () => {
   const { version } = useThemeContextProvider();
@@ -65,10 +18,41 @@ const FeaturedPlaylist = () => {
   const isDesktopOrLaptop = useMediaQuery({
     query: "(min-width: 1224px)",
   });
+
+  const FEATURED_PLAYLIST = [
+    {
+      image: image1,
+      title: `Out Run Concept`,
+      description: `History of Synth music, there is probably no one.`,
+    },
+    {
+      image: image2,
+      title: `Out Run Concept`,
+      description: `History of Synth music, there is probably no one.`,
+    },
+    {
+      image: image3,
+      title: `Out Run Concept`,
+      description: `History of Synth music, there is probably no one.`,
+    },
+    {
+      image: image4,
+      title: `Out Run Concept`,
+      description: `History of Synth music, there is probably no one.`,
+    },
+  ];
+
+  const { variantKeys: variantSlideUpKeys, variants: variantsSlideUp } =
+    slideUpVariant();
+  const { variants: variantsSlideLeft } = slideLeftVariant();
   return (
     <motion.section
-      whileInView={"in"}
-      initial={isDesktopOrLaptop ? "out" : "in"}
+      whileInView={variantSlideUpKeys.onscreen}
+      initial={
+        isDesktopOrLaptop
+          ? variantSlideUpKeys.offscreen
+          : variantSlideUpKeys.onscreen
+      }
       viewport={{
         once: true,
       }}
@@ -78,12 +62,15 @@ const FeaturedPlaylist = () => {
       }}
       className={`${CLASSES.root} ${CLASSES[version]}`}
     >
-      <motion.div variants={variants}>
+      <motion.div variants={variantsSlideUp}>
         <h2>Featured Playlists</h2>
       </motion.div>
       <div className={CLASSES.cardContainer}>
         {FEATURED_PLAYLIST?.map((item, index) => (
-          <motion.div variants={variantsSlideIn} key={`${item.title}-${index}`}>
+          <motion.div
+            variants={variantsSlideLeft}
+            key={`${item.title}-${index}`}
+          >
             <CustomCard>
               <div className={CLASSES.playlistWrapper}>
                 <div className={CLASSES.imgContainer}>

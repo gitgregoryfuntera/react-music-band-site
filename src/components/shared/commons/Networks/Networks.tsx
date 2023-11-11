@@ -4,13 +4,14 @@ import logo1 from "/assets/logo1.png";
 import logo2 from "/assets/logo2.png";
 import logo3 from "/assets/logo3.png";
 import logo4 from "/assets/logo4.png";
-
-import { Variants, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 import { useThemeContextProvider } from "@components/shared/context/themeContextHook";
 import { useLocation } from "react-router-dom";
-
-const SOCIAL_IMAGES = [logo1, logo2, logo3, logo4];
+import {
+  slideLeftVariant,
+  slideUpVariant,
+} from "@components/shared/animations/commonVariants";
 
 const Networks = () => {
   const { version } = useThemeContextProvider();
@@ -19,39 +20,20 @@ const Networks = () => {
     query: "(min-width: 1224px)",
   });
 
-  const variants: Variants = {
-    in: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        ease: "linear",
-      },
-    },
-    out: {
-      opacity: 0,
-      y: 100,
-    },
-  };
+  const { variantKeys: variantSlideUpKeys, variants: variantsSlideUp } =
+    slideUpVariant();
+  const { variants: variantsSlideLeft } = slideLeftVariant();
 
-  const variantsSlideIn: Variants = {
-    in: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        ease: "easeIn",
-      },
-    },
-    out: {
-      opacity: 0,
-      x: -100,
-    },
-  };
-
+  const SOCIAL_IMAGES = [logo1, logo2, logo3, logo4];
   return (
     <motion.section
       key={location.key}
-      whileInView={"in"}
-      initial={isDesktopOrLaptop ? "out" : "in"}
+      whileInView={variantSlideUpKeys.onscreen}
+      initial={
+        isDesktopOrLaptop
+          ? variantSlideUpKeys.offscreen
+          : variantSlideUpKeys.onscreen
+      }
       transition={{
         staggerChildren: 0.3,
         delayChildren: 0.5,
@@ -61,7 +43,7 @@ const Networks = () => {
       }}
       className={`${CLASSES.root} ${CLASSES[version]}`}
     >
-      <motion.div variants={variants} className={CLASSES.title}>
+      <motion.div variants={variantsSlideUp} className={CLASSES.title}>
         <h2>Networks</h2>
         <p>
           Audio player software is used to play back sound recordings in one of
@@ -71,7 +53,7 @@ const Networks = () => {
       <div className={CLASSES.row}>
         <div className={CLASSES.socialsContainer}>
           {SOCIAL_IMAGES.map((img, index) => (
-            <motion.div variants={variantsSlideIn} key={`${img}-${index}`}>
+            <motion.div key={`${img}-${index}`} variants={variantsSlideLeft}>
               <CustomCard className={CLASSES.socialCard}>
                 <div className={CLASSES.imageContainer}>
                   <img src={img} />
@@ -81,7 +63,7 @@ const Networks = () => {
           ))}
         </div>
         <motion.div
-          variants={variants}
+          variants={variantsSlideUp}
           className={CLASSES.contactInfoContainer}
         >
           <p>
